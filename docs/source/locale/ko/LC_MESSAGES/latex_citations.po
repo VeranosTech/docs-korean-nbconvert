@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/latex_citations.rst:2
+msgid "LaTeX citations"
+msgstr ""
+
+#: ../../source/latex_citations.rst:4
+msgid ""
+"``nbconvert`` now has support for LaTeX citations. With this capability "
+"you can:"
+msgstr ""
+
+#: ../../source/latex_citations.rst:7
+msgid "Manage citations using BibTeX."
+msgstr ""
+
+#: ../../source/latex_citations.rst:8
+msgid "Cite those citations in Markdown cells using HTML data attributes."
+msgstr ""
+
+#: ../../source/latex_citations.rst:9
+msgid "Have ``nbconvert`` generate proper LaTeX citations and run BibTeX."
+msgstr ""
+
+#: ../../source/latex_citations.rst:11
+msgid ""
+"For an example of how this works, please see the `citations example`_ in "
+"the nbconvert-examples_ repository."
+msgstr ""
+

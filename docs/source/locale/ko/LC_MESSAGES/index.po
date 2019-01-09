@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/index.rst:3
+msgid "nbconvert: Convert Notebooks to other formats"
+msgstr ""
+
+#: ../../source/index.rst:5
+msgid "Using ``nbconvert`` enables:"
+msgstr ""
+
+#: ../../source/index.rst:7
+msgid "**presentation** of information in familiar formats, such as PDF."
+msgstr ""
+
+#: ../../source/index.rst:8
+msgid ""
+"**publishing** of research using LaTeX and opens the door for embedding "
+"notebooks in papers."
+msgstr ""
+
+#: ../../source/index.rst:10
+msgid "**collaboration** with others who may not use the notebook in their work."
+msgstr ""
+
+#: ../../source/index.rst:12
+msgid "**sharing** contents with many people via the web using HTML."
+msgstr ""
+
+#: ../../source/index.rst:14
+msgid ""
+"Overall, notebook conversion and the ``nbconvert`` tool give scientists "
+"and researchers the flexibility to deliver information in a timely way "
+"across different formats."
+msgstr ""
+
+#: ../../source/index.rst:18
+msgid ""
+"Primarily, the ``nbconvert`` tool allows you to convert a Jupyter "
+"``.ipynb`` notebook document file into another static format including "
+"HTML, LaTeX, PDF, Markdown, reStructuredText, and more. ``nbconvert`` can"
+" also add productivity to your workflow when used to execute notebooks "
+"programmatically."
+msgstr ""
+
+#: ../../source/index.rst:23
+msgid ""
+"If used as a Python library (``import nbconvert``), ``nbconvert`` adds "
+"notebook conversion within a project. For example, ``nbconvert`` is used "
+"to implement the \"Download as\" feature within the Jupyter Notebook web "
+"application. When used as a command line tool (invoked as ``jupyter "
+"nbconvert ...``), users can conveniently convert just one or a batch of "
+"notebook files to another format."
+msgstr ""
+
+#: ../../source/index.rst:31
+msgid "**Contents:**"
+msgstr ""
+
+#: ../../source/index.rst:33
+msgid "User Documentation"
+msgstr ""
+
+#: ../../source/index.rst:43
+msgid "Configuration"
+msgstr ""
+
+#: ../../source/index.rst:51
+msgid "Developer Documentation"
+msgstr ""
+
+#: ../../source/index.rst:59
+msgid "About nbconvert"
+msgstr ""
+
+#: ../../source/index.rst:65
+msgid "Questions? Suggestions?"
+msgstr ""
+
+#: ../../source/index.rst:75
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../source/index.rst:77
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../source/index.rst:78
+msgid ":ref:`modindex`"
+msgstr ""
+
+#: ../../source/index.rst:79
+msgid ":ref:`search`"
+msgstr ""
+

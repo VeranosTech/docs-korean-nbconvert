@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/external_exporters.rst:4
+msgid "Customizing exporters"
+msgstr ""
+
+#: ../../source/external_exporters.rst:8
+msgid ""
+"You can now use the ``--to`` flag to use custom export formats defined "
+"outside nbconvert."
+msgstr ""
+
+#: ../../source/external_exporters.rst:12
+msgid "The command-line syntax to run the ``nbconvert`` script is::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:16
+msgid ""
+"This will convert the Jupyter document file ``notebook.ipynb`` into the "
+"output format designated by the ``FORMAT`` string as explained below."
+msgstr ""
+
+#: ../../source/external_exporters.rst:20
+msgid "Extending the built-in format exporters"
+msgstr ""
+
+#: ../../source/external_exporters.rst:21
+msgid ""
+"A few built-in formats are available by default: `html`, `pdf`, `script`,"
+" `latex`. Each of these has its own *exporter* with many configuration "
+"options that can be extended. Having the option to point to a different "
+"*exporter* allows authors to create their own fully customized templates "
+"or export formats."
+msgstr ""
+
+#: ../../source/external_exporters.rst:27
+msgid ""
+"A custom *exporter* must be an importable Python object. We recommend "
+"that these be distributed as Python libraries."
+msgstr ""
+
+#: ../../source/external_exporters.rst:33
+msgid "Registering a custom exporter as an entry point"
+msgstr ""
+
+#: ../../source/external_exporters.rst:35
+msgid ""
+"Additional exporters may be registered as named `entry_points`_. "
+"nbconvert uses the ``nbconvert.exporters`` entry point to find exporters "
+"from any package you may have installed."
+msgstr ""
+
+#: ../../source/external_exporters.rst:39
+msgid ""
+"If you are writing a Python package that provides custom exporters, you "
+"can register the custom exporters in your package's :file:`setup.py`. For"
+" example, your package may contain two custom exporters, named \"simple\""
+" and \"detail\", and can be registered in your package's :file:`setup.py`"
+" as follows:"
+msgstr ""
+
+#: ../../source/external_exporters.rst:56
+msgid ""
+"Now people who have installed your Python package containing the two "
+"custom exporters can call the entry point name::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:61
+msgid "instead of having to specify the full import name of the custom exporter."
+msgstr ""
+
+#: ../../source/external_exporters.rst:67
+msgid "Using a custom exporter without entrypoints"
+msgstr ""
+
+#: ../../source/external_exporters.rst:68
+msgid ""
+"We encourage registering custom exporters as entry points as described in"
+" the previous section. Registering a custom exporter with an entry point "
+"simplifies using the exporter. If a custom exporter has not been "
+"registered with an entry point, the exporter can still be used by "
+"providing the fully qualified name of this exporter as the argument of "
+"the ``--to`` flag when running from the command line::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:77
+msgid ""
+"For example, assuming a library `tcontrib` has a custom exporter name "
+"`TExporter`, you would convert to this custom format using the "
+"following::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:82
+msgid ""
+"A library can contain multiple exporters. Creators of custom exporters "
+"should make sure that all other flags of the command line behave the same"
+" for the custom exporters as for built-in exporters."
+msgstr ""
+
+#: ../../source/external_exporters.rst:88
+msgid "Parameters controlled by an external exporter"
+msgstr ""
+
+#: ../../source/external_exporters.rst:90
+msgid ""
+"An external exporter can control almost any parameter of the notebook "
+"conversion process, from simple parameters such as the output file "
+"extension, to more complex ones such as the execution of the notebook or "
+"a custom rendering template."
+msgstr ""
+
+#: ../../source/external_exporters.rst:94
+msgid ""
+"All external exporters can expose custom options using the ``traitlets`` "
+"configurable API. Refer to the library that provides these exporters for "
+"details on how these configuration options works."
+msgstr ""
+
+#: ../../source/external_exporters.rst:98
+msgid ""
+"You can use the Jupyter configuration files to configure an external "
+"exporter. As for any ``nbconvert`` exporters you can use either the "
+"configuration file syntax of ``c.MyExporter.config_option=value`` or the "
+"command line flag form ``--MyExporter.config_option=value``."
+msgstr ""
+
+#: ../../source/external_exporters.rst:104
+msgid "Writing a custom ``Exporter``"
+msgstr ""
+
+#: ../../source/external_exporters.rst:106
+msgid ""
+"Under the hood exporters are python classes that expose a certain "
+"interface. Any importable classes that expose this interface can be use "
+"as an exporter for nbconvert."
+msgstr ""
+
+#: ../../source/external_exporters.rst:110
+msgid ""
+"For simplicity we expose basic classes that implement all the relevant "
+"methods that you have to subclass and overwrite just the relevant methods"
+" to provide a custom exporter. Below we show you the step to create a "
+"custom exporter that provides a custom file extension, and a custom "
+"template that inserts before and after each markdown cell."
+msgstr ""
+
+#: ../../source/external_exporters.rst:116
+msgid ""
+"We will lay out files to be ready for Python packaging and distributing "
+"on PyPI, although the exact art of Python packaging is beyond the scope "
+"of this explanation."
+msgstr ""
+
+#: ../../source/external_exporters.rst:119
+msgid ""
+"We will use the following layout for our package to expose a custom "
+"exporter::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:129
+msgid ""
+"If you wished to create this same directory structure you could use the "
+"following commands when you are at the directory under which you wish to "
+"build your ``mypackage`` package:"
+msgstr ""
+
+#: ../../source/external_exporters.rst:141
+msgid ""
+"You should not publish this package without adding content to your "
+"``LICENSE.md`` file. For example, ``nbconvert`` follows the Jupyter "
+"Project convention of using a Modified BSD License (also known as New or "
+"Revised or 3-Clause BSD). For a guide on picking the right license for "
+"your use case, please see `choose a license "
+"<http://choosealicense.com>`_. If you do not specify the license, your "
+"code may be `unusable by many open source projects`_."
+msgstr ""
+
+#: ../../source/external_exporters.rst:150
+msgid ""
+"As you can see the layout is relatively simple, in the case where a "
+"template is not needed we would actually have only one file with an "
+"Exporter implementation.  Of course you can change the layout of your "
+"package to have a more fine-grained structure of the subpackage. But lets"
+" see what a minimum example looks like."
+msgstr ""
+
+#: ../../source/external_exporters.rst:155
+msgid "We are going to write an exporter that:"
+msgstr ""
+
+#: ../../source/external_exporters.rst:157
+msgid "exports to html, so we will reuse the built-in html exporter"
+msgstr ""
+
+#: ../../source/external_exporters.rst:158
+msgid "changes the file extension to `.test_ext`"
+msgstr ""
+
+#: ../../source/external_exporters.rst:204
+msgid ""
+"And the template file, that inherits from the html `full` template and "
+"prepend/append text to each markdown cell (see Jinja2 docs for template "
+"syntax)::"
+msgstr ""
+
+#: ../../source/external_exporters.rst:219
+msgid "Assuming you install this package locally, or from PyPI, you can now use::"
+msgstr ""
+

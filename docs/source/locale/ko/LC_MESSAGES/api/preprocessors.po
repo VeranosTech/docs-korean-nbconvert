@@ -1,0 +1,270 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/api/preprocessors.rst:2
+msgid "Preprocessors"
+msgstr ""
+
+#: ../../source/api/preprocessors.rst:8
+msgid ":doc:`/config_options`"
+msgstr ""
+
+#: ../../source/api/preprocessors.rst:9
+msgid "Configurable options for the nbconvert application"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:1 of
+msgid "A configurable preprocessor"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:3 of
+msgid ""
+"Inherit from this class if you wish to have configurability for your "
+"preprocessor."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:6 of
+msgid ""
+"Any configurable traitlets this class exposed will be configurable in "
+"profiles using c.SubClassName.attribute = value"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:9 of
+msgid ""
+"you can overwrite :meth:`preprocess_cell` to apply a transformation "
+"independently on each cell or :meth:`preprocess` if you prefer your own "
+"logic. See corresponding docstring for informations."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:14 of
+msgid "Disabled by default and can be enabled via the config by"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor:14 of
+msgid "'c.YourPreprocessorName.enabled = True'"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.__init__:1 of
+msgid "Public constructor"
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess
+#: nbconvert.preprocessors.Preprocessor.__init__
+#: nbconvert.preprocessors.Preprocessor.preprocess
+#: nbconvert.preprocessors.Preprocessor.preprocess_cell
+#: nbconvert.preprocessors.coalesce_streams of
+msgid "Parameters"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.__init__:3 of
+msgid "Configuration file structure"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.__init__:5 of
+msgid "Additional keyword arguments passed to parent"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess:1 of
+msgid "Preprocessing to apply on each notebook."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess:3 of
+msgid "Must return modified nb, resources."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess:5 of
+msgid ""
+"If you wish to apply your preprocessing to each cell, you might want to "
+"override preprocess_cell method instead."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess:8 of
+msgid "Notebook being converted"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess:10
+#: nbconvert.preprocessors.Preprocessor.preprocess_cell:6 of
+msgid ""
+"Additional resources used in the conversion process.  Allows "
+"preprocessors to pass variables into the Jinja engine."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess_cell:1 of
+msgid ""
+"Override if you want to apply some preprocessing to each cell. Must "
+"return modified cell and resource dictionary."
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess_cell:4
+#: nbconvert.preprocessors.coalesce_streams:4 of
+msgid "Notebook cell being processed"
+msgstr ""
+
+#: nbconvert.preprocessors.Preprocessor.preprocess_cell:9
+#: nbconvert.preprocessors.coalesce_streams:9 of
+msgid "Index of the cell being processed"
+msgstr ""
+
+#: ../../source/api/preprocessors.rst:20
+msgid "Specialized preprocessors"
+msgstr ""
+
+#: nbconvert.preprocessors.ConvertFiguresPreprocessor:1 of
+msgid "Converts all of the outputs in a notebook from one format to another."
+msgstr ""
+
+#: nbconvert.preprocessors.SVG2PDFPreprocessor:1 of
+msgid "Converts all of the outputs in a notebook from SVG to PDF."
+msgstr ""
+
+#: nbconvert.preprocessors.ExtractOutputPreprocessor:1 of
+msgid ""
+"Extracts all of the outputs from the notebook file.  The extracted "
+"outputs are returned in the 'resources' dictionary."
+msgstr ""
+
+#: nbconvert.preprocessors.LatexPreprocessor:1 of
+msgid "Preprocessor for latex destined documents."
+msgstr ""
+
+#: nbconvert.preprocessors.LatexPreprocessor:3 of
+msgid ""
+"Mainly populates the `latex` key in the resources dict, adding "
+"definitions for pygments highlight styles."
+msgstr ""
+
+#: nbconvert.preprocessors.CSSHTMLHeaderPreprocessor:1 of
+msgid ""
+"Preprocessor used to pre-process notebook for HTML output.  Adds IPython "
+"notebook front-end CSS and Pygments CSS to HTML output."
+msgstr ""
+
+#: nbconvert.preprocessors.HighlightMagicsPreprocessor:1 of
+msgid "Detects and tags code cells that use a different languages than Python."
+msgstr ""
+
+#: nbconvert.preprocessors.ClearOutputPreprocessor:1 of
+msgid "Removes the output from all code cells in a notebook."
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:1 of
+msgid "Removes cells from a notebook that match one or more regular expression."
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:3 of
+msgid ""
+"For each cell, the preprocessor checks whether its contents match the "
+"regular expressions in the `patterns` traitlet which is a list of unicode"
+" strings. If the contents match any of the patterns, the cell is removed "
+"from the notebook."
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:8 of
+msgid ""
+"By default, `patterns = [r'\\Z']` which matches the empty string such "
+"that strictly empty cells are removed. To modify the list of matched "
+"patterns, modify the patterns traitlet. For example, execute the "
+"following command to convert a notebook to html and remove cells "
+"containing only whitespace:"
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:13 of
+msgid ""
+"> jupyter nbconvert --RegexRemovePreprocessor.enabled=True       "
+"--RegexRemovePreprocessor.patterns=\"['\\s*\\Z']\" mynotebook.ipynb"
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:15 of
+msgid ""
+"The first command line argument enables the preprocessor and the second "
+"sets the list of patterns to '\\s*\\Z' which matches an arbitrary number "
+"of whitespace characters followed by the end of the string."
+msgstr ""
+
+#: nbconvert.preprocessors.RegexRemovePreprocessor:19 of
+msgid ""
+"See https://regex101.com/ for an interactive guide to regular expressions"
+" (make sure to select the python flavor). See "
+"https://docs.python.org/library/re.html for the official regular "
+"expression documentation in python."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor:1 of
+msgid "Executes all the cells in a notebook"
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:1 of
+msgid "Preprocess notebook executing each code cell."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:3 of
+msgid "The input argument `nb` is modified in-place."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:5 of
+msgid "Notebook being executed."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:7 of
+msgid ""
+"Additional resources used in the conversion process. For example, passing"
+" ``{'metadata': {'path': run_path}}`` sets the execution path to "
+"``run_path``."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess of
+msgid "Returns"
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:12 of
+msgid ""
+"* **nb** (*NotebookNode*) -- The executed notebook. * **resources** "
+"(*dictionary*) -- Additional resources used in the conversion process."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:12 of
+msgid "**nb** (*NotebookNode*) -- The executed notebook."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess:13 of
+msgid ""
+"**resources** (*dictionary*) -- Additional resources used in the "
+"conversion process."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess_cell:1 of
+msgid "Executes a single code cell. See base.py for details."
+msgstr ""
+
+#: nbconvert.preprocessors.ExecutePreprocessor.preprocess_cell:3 of
+msgid "To execute all cells see :meth:`preprocess`."
+msgstr ""
+
+#: nbconvert.preprocessors.coalesce_streams:1 of
+msgid ""
+"Merge consecutive sequences of stream output into single stream to "
+"prevent extra newlines inserted at flush calls"
+msgstr ""
+
+#: nbconvert.preprocessors.coalesce_streams:6 of
+msgid ""
+"Additional resources used in the conversion process.  Allows transformers"
+" to pass variables into the Jinja engine."
+msgstr ""
+

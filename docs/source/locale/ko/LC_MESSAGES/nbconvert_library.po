@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/nbconvert_library.ipynb:13
+msgid "Using nbconvert as a library"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:15
+msgid ""
+"In this notebook, you will be introduced to the programmatic API of "
+"nbconvert and how it can be used in various contexts."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:17
+msgid ""
+"A great `blog post <http://jakevdp.github.io/blog/2013/04/15/code-golf-"
+"in-python-sudoku/>`__ by [@jakevdp](https://github.com/jakevdp) will be "
+"used to demonstrate. This notebook will not focus on using the command "
+"line tool. The attentive reader will point-out that no data is read from "
+"or written to disk during the conversion process. This is because "
+"nbconvert has been designed to work in memory so that it works well in a "
+"database or web-based environment too."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:25
+msgid "Quick overview"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:32
+msgid "Credit: Jonathan Frederic (@jdfreder on github)"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:39
+msgid ""
+"The main principle of nbconvert is to instantiate an ``Exporter`` that "
+"controls the pipeline through which notebooks are converted."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:41
+msgid ""
+"First, download @jakevdp’s notebook (if you do not have ``requests``, "
+"install it by running ``pip install requests``, or if you don’t have pip "
+"installed, you can find it on PYPI):"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:67
+msgid "The response is a JSON string which represents a Jupyter notebook."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:69
+msgid ""
+"Next, we will read the response using nbformat. Doing this will guarantee"
+" that the notebook structure is valid. Note that the in-memory format and"
+" on disk format are slightly different. In particual, on disk, multiline "
+"strings might be split into a list of strings."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:95
+msgid ""
+"The nbformat API returns a special type of dictionary. For this example, "
+"you don’t need to worry about the details of the structure (if you are "
+"interested, please see the `nbformat documentation "
+"<https://nbformat.readthedocs.io/en/latest/>`__)."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:97
+msgid ""
+"The nbconvert API exposes some basic exporters for common formats and "
+"defaults. You will start by using one of them. First, you will import one"
+" of these exporters (specifically, the HTML exporter), then instantiate "
+"it using most of the defaults, and then you will use it to process the "
+"notebook we downloaded earlier."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:123
+msgid ""
+"The exporter returns a tuple containing the source of the converted "
+"notebook, as well as a resources dict. In this case, the source is just "
+"raw HTML:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:192
+msgid ""
+"If you understand HTML, you’ll notice that some common tags are omitted, "
+"like the ``body`` tag. Those tags are included in the default "
+"``HtmlExporter``, which is what would have been constructed if we had not"
+" modified the ``template_file``."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:194
+msgid ""
+"The resource dict contains (among many things) the extracted ``.png``, "
+"``.jpg``, etc. from the notebook when applicable. The basic HTML exporter"
+" leaves the figures as embedded base64, but you can configure it to "
+"extract the figures. So for now, the resource dict should be mostly "
+"empty, except for a key containing CSS and a few others whose content "
+"will be obvious:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:250
+msgid ""
+"``Exporter``\\ s are stateless, so you won’t be able to extract any "
+"useful information beyond their configuration. You can re-use an exporter"
+" instance to convert another notebook. In addition to the "
+"``from_notebook_node`` used above, each exporter exposes ``from_file`` "
+"and ``from_filename`` methods."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:258
+msgid "Extracting Figures using the RST Exporter"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:265
+msgid ""
+"When exporting, you may want to extract the base64 encoded figures as "
+"files. While the HTML exporter does not do this by default, the "
+"``RstExporter`` does:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:427
+msgid ""
+"Notice that base64 images are not embedded, but instead there are "
+"filename-like strings, such as ``output_3_0.png``. The strings actually "
+"are (configurable) keys that map to the binary data in the resources "
+"dict."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:429
+msgid ""
+"Note, if you write an RST Plugin, you are responsible for writing all the"
+" files to the disk (or uploading, etc…) in the right location. Of course,"
+" the naming scheme is configurable."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:431
+msgid ""
+"As an exercise, this notebook will show you how to get one of those "
+"images. First, take a look at the ``'outputs'`` of the returned resources"
+" dictionary. This is a dictionary that contains a key for each extracted "
+"resource, with values corresponding to the actual base64 encoding:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:457
+msgid ""
+"In this case, there are 5 extracted binary figures, all ``png``\\ s. We "
+"can use the Image display object to actually display one of the images:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:480
+msgid ""
+"Note that this image is being rendered without ever reading or writing to"
+" the disk."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:488
+msgid "Extracting Figures using the HTML Exporter"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:495
+msgid ""
+"As mentioned above, by default, the HTML exporter does not extract images"
+" – it just leaves them as inline base64 encodings. However, this is not "
+"always what you might want. For example, here is a use case from "
+"@jakevdp:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:497
+msgid ""
+"I write an `awesome blog <http://jakevdp.github.io/>`__ using Jupyter "
+"notebooks converted to HTML, and I want the images to be cached. Having "
+"one html file with all of the images base64 encoded inside it is nice "
+"when sharing with a coworker, but for a website, not so much. I need an "
+"HTML exporter, and I want it to extract the figures!"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:505
+msgid "Some theory"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:507
+msgid ""
+"Before we get into actually extracting the figures, it will be helpful to"
+" give a high-level overview of the process of converting a notebook to a "
+"another format:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:509
+msgid ""
+"Retrieve the notebook and it’s accompanying resources (you are "
+"responsible for this)."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:510
+msgid "Feed the notebook into the ``Exporter``, which:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:512
+msgid ""
+"Sequentially feeds the notebook into an array of ``Preprocessor``\\ s. "
+"Preprocessors only act on the **structure** of the notebook, and have "
+"unrestricted access to it."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:513
+msgid ""
+"Feeds the notebook into the Jinja templating engine, which converts it to"
+" a particular format depending on which template is selected."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:515
+msgid ""
+"The exporter returns the converted notebook and other relevant resources "
+"as a tuple."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:516
+msgid ""
+"You write the data to the disk using the built-in ``FilesWriter`` (which "
+"writes the notebook and any extracted files to disk), or elsewhere using "
+"a custom ``Writer``."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:519
+msgid "Using different preprocessors"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:521
+msgid ""
+"To extract the figures when using the HTML exporter, we will want to "
+"change which ``Preprocessor``\\ s we are using. There are several "
+"preprocessors that come with nbconvert, including one called the "
+"``ExtractOutputPreprocessor``."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:523
+msgid ""
+"The ``ExtractOutputPreprocessor`` is responsible for crawling the "
+"notebook, finding all of the figures, and putting them into the resources"
+" directory, as well as choosing the key (i.e. "
+"``filename_xx_y.extension``) that can replace the figure inside the "
+"template. To enable the ``ExtractOutputPreprocessor``, we must add it to "
+"the exporter’s list of preprocessors:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:552
+msgid ""
+"We can compare the result of converting the notebook using the original "
+"HTML exporter and our new customized one:"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:624
+msgid "Custom Preprocessors"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:631
+msgid ""
+"There are an endless number of transformations that you may want to apply"
+" to a notebook. In particularly complicated cases, you may want to "
+"actually create your own ``Preprocessor``. Above, when we customized the "
+"list of preprocessors accepted by the ``HTMLExporter``, we passed in a "
+"string – this can be any valid module name. So, if you create your own "
+"preprocessor, you can include it in that same list and it will be used by"
+" the exporter."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:633
+msgid ""
+"To create your own preprocessor, you will need to subclass from "
+"``nbconvert.preprocessors.Preprocessor`` and overwrite either the "
+"``preprocess`` and/or ``preprocess_cell`` methods."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:641
+msgid "Example"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:648
+msgid "The following demonstration adds the ability to exclude a cell by index."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:650
+msgid ""
+"Note: injecting cells is similar, and won’t be covered here. If you want "
+"to inject static content at the beginning/end of a notebook, use a custom"
+" template."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:681
+msgid ""
+"Here a Pelican exporter is created that takes ``PelicanSubCell`` "
+"preprocessors and a ``config`` object as parameters. This may seem "
+"redundant, but with the configuration system you can register an inactive"
+" preprocessor on all of the exporters and activate it from config files "
+"or the command line."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:771
+msgid "Programmatically creating templates"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:840
+msgid "Real World Uses"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:847
+msgid ""
+"@jakevdp uses Pelican and Jupyter Notebook to blog. Pelican `will use "
+"<https://github.com/getpelican/pelican-plugins/pull/21>`__ nbconvert "
+"programmatically to generate blog post. Have a look a `Pythonic "
+"Preambulations <http://jakevdp.github.io/>`__ for Jake’s blog post."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:854
+msgid ""
+"@damianavila wrote the Nikola Plugin to `write blog post as Notebooks "
+"<http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-"
+"to-gh-pages.html>`__ and is developping a js-extension to publish "
+"notebooks via one click from the web app."
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:873
+msgid ""
+"As @Mbussonn requested… easieeeeer! Deploy your Nikola site with just a "
+"click in the IPython notebook! http://t.co/860sJunZvj cc @ralsina"
+msgstr ""
+
+#: ../../source/nbconvert_library.ipynb:879
+msgid "— Damián Avila (@damian_avila) August 21, 2013"
+msgstr ""
+

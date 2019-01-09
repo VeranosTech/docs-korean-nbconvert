@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/api/nbconvertapp.rst:2
+msgid "NbConvertApp"
+msgstr ""
+
+#: ../../source/api/nbconvertapp.rst:8
+msgid ":doc:`/config_options`"
+msgstr ""
+
+#: ../../source/api/nbconvertapp.rst:9
+msgid "Configurable options for the nbconvert application"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp:1 of
+msgid "Application used to convert from notebook file type (``*.ipynb``)"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_notebooks:1 of
+msgid "Construct the list of notebooks."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_notebooks:3 of
+msgid ""
+"If notebooks are passed on the command-line, they override (rather than "
+"add) notebooks specified in config files. Glob each notebook to replace "
+"notebook patterns with filenames."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_notebooks:1 of
+msgid "Convert the notebooks in the self.notebook traitlet"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:1 of
+msgid "Convert a single notebook."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:3 of
+msgid "Performs the following steps:"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:5 of
+msgid "Initialize notebook resources"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:6 of
+msgid "Export the notebook to a particular format"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:7 of
+msgid "Write the exported notebook to file"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:8 of
+msgid "(Maybe) postprocess the written file"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook of
+msgid "Parameters"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:12 of
+msgid ""
+"If input_buffer is not None, conversion is done and the buffer is used as"
+" source into a file basenamed by the notebook_filename argument."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:1 of
+msgid "Step 1: Initialize resources"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:3 of
+msgid "This initializes the resources dictionary for a single notebook."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook of
+msgid "Returns"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:5 of
+msgid ""
+"resources dictionary for a single notebook that MUST include the "
+"following keys:     - config_dir: the location of the Jupyter config "
+"directory     - unique_key: the notebook name     - output_files_dir: a "
+"directory where output files (not       including the notebook itself) "
+"should be saved"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:10 of
+msgid ""
+"resources dictionary for a single notebook that MUST include the "
+"following keys:"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:8 of
+msgid "config_dir: the location of the Jupyter config directory"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:9 of
+msgid "unique_key: the notebook name"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:10 of
+msgid ""
+"output_files_dir: a directory where output files (not including the "
+"notebook itself) should be saved"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook of
+msgid "Return type"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:1 of
+msgid "Step 2: Export the notebook"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:3 of
+msgid ""
+"Exports the notebook to a particular format according to the specified "
+"exporter. This function returns the output and (possibly modified) "
+"resources from the exporter."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:7 of
+msgid "name of notebook file."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:11 of
+msgid ""
+"readable file-like object returning unicode. if not None, "
+"notebook_filename is ignored"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:14 of
+msgid "* *output* * *dict* -- resources (possibly modified)"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:14 of
+msgid "*output*"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:15 of
+msgid "*dict* -- resources (possibly modified)"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:1 of
+msgid "Step 3: Write the notebook to file"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:3 of
+msgid ""
+"This writes output from the exporter to file using the specified writer. "
+"It returns the results from the writer."
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:7 of
+msgid ""
+"resources for a single notebook including name, config directory and "
+"directory to save output"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:11 of
+msgid "results from the specified writer output of exporter"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.postprocess_single_notebook:1 of
+msgid "Step 4: Post-process the written file"
+msgstr ""
+
+#: nbconvert.nbconvertapp.NbConvertApp.postprocess_single_notebook:3 of
+msgid ""
+"Only used if a postprocessor has been specified. After the converted "
+"notebook is written to a file in Step 3, this post-processes the "
+"notebook."
+msgstr ""
+

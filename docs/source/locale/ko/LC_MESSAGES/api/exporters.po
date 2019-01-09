@@ -1,0 +1,436 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/api/exporters.rst:2
+msgid "Exporters"
+msgstr ""
+
+#: ../../source/api/exporters.rst:8
+msgid ":doc:`/config_options`"
+msgstr ""
+
+#: ../../source/api/exporters.rst:9
+msgid "Configurable options for the nbconvert application"
+msgstr ""
+
+#: nbconvert.exporters.export:1 of
+msgid "Export a notebook object using specific exporter class."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.__init__ nbconvert.exporters.Exporter.from_file
+#: nbconvert.exporters.Exporter.from_filename
+#: nbconvert.exporters.Exporter.from_notebook_node
+#: nbconvert.exporters.Exporter.register_preprocessor
+#: nbconvert.exporters.TemplateExporter.__init__
+#: nbconvert.exporters.TemplateExporter.from_file
+#: nbconvert.exporters.TemplateExporter.from_filename
+#: nbconvert.exporters.TemplateExporter.from_notebook_node
+#: nbconvert.exporters.TemplateExporter.register_filter
+#: nbconvert.exporters.TemplateExporter.register_preprocessor
+#: nbconvert.exporters.export of
+msgid "Parameters"
+msgstr ""
+
+#: nbconvert.exporters.export:3 of
+msgid ""
+"Class or instance of the exporter that should be used.  If the method "
+"initializes its own instance of the class, it is ASSUMED that the class "
+"type provided exposes a constructor (``__init__``) with the same "
+"signature as the base Exporter class."
+msgstr ""
+
+#: nbconvert.exporters.export:8 of
+msgid "The notebook to export."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.__init__:3
+#: nbconvert.exporters.TemplateExporter.__init__:3
+#: nbconvert.exporters.export:10 of
+msgid "User configuration instance."
+msgstr ""
+
+#: nbconvert.exporters.export:12 of
+msgid "Resources used in the conversion process."
+msgstr ""
+
+#: nbconvert.exporters.export of
+msgid "Returns"
+msgstr ""
+
+#: nbconvert.exporters.export:15 of
+msgid ""
+"output : str     The resulting converted notebook. resources : dictionary"
+"     Dictionary of resources used prior to and during the conversion     "
+"process."
+msgstr ""
+
+#: nbconvert.exporters.export:17 of
+msgid "output"
+msgstr ""
+
+#: nbconvert.exporters.export:16 of
+msgid "str"
+msgstr ""
+
+#: nbconvert.exporters.export:18 of
+msgid "The resulting converted notebook."
+msgstr ""
+
+#: nbconvert.exporters.export:20 of
+msgid "resources"
+msgstr ""
+
+#: nbconvert.exporters.export:19 of
+msgid "dictionary"
+msgstr ""
+
+#: nbconvert.exporters.export:20 of
+msgid "Dictionary of resources used prior to and during the conversion process."
+msgstr ""
+
+#: nbconvert.exporters.export of
+msgid "Return type"
+msgstr ""
+
+#: nbconvert.exporters.get_exporter:1 of
+msgid ""
+"Given an exporter name or import path, return a class ready to be "
+"instantiated"
+msgstr ""
+
+#: nbconvert.exporters.get_exporter:3 of
+msgid "Raises ValueError if exporter is not found"
+msgstr ""
+
+#: nbconvert.exporters.get_export_names:1 of
+msgid "Return a list of the currently supported export targets"
+msgstr ""
+
+#: nbconvert.exporters.get_export_names:3 of
+msgid ""
+"Exporters can be found in external packages by registering them as an "
+"nbconvert.exporter entrypoint."
+msgstr ""
+
+#: ../../source/api/exporters.rst:18
+msgid "Exporter base classes"
+msgstr ""
+
+#: nbconvert.exporters.Exporter:1 of
+msgid ""
+"Class containing methods that sequentially run a list of preprocessors on"
+" a NotebookNode object and then return the modified NotebookNode object "
+"and accompanying resources dict."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.__init__:1
+#: nbconvert.exporters.TemplateExporter.__init__:1 of
+msgid "Public constructor"
+msgstr ""
+
+#: nbconvert.exporters.Exporter.__init__:5 of
+msgid "Additional keyword arguments passed to parent __init__"
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_notebook_node:1
+#: nbconvert.exporters.TemplateExporter.from_notebook_node:1 of
+msgid "Convert a notebook from a notebook node instance."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_notebook_node:3 of
+msgid "Notebook node (dict-like with attr-access)"
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_file:5
+#: nbconvert.exporters.Exporter.from_filename:5
+#: nbconvert.exporters.Exporter.from_notebook_node:5
+#: nbconvert.exporters.TemplateExporter.from_file:5
+#: nbconvert.exporters.TemplateExporter.from_filename:5
+#: nbconvert.exporters.TemplateExporter.from_notebook_node:5 of
+msgid ""
+"Additional resources that can be accessed read/write by preprocessors and"
+" filters."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_file:8
+#: nbconvert.exporters.Exporter.from_filename:8
+#: nbconvert.exporters.Exporter.from_notebook_node:8
+#: nbconvert.exporters.TemplateExporter.from_file:8
+#: nbconvert.exporters.TemplateExporter.from_filename:8 of
+msgid "Ignored"
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_file:1
+#: nbconvert.exporters.Exporter.from_filename:1
+#: nbconvert.exporters.TemplateExporter.from_file:1
+#: nbconvert.exporters.TemplateExporter.from_filename:1 of
+msgid "Convert a notebook from a notebook file."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_filename:3
+#: nbconvert.exporters.TemplateExporter.from_filename:3 of
+msgid "Full filename of the notebook file to open and convert."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.from_file:3
+#: nbconvert.exporters.TemplateExporter.from_file:3 of
+msgid "Notebook file-like object to convert."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.register_preprocessor:1
+#: nbconvert.exporters.TemplateExporter.register_preprocessor:1 of
+msgid ""
+"Register a preprocessor. Preprocessors are classes that act upon the "
+"notebook before it is passed into the Jinja templating engine.  "
+"preprocessors are also capable of passing additional information to the "
+"Jinja templating engine."
+msgstr ""
+
+#: nbconvert.exporters.Exporter.register_preprocessor:7
+#: nbconvert.exporters.TemplateExporter.register_preprocessor:7 of
+msgid "A dotted module name, a type, or an instance"
+msgstr ""
+
+#: nbconvert.exporters.Exporter.register_preprocessor:9
+#: nbconvert.exporters.TemplateExporter.register_preprocessor:9 of
+msgid "Mark the preprocessor as enabled"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:1 of
+msgid ""
+"Exports notebooks into other file formats.  Uses Jinja 2 templating "
+"engine to output new formats.  Inherit from this class if you are "
+"creating a new template type along with new filters/preprocessors.  If "
+"the filters/ preprocessors provided by default suffice, there is no need "
+"to inherit from this class.  Instead, override the template_file and "
+"file_extension traits via a config file."
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:8 of
+msgid "Filters available by default for templates:"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:10 of
+msgid "add_anchor"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:11 of
+msgid "add_prompts"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:12 of
+msgid "ansi2html"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:13 of
+msgid "ansi2latex"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:14 of
+msgid "ascii_only"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:15 of
+msgid "citation2latex"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:16 of
+msgid "comment_lines"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:17 of
+msgid "convert_pandoc"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:18 of
+msgid "escape_latex"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:19 of
+msgid "filter_data_type"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:20 of
+msgid "get_lines"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:21 of
+msgid "get_metadata"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:22 of
+msgid "highlight2html"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:23 of
+msgid "highlight2latex"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:24 of
+msgid "html2text"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:25 of
+msgid "indent"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:26 of
+msgid "ipython2python"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:27 of
+msgid "json_dumps"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:28 of
+msgid "markdown2asciidoc"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:29 of
+msgid "markdown2html"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:30 of
+msgid "markdown2latex"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:31 of
+msgid "markdown2rst"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:32 of
+msgid "path2url"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:33 of
+msgid "posix_path"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:34 of
+msgid "prevent_list_blocks"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:35 of
+msgid "strip_ansi"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:36 of
+msgid "strip_dollars"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:37 of
+msgid "strip_files_prefix"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter:38 of
+msgid "wrap_text"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter.__init__:5 of
+msgid ""
+"ordered list of Jinja loader to find templates. Will be tried in order "
+"before the default FileSystem ones."
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter.__init__:8 of
+msgid "Template to use when exporting."
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter.from_notebook_node:3 of
+msgid "Notebook node"
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter.register_filter:1 of
+msgid ""
+"Register a filter. A filter is a function that accepts and acts on one "
+"string. The filters are accessible within the Jinja templating engine."
+msgstr ""
+
+#: nbconvert.exporters.TemplateExporter.register_filter:5 of
+msgid "name to give the filter in the Jinja engine"
+msgstr ""
+
+#: ../../source/api/exporters.rst:47
+msgid "Specialized exporter classes"
+msgstr ""
+
+#: ../../source/api/exporters.rst:49
+msgid ""
+"The :class:`~nbconvert.exporters.NotebookExporter` inherits directly from"
+" :class:`~nbconvert.exporters.Exporter`, while the other exporters listed"
+" here inherit either directly or indirectly from "
+":class:`~nbconvert.exporters.TemplateExporter`."
+msgstr ""
+
+#: nbconvert.exporters.NotebookExporter:1 of
+msgid "Exports to an IPython notebook."
+msgstr ""
+
+#: nbconvert.exporters.NotebookExporter:3 of
+msgid ""
+"This is useful when you want to use nbconvert's preprocessors to operate "
+"on a notebook (e.g. to execute it) and then write it back to a notebook "
+"file."
+msgstr ""
+
+#: nbconvert.exporters.HTMLExporter:1 of
+msgid ""
+"Exports a basic HTML document.  This exporter assists with the export of "
+"HTML.  Inherit from it if you are writing your own HTML template and need"
+" custom preprocessors/filters.  If you don't need custom preprocessors/ "
+"filters, just change the 'template_file' config option."
+msgstr ""
+
+#: nbconvert.exporters.SlidesExporter:1 of
+msgid "Exports HTML slides with reveal.js"
+msgstr ""
+
+#: nbconvert.exporters.LatexExporter:1 of
+msgid ""
+"Exports to a Latex template.  Inherit from this class if your template is"
+" LaTeX based and you need custom tranformers/filters.  Inherit from it if"
+" you are writing your own HTML template and need custom "
+"tranformers/filters. If you don't need custom tranformers/filters, just "
+"change the 'template_file' config option.  Place your template in the "
+"special \"/latex\" subfolder of the \"../templates\" folder."
+msgstr ""
+
+#: nbconvert.exporters.MarkdownExporter:1 of
+msgid "Exports to a markdown document (.md)"
+msgstr ""
+
+#: nbconvert.exporters.PDFExporter:1 of
+msgid "Writer designed to write to PDF files."
+msgstr ""
+
+#: nbconvert.exporters.PDFExporter:3 of
+msgid ""
+"This inherits from :class:`LatexExporter`. It creates a LaTeX file in a "
+"temporary directory using the template machinery, and then runs LaTeX to "
+"create a pdf."
+msgstr ""
+
+#: nbconvert.exporters.PythonExporter:1 of
+msgid "Exports a Python code file."
+msgstr ""
+
+#: nbconvert.exporters.RSTExporter:1 of
+msgid "Exports reStructuredText documents."
+msgstr ""
+

@@ -327,3 +327,6 @@ intersphinx_mapping = {
     'python': ('https://docs.python.org/3.5', None),
     'jinja': ('http://jinja.pocoo.org/docs/dev', None),
 }
+
+locale_dirs = ['locale/']
+gettext_compact = False

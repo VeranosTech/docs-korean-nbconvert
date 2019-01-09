@@ -1,0 +1,370 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/customizing.ipynb:13
+msgid "Customizing nbconvert"
+msgstr ""
+
+#: ../../source/customizing.ipynb:20
+msgid ""
+"Under the hood, nbconvert uses `Jinja templates "
+"<https://jinja2.readthedocs.io/en/latest/intro.html>`__ to specify how "
+"the notebooks should be formatted. These templates can be fully "
+"customized, allowing you to use nbconvert to create notebooks in "
+"different formats with different styles as well."
+msgstr ""
+
+#: ../../source/customizing.ipynb:28
+msgid "Converting a notebook to an (I)Python script and printing to stdout"
+msgstr ""
+
+#: ../../source/customizing.ipynb:30
+msgid ""
+"Out of the box, nbconvert can be used to convert notebooks to plain "
+"Python files. For example, the following command converts the "
+"``example.ipynb`` notebook to Python and prints out the result:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:153
+msgid ""
+"From the code, you can see that non-code cells are also exported. If you "
+"wanted to change that behaviour, you would first look to nbconvert "
+"`configuration options page <./config_options.rst>`__ to see if there is "
+"an option available that can give you your desired behaviour."
+msgstr ""
+
+#: ../../source/customizing.ipynb:155
+msgid ""
+"In this case, if you wanted to remove code cells from the output, you "
+"could use the ``TemplateExporter.exclude_markdown`` traitlet directly, as"
+" below."
+msgstr ""
+
+#: ../../source/customizing.ipynb:243
+msgid "Custom Templates"
+msgstr ""
+
+#: ../../source/customizing.ipynb:245
+msgid ""
+"As mentioned above, if you want to change this behavior, you can use a "
+"custom template. The custom template inherits from the Python template "
+"and overwrites the markdown blocks so that they are empty."
+msgstr ""
+
+#: ../../source/customizing.ipynb:247
+msgid ""
+"Below is an example of a custom template, which we write to a file called"
+" ``simplepython.tpl``. This template removes markdown cells from the "
+"output, and also changes how the execution count numbers are formatted:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:305
+msgid ""
+"Using this template, we see that the resulting Python code does not "
+"contain anything that was previously in a markdown cell, and only "
+"displays execution counts (i.e., ``[#]:`` not ``In[#]:``):"
+msgstr ""
+
+#: ../../source/customizing.ipynb:391
+msgid "Template structure"
+msgstr ""
+
+#: ../../source/customizing.ipynb:393
+msgid ""
+"Nbconvert templates consist of a set of nested blocks. When defining a "
+"new template, you extend an existing template by overriding some of the "
+"blocks."
+msgstr ""
+
+#: ../../source/customizing.ipynb:395
+msgid ""
+"All the templates shipped in nbconvert have the basic structure described"
+" here, though some may define additional blocks."
+msgstr ""
+
+#: ../../source/customizing.ipynb:558
+msgid "A few gotchas"
+msgstr ""
+
+#: ../../source/customizing.ipynb:560
+#, python-format
+msgid ""
+"Jinja blocks use ``{% %}`` by default which does not play nicely with "
+"LaTeX, so those are replaced by ``((* *))`` in LaTeX templates."
+msgstr ""
+
+#: ../../source/customizing.ipynb:568
+msgid "Templates using cell tags"
+msgstr ""
+
+#: ../../source/customizing.ipynb:570
+msgid ""
+"The notebook file format supports attaching arbitrary JSON metadata to "
+"each cell. In addition, every cell has a special ``tags`` metadata field "
+"that accepts a list of strings that indicate the cell’s tags. To apply "
+"these, go to the ``View → CellToolbar → Tags`` option which will create a"
+" Tag editor at the top of every cell."
+msgstr ""
+
+#: ../../source/customizing.ipynb:572
+msgid ""
+"First choose a notebook you want to convert to html, and apply the tags: "
+"``\"Easy\"``, ``\"Medium\"``, or ``\"Hard\"``."
+msgstr ""
+
+#: ../../source/customizing.ipynb:574
+msgid "With this in place, the notebook can be converted using a custom template."
+msgstr ""
+
+#: ../../source/customizing.ipynb:576
+msgid "Design your template in the cells provided below."
+msgstr ""
+
+#: ../../source/customizing.ipynb:578
+msgid ""
+"Hint: tags are located at ``cell.metadata.tags``, the following Python "
+"code collects the value of the tag:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:584
+msgid "Which you can then use inside a Jinja template as in the following:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:650
+msgid ""
+"Now, if we collect the result of using nbconvert with this template, and "
+"display the resulting html, we see the following:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12843
+msgid "Templates using custom cell metadata"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12845
+msgid ""
+"We demonstrated `above <#Templates-using-cell-tags>`__ how to use cell "
+"tags in a template to apply custom styling to a notebook. But remember, "
+"the notebook file format supports attaching *arbitrary* JSON metadata to "
+"each cell, not only cell tags. Here, we describe an exercise for using an"
+" ``example.difficulty`` metadata field (rather than cell tags) to do the "
+"same as before (to mark up different cells as being “Easy”, “Medium” or "
+"“Hard”)."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12848
+msgid "How to edit cell metadata"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12850
+msgid ""
+"To edit the cell metadata from within the notebook, go to the menu item: "
+"``View → Cell Toolbar → Edit Metadata``. This will bring up a toolbar "
+"above each cell with a button that says “Edit Metadata”. Click this "
+"button, and a field will pop up in which you will directly edit the cell "
+"metadata JSON."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12852
+msgid ""
+"**NB**: Because it is JSON, you will need to ensure that what you write "
+"is valid JSON."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12855
+msgid "Template challenges: dealing with missing custom metadata fields"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12857
+msgid ""
+"One of the challenges of dealing with custom metadata is to handle the "
+"case where the metadata is not present on every cell. This can get "
+"somewhat tricky because of JSON objects tendency to be deeply nested "
+"coupled with Python’s (and therefore Jinja’s) approach to calling into "
+"dictionaries. Specifically, the following code will error:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12864
+msgid ""
+"Accordingly, it is better to use the ```{}.get`` method "
+"<https://docs.python.org/3.6/library/stdtypes.html#dict.get>`__ which "
+"allows you to set a default value to return if no key is found as the "
+"second argument."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12866
+msgid ""
+"Hint: if your metadata items are located at "
+"``cell.metadata.example.difficulty``, the following Python code would get"
+" the value defaulting to an empty string (``''``) if nothing is found:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12878
+msgid "Exercise: Write a template for handling custom metadata"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12880
+msgid ""
+"Now, write a template that will look for ``Easy``, ``Medium`` and "
+"``Hard`` metadata values for the ``cell.metadata.example.difficulty`` "
+"field and wrap them in a div with a green, orange, or red thin solid "
+"border (respectively)."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12882
+msgid ""
+"**NB**: This is the same design and logic as used in the previous cell "
+"tag example."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12885
+msgid "How to get ``example.ipynb``"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12887
+msgid ""
+"We have provided an example file in ``example.ipynb`` in the nbconvert "
+"documentation that has already been marked up with both tags and the "
+"above metadata for you to test with. You can get it from `this link to "
+"the raw file "
+"<https://raw.githubusercontent.com/jupyter/nbconvert/master/docs/source/example.ipynb>`__"
+" or by cloning the repository `from GitHub "
+"<https://github.com/jupyter/nbconvert>`__ and navingating to "
+"``nbconvert/docs/source/example.ipynb``."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12890
+msgid "Convert ``example.ipynb`` using cell tags"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12892
+msgid ""
+"First, make sure that you can reproduce the previous result using the "
+"cell tags template that we have provided above."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12894
+msgid ""
+"**Easy**: If you want to make it easy on yourself, create a new file "
+"``my_template.tpl`` in the same directory as ``example.ipynb`` and copy "
+"the contents of the cell we use to write ``mytemplate.tpl`` to the file "
+"system."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12896
+msgid ""
+"Then run ``jupyter nbconvert --to html 'example.ipynb' "
+"--template=mytemplate.tpl`` and see if your"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12898
+msgid ""
+"**Moderate**: If you want more of a challenge, try recreating the jinja "
+"template by modifying the following jinja template file:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12909
+msgid ""
+"**Hard**: If you want even more of a challenge, try recreating the jinja "
+"template from scratch."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12912
+msgid "Write your template"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12914
+msgid ""
+"Once you’ve done at least the **Easy** version of the previous step, try "
+"modifying your template to use ``cell.metadata.example.difficulty`` "
+"fields rather than cell tags."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12917
+msgid "Convert ``example.ipynb`` with formatting from custom metadata"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12919
+msgid ""
+"Once you’ve written your template, try converting ``example.ipynb`` using"
+" the following command (making sure that ``your_template.tpl`` is in your"
+" local directory where you are running the command):"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12925
+msgid ""
+"The resulting display should pick out different cells to be bordered with"
+" green, orange, or red."
+msgstr ""
+
+#: ../../source/customizing.ipynb:12927
+msgid ""
+"If you do that successfullly, the resulting html document should look "
+"like the following cell’s contents:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:12950
+msgid "example"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24789
+msgid "Example notebook¶"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24835
+msgid "Markdown cells¶"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24845
+msgid ""
+"This is an example notebook that can be converted with nbconvert to "
+"different formats. This is an example of a markdown cell."
+msgstr ""
+
+#: ../../source/customizing.ipynb:24887
+msgid "LaTeX Equations¶"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24897
+msgid "Here is an equation:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24903
+msgid "y = \\sin(x)"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24949
+msgid "Code cells¶"
+msgstr ""
+
+#: ../../source/customizing.ipynb:24983 ../../source/customizing.ipynb:25130
+msgid "In [1]:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:25095
+msgid "Inline figures¶"
+msgstr ""
+
+#: ../../source/customizing.ipynb:25191
+msgid "Out[1]:"
+msgstr ""
+
+#: ../../source/customizing.ipynb:25265
+msgid "In [ ]:"
+msgstr ""
+
