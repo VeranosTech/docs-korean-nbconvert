@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration options &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Customizing nbconvert" href="customizing.html" />
+    <link rel="prev" title="Executing notebooks" href="execute_api.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration options</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/config_options.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="configuration-options">
+<h1>Configuration options<a class="headerlink" href="#configuration-options" title="제목 주소">¶</a></h1>
+<p>Configuration options may be set in a file, <code class="docutils literal notranslate"><span class="pre">~/.jupyter/jupyter_nbconvert_config.py</span></code>,
+or at the command line when starting nbconvert, i.e. <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbconvert</span> <span class="pre">--Application.log_level=10</span></code>.</p>
+<dl class="docutils">
+<dt>Application.log_datefmt <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></code></p>
+<p class="last">The date format used by logging formatters for %(asctime)s</p>
+</dd>
+<dt>Application.log_format <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'[%(name)s]%(highlevel)s</span> <span class="pre">%(message)s'</span></code></p>
+<p class="last">The Logging format template</p>
+</dd>
+<dt>Application.log_level <span class="classifier-delimiter">:</span> <span class="classifier">0|10|20|30|40|50|'DEBUG'|'INFO'|'WARN'|'ERROR'|'CRITICAL'</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">30</span></code></p>
+<p class="last">Set the log level by value or name.</p>
+</dd>
+<dt>JupyterApp.answer_yes <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">Answer yes to any prompts.</p>
+</dd>
+<dt>JupyterApp.config_file <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Full path of a config file.</p>
+</dd>
+<dt>JupyterApp.config_file_name <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Specify a config file to load.</p>
+</dd>
+<dt>JupyterApp.generate_config <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">Generate default config file.</p>
+</dd>
+<dt>NbConvertApp.export_format <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'html'</span></code></p>
+<p class="last">The export format to be used, either one of the built-in formats,
+or a dotted object name that represents the import path for an
+<cite>Exporter</cite> class</p>
+</dd>
+<dt>NbConvertApp.from_stdin <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">read a single notebook from stdin.</p>
+</dd>
+<dt>NbConvertApp.notebooks <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p class="last">List of notebooks to convert.
+Wildcards are supported.
+Filenames passed positionally will be added to the list.</p>
+</dd>
+<dt>NbConvertApp.output_base <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">overwrite base name use for output files.
+can only be used when converting one notebook at a time.</p>
+</dd>
+<dt>NbConvertApp.output_files_dir <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'{notebook_name}_files'</span></code></p>
+<p class="last">Directory to copy extra files (figures) to.
+'{notebook_name}' in the string will be converted to notebook
+basename</p>
+</dd>
+<dt>NbConvertApp.postprocessor_class <span class="classifier-delimiter">:</span> <span class="classifier">DottedOrNone</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">PostProcessor class used to write the
+results of the conversion</p>
+</dd>
+<dt>NbConvertApp.use_output_suffix <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p class="last">Whether to apply a suffix prior to the extension (only relevant
+when converting to notebook format). The suffix is determined by
+the exporter, and is usually '.nbconvert'.</p>
+</dd>
+<dt>NbConvertApp.writer_class <span class="classifier-delimiter">:</span> <span class="classifier">DottedObjectName</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'FilesWriter'</span></code></p>
+<p class="last">Writer class used to write the
+results of the conversion</p>
+</dd>
+<dt>NbConvertBase.default_language <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'ipython'</span></code></p>
+<p class="last">Deprecated default highlight language as of 5.0, please use language_info metadata instead</p>
+</dd>
+<dt>NbConvertBase.display_data_priority <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['text/html',</span> <span class="pre">'application/pdf',</span> <span class="pre">'text/latex',</span> <span class="pre">'image/svg+xml...</span></code></p>
+<p class="last">An ordered list of preferred output type, the first
+encountered will usually be used when converting discarding
+the others.</p>
+</dd>
+<dt>Exporter.default_preprocessors <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['nbconvert.preprocessors.TagRemovePreprocessor',</span> <span class="pre">'nbconvert....</span></code></p>
+<p class="last">List of preprocessors available by default, by name, namespace,
+instance, or type.</p>
+</dd>
+<dt>Exporter.file_extension <span class="classifier-delimiter">:</span> <span class="classifier">FilenameExtension</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'.txt'</span></code></p>
+<p class="last">Extension of the file that should be written to disk</p>
+</dd>
+<dt>Exporter.preprocessors <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p class="last">List of preprocessors, by name or namespace, to enable.</p>
+</dd>
+<dt>TemplateExporter.exclude_code_cell <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude code cells from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_input <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude code cell inputs from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_input_prompt <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude input prompts from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_markdown <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude markdown cells from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_output <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude code cell outputs from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_output_prompt <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude output prompts from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_raw <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude raw cells from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.exclude_unknown <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">This allows you to exclude unknown cells from all templates if set to True.</p>
+</dd>
+<dt>TemplateExporter.filters <span class="classifier-delimiter">:</span> <span class="classifier">Dict</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">{}</span></code></p>
+<p class="last">Dictionary of filters, by name and namespace, to add to the Jinja
+environment.</p>
+</dd>
+<dt>TemplateExporter.raw_mimetypes <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p class="last">formats of raw cells to be included in this Exporter's output.</p>
+</dd>
+<dt>TemplateExporter.template_extension <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'.tpl'</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>TemplateExporter.template_file <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Name of the template file to use</p>
+</dd>
+<dt>TemplateExporter.template_path <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['.']</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>HTMLExporter.anchor_link_text <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'¶'</span></code></p>
+<p class="last">The text used as the text for anchor links.</p>
+</dd>
+<dt>LatexExporter.template_extension <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'.tplx'</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>NotebookExporter.nbformat_version <span class="classifier-delimiter">:</span> <span class="classifier">1|2|3|4</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p class="last">The nbformat version to write.
+Use this to downgrade notebooks.</p>
+</dd>
+<dt>PDFExporter.bib_command <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['bibtex',</span> <span class="pre">'{filename}']</span></code></p>
+<p class="last">Shell command used to run bibtex.</p>
+</dd>
+<dt>PDFExporter.latex_command <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['xelatex',</span> <span class="pre">'{filename}']</span></code></p>
+<p class="last">Shell command used to compile latex.</p>
+</dd>
+<dt>PDFExporter.latex_count <span class="classifier-delimiter">:</span> <span class="classifier">Int</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p class="last">How many times latex will be called.</p>
+</dd>
+<dt>PDFExporter.temp_file_exts <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['.aux',</span> <span class="pre">'.bbl',</span> <span class="pre">'.blg',</span> <span class="pre">'.idx',</span> <span class="pre">'.log',</span> <span class="pre">'.out']</span></code></p>
+<p class="last">File extensions of temp files to remove after running.</p>
+</dd>
+<dt>PDFExporter.verbose <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">Whether to display the output of latex commands.</p>
+</dd>
+<dt>SlidesExporter.font_awesome_url <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/cs...</span></code></p>
+<p>URL to load font awesome from.</p>
+<p class="last">Defaults to loading from cdnjs.</p>
+</dd>
+<dt>SlidesExporter.jquery_url <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.m...</span></code></p>
+<p>URL to load jQuery from.</p>
+<p class="last">Defaults to loading from cdnjs.</p>
+</dd>
+<dt>SlidesExporter.require_js_url <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/req...</span></code></p>
+<p>URL to load require.js from.</p>
+<p class="last">Defaults to loading from cdnjs.</p>
+</dd>
+<dt>SlidesExporter.reveal_scroll <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">If True, enable scrolling within each slide</p>
+</dd>
+<dt>SlidesExporter.reveal_theme <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'simple'</span></code></p>
+<p>Name of the reveal.js theme to use.</p>
+<p>We look for a file with this name under <cite>reveal_url_prefix</cite>/css/theme/<cite>reveal_theme</cite>.css.</p>
+<p class="last"><a class="reference external" href="https://github.com/hakimel/reveal.js/tree/master/css/theme">https://github.com/hakimel/reveal.js/tree/master/css/theme</a> has
+list of themes that ship by default with reveal.js.</p>
+</dd>
+<dt>SlidesExporter.reveal_transition <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'slide'</span></code></p>
+<p>Name of the reveal.js transition to use.</p>
+<p class="last">The list of transitions that ships by default with reveal.js are:
+none, fade, slide, convex, concave and zoom.</p>
+</dd>
+<dt>SlidesExporter.reveal_url_prefix <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p>The URL prefix for reveal.js.
+This can be a a relative URL for a local copy of reveal.js,
+or point to a CDN.</p>
+<p class="last">For speaker notes to work, a local reveal.js prefix must be used.</p>
+</dd>
+<dt>Preprocessor.enabled <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>CSSHTMLHeaderPreprocessor.highlight_class <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'.highlight'</span></code></p>
+<p class="last">CSS highlight class identifier</p>
+</dd>
+<dt>ClearOutputPreprocessor.remove_metadata_fields <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">{'collapsed',</span> <span class="pre">'scrolled'}</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>ConvertFiguresPreprocessor.from_format <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Format the converter accepts</p>
+</dd>
+<dt>ConvertFiguresPreprocessor.to_format <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Format the converter writes</p>
+</dd>
+<dt>ExecutePreprocessor.allow_errors <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">If <cite>False</cite> (default), when a cell raises an error the
+execution is stopped and a <cite>CellExecutionError</cite>
+is raised.
+If <cite>True</cite>, execution errors are ignored and the execution
+is continued until the end of the notebook. Output from
+exceptions is included in the cell output in both cases.</p>
+</dd>
+<dt>ExecutePreprocessor.interrupt_on_timeout <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">If execution of a cell times out, interrupt the kernel and
+continue executing other cells rather than throwing an error and
+stopping.</p>
+</dd>
+<dt>ExecutePreprocessor.iopub_timeout <span class="classifier-delimiter">:</span> <span class="classifier">Int</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p class="last">The time to wait (in seconds) for IOPub output. This generally
+doesn't need to be set, but on some slow networks (such as CI
+systems) the default timeout might not be long enough to get all
+messages.</p>
+</dd>
+<dt>ExecutePreprocessor.kernel_manager_class <span class="classifier-delimiter">:</span> <span class="classifier">Type</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'builtins.object'</span></code></p>
+<p class="last">The kernel manager class to use.</p>
+</dd>
+<dt>ExecutePreprocessor.kernel_name <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Name of kernel to use to execute the cells.
+If not set, use the kernel_spec embedded in the notebook.</p>
+</dd>
+<dt>ExecutePreprocessor.raise_on_iopub_timeout <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p class="last">If <cite>False</cite> (default), then the kernel will continue waiting for
+iopub messages until it receives a kernel idle message, or until a
+timeout occurs, at which point the currently executing cell will be
+skipped. If <cite>True</cite>, then an error will be raised after the first
+timeout. This option generally does not need to be used, but may be
+useful in contexts where there is the possibility of executing
+notebooks with memory-consuming infinite loops.</p>
+</dd>
+<dt>ExecutePreprocessor.shutdown_kernel <span class="classifier-delimiter">:</span> <span class="classifier">'graceful'|'immediate'</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'graceful'</span></code></p>
+<p class="last">If <cite>graceful</cite> (default), then the kernel is given time to clean
+up after executing all cells, e.g., to execute its <cite>atexit</cite> hooks.
+If <cite>immediate</cite>, then the kernel is signaled to immediately
+terminate.</p>
+</dd>
+<dt>ExecutePreprocessor.startup_timeout <span class="classifier-delimiter">:</span> <span class="classifier">Int</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">60</span></code></p>
+<p class="last">The time to wait (in seconds) for the kernel to start.
+If kernel startup takes longer, a RuntimeError is
+raised.</p>
+</dd>
+<dt>ExecutePreprocessor.timeout <span class="classifier-delimiter">:</span> <span class="classifier">Int</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">30</span></code></p>
+<p>The time to wait (in seconds) for output from executions.
+If a cell execution takes longer, an exception (TimeoutError
+on python 3+, RuntimeError on python 2) is raised.</p>
+<p class="last"><cite>None</cite> or <cite>-1</cite> will disable the timeout. If <cite>timeout_func</cite> is set,
+it overrides <cite>timeout</cite>.</p>
+</dd>
+<dt>ExecutePreprocessor.timeout_func <span class="classifier-delimiter">:</span> <span class="classifier">Any</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<p>A callable which, when given the cell source as input,
+returns the time to wait (in seconds) for output from cell
+executions. If a cell execution takes longer, an exception
+(TimeoutError on python 3+, RuntimeError on python 2) is
+raised.</p>
+<p class="last">Returning <cite>None</cite> or <cite>-1</cite> will disable the timeout for the cell.
+Not setting <cite>timeout_func</cite> will cause the preprocessor to
+default to using the <cite>timeout</cite> trait for all cells. The
+<cite>timeout_func</cite> trait overrides <cite>timeout</cite> if it is not <cite>None</cite>.</p>
+</dd>
+<dt>ExtractOutputPreprocessor.extract_output_types <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">{'image/jpeg',</span> <span class="pre">'image/png',</span> <span class="pre">'application/pdf',</span> <span class="pre">'image/svg+xml'}</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>ExtractOutputPreprocessor.output_filename_template <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'{unique_key}_{cell_index}_{index}{extension}'</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>HighlightMagicsPreprocessor.languages <span class="classifier-delimiter">:</span> <span class="classifier">Dict</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">{}</span></code></p>
+<p class="last">Syntax highlighting for magic's extension languages. Each item associates a language magic extension such as %%R, with a pygments lexer such as r.</p>
+</dd>
+<dt>RegexRemovePreprocessor.patterns <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">['\\Z']</span></code></p>
+<p class="last">No description</p>
+</dd>
+<dt>SVG2PDFPreprocessor.command <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p>The command to use for converting SVG to PDF</p>
+<p>This string is a template, which will be formatted with the keys
+to_filename and from_filename.</p>
+<p class="last">The conversion call must read the SVG from {from_flename},
+and write a PDF to {to_filename}.</p>
+</dd>
+<dt>SVG2PDFPreprocessor.inkscape <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">The path to Inkscape, if necessary</p>
+</dd>
+<dt>TagRemovePreprocessor.remove_all_outputs_tags <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">set()</span></code></p>
+<p class="last">Tags indicating cells for which the outputs are to be removed,matches tags in <cite>cell.metadata.tags</cite>.</p>
+</dd>
+<dt>TagRemovePreprocessor.remove_cell_tags <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">set()</span></code></p>
+<p class="last">Tags indicating which cells are to be removed,matches tags in <cite>cell.metadata.tags</cite>.</p>
+</dd>
+<dt>TagRemovePreprocessor.remove_input_tags <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">set()</span></code></p>
+<p class="last">Tags indicating cells for which input is to be removed,matches tags in <cite>cell.metadata.tags</cite>.</p>
+</dd>
+<dt>TagRemovePreprocessor.remove_single_output_tags <span class="classifier-delimiter">:</span> <span class="classifier">Set</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">set()</span></code></p>
+<p class="last">Tags indicating which individual outputs are to be removed,matches output <em>i</em> tags in <cite>cell.outputs[i].metadata.tags</cite>.</p>
+</dd>
+<dt>WriterBase.files <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p class="last">List of the files that the notebook references.  Files will be
+included with written output.</p>
+</dd>
+<dt>FilesWriter.build_directory <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Directory to write output(s) to. Defaults
+to output to the directory of each notebook. To recover
+previous default behaviour (outputting to the current
+working directory) use . as the flag value.</p>
+</dd>
+<dt>FilesWriter.relpath <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">When copying files that the notebook depends on, copy them in
+relation to this path, such that the destination filename will be
+os.path.relpath(filename, relpath). If FilesWriter is operating on a
+notebook that already exists elsewhere on disk, then the default will be
+the directory containing that notebook.</p>
+</dd>
+<dt>ServePostProcessor.browser <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p>
+<p class="last">Specify what browser should be used to open slides. See
+<a class="reference external" href="https://docs.python.org/3/library/webbrowser.html#webbrowser.register">https://docs.python.org/3/library/webbrowser.html#webbrowser.register</a>
+to see how keys are mapped to browser executables. If
+not specified, the default browser will be determined
+by the <cite>webbrowser</cite>
+standard library module, which allows setting of the BROWSER
+environment variable to override it.</p>
+</dd>
+<dt>ServePostProcessor.ip <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'127.0.0.1'</span></code></p>
+<p class="last">The IP address to listen on.</p>
+</dd>
+<dt>ServePostProcessor.open_in_browser <span class="classifier-delimiter">:</span> <span class="classifier">Bool</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p class="last">Should the browser be opened automatically?</p>
+</dd>
+<dt>ServePostProcessor.port <span class="classifier-delimiter">:</span> <span class="classifier">Int</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">8000</span></code></p>
+<p class="last">port for the server to listen on.</p>
+</dd>
+<dt>ServePostProcessor.reveal_cdn <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0'</span></code></p>
+<p class="last">URL for reveal.js CDN.</p>
+</dd>
+<dt>ServePostProcessor.reveal_prefix <span class="classifier-delimiter">:</span> <span class="classifier">Unicode</span></dt>
+<dd><p class="first">Default: <code class="docutils literal notranslate"><span class="pre">'reveal.js'</span></code></p>
+<p class="last">URL prefix for reveal.js</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="customizing.html" class="btn btn-neutral float-right" title="Customizing nbconvert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="execute_api.html" class="btn btn-neutral" title="Executing notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customizing exporters &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Architecture of nbconvert" href="architecture.html" />
+    <link rel="prev" title="Customizing nbconvert" href="customizing.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customizing exporters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extending-the-built-in-format-exporters">Extending the built-in format exporters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registering-a-custom-exporter-as-an-entry-point">Registering a custom exporter as an entry point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-custom-exporter-without-entrypoints">Using a custom exporter without entrypoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Customizing exporters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/external_exporters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="customizing-exporters">
+<span id="external-exporters"></span><h1>Customizing exporters<a class="headerlink" href="#customizing-exporters" title="제목 주소">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">버전 4.2에 추가: </span>You can now use the <code class="docutils literal notranslate"><span class="pre">--to</span></code> flag to use custom export formats defined
+outside nbconvert.</p>
+</div>
+<p>The command-line syntax to run the <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> script is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">FORMAT</span> <span class="n">notebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>This will convert the Jupyter document file <code class="docutils literal notranslate"><span class="pre">notebook.ipynb</span></code> into the output
+format designated by the <code class="docutils literal notranslate"><span class="pre">FORMAT</span></code> string as explained below.</p>
+<div class="section" id="extending-the-built-in-format-exporters">
+<h2>Extending the built-in format exporters<a class="headerlink" href="#extending-the-built-in-format-exporters" title="제목 주소">¶</a></h2>
+<p>A few built-in formats are available by default: <cite>html</cite>, <cite>pdf</cite>,
+<cite>script</cite>, <cite>latex</cite>. Each of these has its own <em>exporter</em> with many
+configuration options that can be extended. Having the option to point to a
+different <em>exporter</em> allows authors to create their own fully customized
+templates or export formats.</p>
+<p>A custom <em>exporter</em> must be an importable Python object. We recommend that
+these be distributed as Python libraries.</p>
+</div>
+<div class="section" id="registering-a-custom-exporter-as-an-entry-point">
+<span id="entrypoints"></span><h2>Registering a custom exporter as an entry point<a class="headerlink" href="#registering-a-custom-exporter-as-an-entry-point" title="제목 주소">¶</a></h2>
+<p>Additional exporters may be registered as named <a class="reference external" href="https://packaging.python.org/en/latest/distributing/#entry-points">entry_points</a>.
+nbconvert uses the <code class="docutils literal notranslate"><span class="pre">nbconvert.exporters</span></code> entry point to find exporters
+from any package you may have installed.</p>
+<p>If you are writing a Python package that provides custom exporters,
+you can register the custom exporters in your package's <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>. For
+example, your package may contain two custom exporters, named &quot;simple&quot; and
+&quot;detail&quot;, and can be registered in your package's <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;nbconvert.exporters&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;simple = mymodule:SimpleExporter&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;detail = mymodule:DetailExporter&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Now people who have installed your Python package containing the two
+custom exporters can call the entry point name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">detail</span> <span class="n">mynotebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>instead of having to specify the full import name of the custom exporter.</p>
+</div>
+<div class="section" id="using-a-custom-exporter-without-entrypoints">
+<h2>Using a custom exporter without entrypoints<a class="headerlink" href="#using-a-custom-exporter-without-entrypoints" title="제목 주소">¶</a></h2>
+<p>We encourage registering custom exporters as entry points as described in the
+previous section. Registering a custom exporter with an entry point simplifies
+using the exporter. If a custom exporter has not been registered with an
+entry point, the exporter can still be used by providing the fully qualified
+name of this exporter as the argument of the <code class="docutils literal notranslate"><span class="pre">--to</span></code> flag when running from
+the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --to &lt;full.qualified.name of custom exporter&gt; notebook.ipynb
+</pre></div>
+</div>
+<p>For example, assuming a library <cite>tcontrib</cite> has a custom exporter name
+<cite>TExporter</cite>, you would convert to this custom format using the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --to tcontrib.TExporter notebook.ipynb
+</pre></div>
+</div>
+<p>A library can contain multiple exporters. Creators of custom exporters should
+make sure that all other flags of the command line behave the same for the
+custom exporters as for built-in exporters.</p>
+</div>
+</div>
+<div class="section" id="parameters-controlled-by-an-external-exporter">
+<h1>Parameters controlled by an external exporter<a class="headerlink" href="#parameters-controlled-by-an-external-exporter" title="제목 주소">¶</a></h1>
+<p>An external exporter can control almost any parameter of the notebook conversion
+process, from simple parameters such as the output file extension, to more complex
+ones such as the execution of the notebook or a custom rendering template.</p>
+<p>All external exporters can expose custom options using the <code class="docutils literal notranslate"><span class="pre">traitlets</span></code>
+configurable API. Refer to the library that provides these exporters for
+details on how these configuration options works.</p>
+<p>You can use the Jupyter configuration files to configure an external exporter. As
+for any <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> exporters you can use either the configuration file syntax of
+<code class="docutils literal notranslate"><span class="pre">c.MyExporter.config_option=value</span></code> or the command line flag form
+<code class="docutils literal notranslate"><span class="pre">--MyExporter.config_option=value</span></code>.</p>
+</div>
+<div class="section" id="writing-a-custom-exporter">
+<h1>Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code><a class="headerlink" href="#writing-a-custom-exporter" title="제목 주소">¶</a></h1>
+<p>Under the hood exporters are python classes that expose a certain interface.
+Any importable classes that expose this interface can be use as an exporter for
+nbconvert.</p>
+<p>For simplicity we expose basic classes that implement all the relevant methods
+that you have to subclass and overwrite just the relevant methods to provide a
+custom exporter. Below we show you the step to create a custom exporter that
+provides a custom file extension, and a custom template that inserts before and after
+each markdown cell.</p>
+<p>We will lay out files to be ready for Python packaging and distributing on PyPI,
+although the exact art of Python packaging is beyond the scope of this explanation.</p>
+<p>We will use the following layout for our package to expose a custom exporter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mypackage
+├── LICENSE.md
+├── setup.py
+└── mypackage
+    ├── __init__.py
+    └── templates
+        └── test_template.tpl
+</pre></div>
+</div>
+<p>If you wished to create this same directory structure you could use the following commands
+when you are at the directory under which you wish to build your <code class="docutils literal notranslate"><span class="pre">mypackage</span></code> package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p mypackage/mypackage/templates
+touch mypackage/LICENSE.md
+touch mypackage/setup.py
+touch mypackage/mypackage/__init__.py
+touch mypackage/mypackage/templates/test_template.tpl
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">중요</p>
+<p class="last">You should not publish this package without adding content to your <code class="docutils literal notranslate"><span class="pre">LICENSE.md</span></code> file.
+For example, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> follows the Jupyter Project convention of using a Modified BSD
+License (also known as New or Revised or 3-Clause BSD).
+For a guide on picking the right license for your use case,
+please see <a class="reference external" href="http://choosealicense.com">choose a license</a>.
+If you do not specify the license, your code may be <a class="reference external" href="http://choosealicense.com/no-license/">unusable by many open source projects</a>.</p>
+</div>
+<p>As you can see the layout is relatively simple, in the case where a template is not
+needed we would actually have only one file with an Exporter implementation.  Of course
+you can change the layout of your package to have a more fine-grained structure of the
+subpackage. But lets see what a minimum example looks like.</p>
+<p>We are going to write an exporter that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>exports to html, so we will reuse the built-in html exporter</li>
+<li>changes the file extension to <cite>.test_ext</cite></li>
+</ul>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file __init__.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">from</span> <span class="nn">traitlets.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">nbconvert.exporters.html</span> <span class="kn">import</span> <span class="n">HTMLExporter</span>
+
+<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># Classes</span>
+<span class="c1">#-----------------------------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">MyExporter</span><span class="p">(</span><span class="n">HTMLExporter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    My custom exporter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># If this custom exporter should add an entry to the</span>
+    <span class="c1"># &quot;File -&gt; Download as&quot; menu in the notebook, give it a name here in the</span>
+    <span class="c1"># `export_from_notebook` class member</span>
+    <span class="n">export_from_notebook</span> <span class="o">=</span> <span class="s2">&quot;My format&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_file_extension_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The new file extension is `.test_ext`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;.test_ext&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">template_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        We want to inherit from HTML template, and have template under</span>
+<span class="sd">        `./templates/` so append it to the search path. (see next section)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">template_path</span><span class="o">+</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;templates&quot;</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">_template_file_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        We want to use the new template we ship with our library.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;test_template&#39;</span> <span class="c1"># full</span>
+</pre></div>
+</div>
+<p>And the template file, that inherits from the html <cite>full</cite> template and prepend/append text to each markdown cell (see Jinja2 docs for template syntax):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s2">&quot;full.tpl&quot;</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">markdowncell</span> <span class="o">-%</span><span class="p">}</span>
+
+
+<span class="c1">## this is a markdown cell</span>
+<span class="p">{{</span> <span class="nb">super</span><span class="p">()</span> <span class="p">}}</span>
+<span class="c1">## THIS IS THE END</span>
+
+
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">markdowncell</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Assuming you install this package locally, or from PyPI, you can now use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">mypackage</span><span class="o">.</span><span class="n">MyEporter</span> <span class="n">notebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture of nbconvert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="customizing.html" class="btn btn-neutral" title="Customizing nbconvert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

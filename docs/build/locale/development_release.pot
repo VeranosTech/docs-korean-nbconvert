@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/development_release.rst:4
+msgid "Making an ``nbconvert`` release"
+msgstr ""
+
+#: ../../source/development_release.rst:6
+msgid "This document guides a contributor through creating a release of ``nbconvert``."
+msgstr ""
+
+#: ../../source/development_release.rst:10
+msgid "Assign all merged PRs to milestones"
+msgstr ""
+
+#: ../../source/development_release.rst:12
+msgid "Go to GitHub and assign all PRs that have been merged to milestones.  This will be helpful when you update the changelog. If you go to this `GitHub page <Github no milestones_>`_ you will find all the PRs that currently have no milestones."
+msgstr ""
+
+#: ../../source/development_release.rst:19
+msgid "Gather all PRs related to milestone"
+msgstr ""
+
+#: ../../source/development_release.rst:21
+msgid "`ghpro <ghpro_>`_ can be used to extract the pull requests by call the following from nbconvert directory (will ask for an API token the first time):"
+msgstr ""
+
+#: ../../source/development_release.rst:30
+msgid "Manually categorize tickets"
+msgstr ""
+
+#: ../../source/development_release.rst:32
+msgid "Group the tickets by these general categories (or others if they are relevant). This usually a manual processes to evaluate the changes in each PR."
+msgstr ""
+
+#: ../../source/development_release.rst:34
+msgid "New Features"
+msgstr ""
+
+#: ../../source/development_release.rst:35
+msgid "Deprecations"
+msgstr ""
+
+#: ../../source/development_release.rst:36
+msgid "Fixing Problems"
+msgstr ""
+
+#: ../../source/development_release.rst:37
+msgid "Testing, Docs, and Builds"
+msgstr ""
+
+#: ../../source/development_release.rst:40
+msgid "Collect major changes"
+msgstr ""
+
+#: ../../source/development_release.rst:42
+msgid "From the tickets write up any major features / changes that deserve a paragraph to describe how they work."
+msgstr ""
+
+#: ../../source/development_release.rst:45
+msgid "Update docs/source/changelog.rst"
+msgstr ""
+
+#: ../../source/development_release.rst:47
+msgid "Copy these changes with the new version to the top of changelog.rst. Prior release changelogs can be used to pick formatting of the message."
+msgstr ""
+
+#: ../../source/development_release.rst:50
+msgid "Check installed tools"
+msgstr ""
+
+#: ../../source/development_release.rst:52
+msgid "Review ``CONTRIBUTING.md``, particularly the testing and release sections."
+msgstr ""
+
+#: ../../source/development_release.rst:55
+msgid "Clean the repository"
+msgstr ""
+
+#: ../../source/development_release.rst:57
+msgid "You can remove all non-tracked files with:"
+msgstr ""
+
+#: ../../source/development_release.rst:63
+msgid "This would ask you for confirmation before removing all untracked files."
+msgstr ""
+
+#: ../../source/development_release.rst:65
+msgid "Make sure the ``dist/`` folder is clean and avoid stale builds from previous attempts."
+msgstr ""
+
+#: ../../source/development_release.rst:69
+msgid "Create the release"
+msgstr ""
+
+#: ../../source/development_release.rst:71
+msgid "Update the :doc:`changelog <changelog>` to account for all the PRs assigned to this milestone."
+msgstr ""
+
+#: ../../source/development_release.rst:73
+msgid "Update version number in ``notebook/_version.py``."
+msgstr ""
+
+#: ../../source/development_release.rst:75
+msgid "Commit and tag the release with the current version number:"
+msgstr ""
+
+#: ../../source/development_release.rst:82
+msgid "You are now ready to build the ``sdist`` and ``wheel``:"
+msgstr ""
+
+#: ../../source/development_release.rst:89
+msgid "You can now test the ``wheel`` and the ``sdist`` locally before uploading to PyPI. Make sure to use `twine <https://github.com/pypa/twine>`_ to upload the archives over SSL."
+msgstr ""
+
+#: ../../source/development_release.rst:97
+msgid "The conda-forge bot will automatically add a PR on your behalf to the `nbconvert-feedstock repo <conda-forge-nbconvert_>`_. You may want to review this PR to ensure conda-forge will be updated cleanly."
+msgstr ""
+
+#: ../../source/development_release.rst:102
+msgid "Release the new version"
+msgstr ""
+
+#: ../../source/development_release.rst:104
+msgid "Push directly on master, including --tags separately"
+msgstr ""
+
+#: ../../source/development_release.rst:113
+msgid "Return to development state"
+msgstr ""
+
+#: ../../source/development_release.rst:117
+msgid "If all went well, change the ``notebook/_version.py`` back adding the"
+msgstr ""
+
+#: ../../source/development_release.rst:116
+msgid "``.dev`` suffix."
+msgstr ""
+
+#: ../../source/development_release.rst:120
+msgid "Email googlegroup with update letter"
+msgstr ""
+
+#: ../../source/development_release.rst:122
+msgid "Make sure to email jupyter@googlegroups.com with the subject line of \"[ANN] NBConvert $VERSION -- ...\" and include at least the significant changes, contributors, and individual PR notes (if not many significant changes)."
+msgstr ""
+

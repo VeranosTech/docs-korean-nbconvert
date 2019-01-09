@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api/filters.rst:2
+msgid "Filters"
+msgstr ""
+
+#: ../../source/api/filters.rst:4
+msgid "Filters are for use with the :class:`~nbconvert.exporters.TemplateExporter` exporter. They provide a way for you transform notebook contents to a particular format depending on the template you are using. For example, when converting to HTML, you would want to use the :func:`~nbconvert.filters.ansi2html` function to convert ANSI colors (from e.g. a terminal traceback) to HTML colors."
+msgstr ""
+
+#: ../../source/api/filters.rst:12
+msgid ":doc:`/api/exporters`"
+msgstr ""
+
+#: ../../source/api/filters.rst:13
+msgid "API documentation for the various exporter classes"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.add_anchor:1
+msgid "Add an id and an anchor-link to an html header"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.add_anchor:3
+msgid "For use on markdown headings"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.add_prompts:1
+msgid "Add prompts to code snippets"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2html:1
+msgid "Convert ANSI colors to HTML colors."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2html:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2latex:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.comment_lines:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/latex.py:docstring of nbconvert.filters.escape_latex:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.get_lines:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.ipython2python:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.strip_ansi:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_dollars:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_files_prefix:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.wrap_text:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2html:3
+msgid "Text containing ANSI colors to convert to HTML"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2latex:1
+msgid "Convert ANSI colors to LaTeX colors."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.ansi2latex:3
+msgid "Text containing ANSI colors to convert to LaTeX"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.ascii_only:1
+msgid "ensure a string is ascii"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:1
+msgid "Parse citations in Markdown cells."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:3
+msgid "This looks for HTML tags having a data attribute names `data-cite` and replaces it by the call to LaTeX cite command. The tranformation looks like this:"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:7
+msgid "`<cite data-cite=\"granger\">(Granger, 2013)</cite>`"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:9
+msgid "Becomes"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:11
+msgid "`\\cite{granger}`"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/citation.py:docstring of nbconvert.filters.citation2latex:13
+msgid "Any HTML tag can be used, which allows the citations to be formatted in HTML in any manner."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.comment_lines:1
+msgid "Build a Python comment line from input text."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.comment_lines:3
+msgid "Text to comment out."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.comment_lines:5
+msgid "Character to append to the start of each line."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/latex.py:docstring of nbconvert.filters.escape_latex:1
+msgid "Escape characters that may conflict with latex."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/latex.py:docstring of nbconvert.filters.escape_latex:3
+msgid "Text containing characters that may conflict with Latex"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/datatypefilter.py:docstring of nbconvert.filters.DataTypeFilter:1
+msgid "Returns the preferred display format"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.get_lines:1
+msgid "Split the input text into separate lines and then return the lines that the caller is interested in."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.get_lines:4
+msgid "Text to parse lines from."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.get_lines:6
+msgid "First line to grab from."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.get_lines:8
+msgid "Last line to grab from."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:1
+msgid "Convert between any two formats using pandoc."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:3
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:3
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:3
+msgid "This function will raise an error if pandoc is not installed. Any error messages generated by pandoc are printed to stderr."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:6
+msgid "Input string, assumed to be valid in from_format."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:8
+msgid "Pandoc format of source."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:10
+msgid "Pandoc format for output."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:13
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:13
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:9
+msgid "**out** -- Output as returned by pandoc."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/pandoc.py:docstring of nbconvert.filters.convert_pandoc:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.html2text:1
+msgid "extract inner text from html"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.html2text:3
+msgid "Analog of jQuery's $(element).text()"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:1
+msgid "Indent a string a given number of spaces or tabstops."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:3
+msgid "indent(str,nspaces=4,ntabs=0) -> indent str by ntabs+nspaces."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:5
+msgid "The string to be indented."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:7
+msgid "The number of spaces to be indented."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:9
+msgid "The number of tabs to be indented."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:11
+msgid "Whether to scrub existing indentation.  If True, all lines will be aligned to the same indentation.  If False, existing indentation will be strictly increased."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/ipython_genutils/text.py:docstring of nbconvert.filters.indent:16
+msgid "**str|unicode**"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.ipython2python:1
+msgid "Transform IPython syntax to pure Python syntax"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.ipython2python:3
+msgid "IPython code, to be transformed to pure Python"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown_mistune.py:docstring of nbconvert.filters.markdown2html:1
+msgid "Convert a markdown string to HTML using mistune"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:1
+msgid "Convert a markdown string to LaTeX via pandoc."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:6
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:6
+msgid "Input string, assumed to be valid markdown."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2latex:8
+msgid "Markup used by pandoc's reader default : pandoc extended markdown (see http://pandoc.org/README.html#pandocs-markdown)"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/markdown.py:docstring of nbconvert.filters.markdown2rst:1
+msgid "Convert a markdown string to ReST via pandoc."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.path2url:1
+msgid "Turn a file path into a URL"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.posix_path:1
+msgid "Turn a path into posix-style path/to/etc"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.posix_path:3
+msgid "Mainly for use in latex on Windows, where native Windows paths are not allowed."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.prevent_list_blocks:1
+msgid "Prevent presence of enumerate or itemize blocks in latex headings cells"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.strip_ansi:1
+msgid "Remove ANSI escape codes from text."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/ansi.py:docstring of nbconvert.filters.strip_ansi:3
+msgid "Source to remove the ANSI from"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_dollars:1
+msgid "Remove all dollar symbols from text"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_dollars:3
+msgid "Text to remove dollars from"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_files_prefix:1
+msgid "Fix all fake URLs that start with `files/`, stripping out the `files/` prefix. Applies to both urls (for html) and relative paths (for markdown paths)."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.strip_files_prefix:4
+msgid "Text in which to replace 'src=\"files/real...' with 'src=\"real...'"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.wrap_text:1
+msgid "Intelligently wrap text. Wrap text without breaking words if possible."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.wrap_text:4
+msgid "Text to wrap."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/filters/strings.py:docstring of nbconvert.filters.wrap_text:6
+msgid "Number of characters to wrap to, default 100."
+msgstr ""
+

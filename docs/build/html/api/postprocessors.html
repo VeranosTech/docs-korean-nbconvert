@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Postprocessors &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Making an nbconvert release" href="../development_release.html" />
+    <link rel="prev" title="Writers" href="writers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python API for working with nbconvert</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nbconvertapp.html">NbConvertApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exporters.html">Exporters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessors.html">Preprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">Writers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Postprocessors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-postprocessors">Specialized postprocessors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Python API for working with nbconvert</a> &raquo;</li>
+        
+      <li>Postprocessors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/postprocessors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nbconvert.postprocessors">
+<span id="postprocessors"></span><h1>Postprocessors<a class="headerlink" href="#module-nbconvert.postprocessors" title="제목 주소">¶</a></h1>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="../config_options.html"><span class="doc">Configuration options</span></a></dt>
+<dd>Configurable options for the nbconvert application</dd>
+</dl>
+</div>
+<dl class="class">
+<dt id="nbconvert.postprocessors.PostProcessorBase">
+<em class="property">class </em><code class="descclassname">nbconvert.postprocessors.</code><code class="descname">PostProcessorBase</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.postprocessors.PostProcessorBase" title="정의 주소">¶</a></dt>
+<dd><dl class="method">
+<dt id="nbconvert.postprocessors.PostProcessorBase.postprocess">
+<code class="descname">postprocess</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.postprocessors.PostProcessorBase.postprocess" title="정의 주소">¶</a></dt>
+<dd><p>Post-process output from a writer.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="specialized-postprocessors">
+<h2>Specialized postprocessors<a class="headerlink" href="#specialized-postprocessors" title="제목 주소">¶</a></h2>
+<dl class="class">
+<dt id="nbconvert.postprocessors.ServePostProcessor">
+<em class="property">class </em><code class="descclassname">nbconvert.postprocessors.</code><code class="descname">ServePostProcessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.postprocessors.ServePostProcessor" title="정의 주소">¶</a></dt>
+<dd><p>Post processor designed to serve files</p>
+<p>Proxies reveal.js requests to a CDN if no local reveal.js is present</p>
+<dl class="method">
+<dt id="nbconvert.postprocessors.ServePostProcessor.postprocess">
+<code class="descname">postprocess</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.postprocessors.ServePostProcessor.postprocess" title="정의 주소">¶</a></dt>
+<dd><p>Serve the build directory with a webserver.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../development_release.html" class="btn btn-neutral float-right" title="Making an nbconvert release" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="writers.html" class="btn btn-neutral" title="Writers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/install.rst:2
+msgid "Installation"
+msgstr ""
+
+#: ../../source/install.rst:6
+msgid "`Installing Jupyter <https://jupyter.readthedocs.io/en/latest/install.html>`__"
+msgstr ""
+
+#: ../../source/install.rst:7
+msgid "Nbconvert is part of the Jupyter ecosystem."
+msgstr ""
+
+#: ../../source/install.rst:10
+msgid "Installing nbconvert"
+msgstr ""
+
+#: ../../source/install.rst:12
+msgid "Nbconvert is packaged for both pip and conda, so you can install it with::"
+msgstr ""
+
+#: ../../source/install.rst:18
+msgid "If you're new to Python, we recommend installing `Anaconda <https://www.continuum.io/downloads>`_, a Python distribution which includes nbconvert and the other Jupyter components."
+msgstr ""
+
+#: ../../source/install.rst:23
+msgid "To unlock nbconvert's full capabilities requires Pandoc and TeX (specifically, XeLaTeX). These must be installed separately."
+msgstr ""
+
+#: ../../source/install.rst:27
+msgid "Installing Pandoc"
+msgstr ""
+
+#: ../../source/install.rst:29
+msgid "For converting markdown to formats other than HTML, nbconvert uses `Pandoc <http://pandoc.org>`_ (1.12.1 or later)."
+msgstr ""
+
+#: ../../source/install.rst:32
+msgid "To install pandoc on Linux, you can generally use your package manager::"
+msgstr ""
+
+#: ../../source/install.rst:36
+msgid "On other platforms, you can get pandoc from `their website <http://pandoc.org/installing.html>`_."
+msgstr ""
+
+#: ../../source/install.rst:40
+msgid "Installing TeX"
+msgstr ""
+
+#: ../../source/install.rst:42
+msgid "For converting to PDF, nbconvert uses the TeX document preparation ecosystem. It produces an intermediate ``.tex`` file which is compiled by the XeTeX engine with the LaTeX2e format (via the ``xelatex`` command) to produce PDF output."
+msgstr ""
+
+#: ../../source/install.rst:49
+msgid "We use XeTeX as the rendering engine rather than pdfTeX (as in earlier versions). XeTeX can access fonts through native operating system libraries, it has better support for OpenType formatted fonts and Unicode characters."
+msgstr ""
+
+#: ../../source/install.rst:54
+msgid "To install a complete TeX environment (including XeLaTeX and the necessary supporting packages) by hand can be tricky. Fortunately, there are packages that make this much easier. These packages are specific to different operating systems:"
+msgstr ""
+
+#: ../../source/install.rst:59
+msgid "Linux: `TeX Live <http://tug.org/texlive/>`_"
+msgstr ""
+
+#: ../../source/install.rst:61
+msgid "E.g. on Debian or Ubuntu: ``sudo apt-get install texlive-xetex``"
+msgstr ""
+
+#: ../../source/install.rst:63
+msgid "macOS (OS X): `MacTeX <http://tug.org/mactex/>`_."
+msgstr ""
+
+#: ../../source/install.rst:64
+msgid "Windows: `MikTex <http://www.miktex.org/>`_"
+msgstr ""
+
+#: ../../source/install.rst:66
+msgid "Because nbconvert depends on packages and fonts included in standard TeX distributions, if you do not have a complete installation, you may not be able to use nbconvert's standard tooling to convert notebooks to PDF."
+msgstr ""
+
+#: ../../source/install.rst:72
+msgid "PDF conversion on a limited TeX environment"
+msgstr ""
+
+#: ../../source/install.rst:74
+msgid "If you are only able to install a limited TeX environment, there are two main routes you could take to convert to PDF:"
+msgstr ""
+
+#: ../../source/install.rst:78
+msgid "Using TeX by hand"
+msgstr ""
+
+#: ../../source/install.rst:77
+msgid "You could convert to ``.tex`` directly; this requires Pandoc."
+msgstr ""
+
+#: ../../source/install.rst:78
+msgid "edit the file to accord with your local environment"
+msgstr ""
+
+#: ../../source/install.rst:79
+msgid "run ``xelatex`` directly."
+msgstr ""
+
+#: ../../source/install.rst:81
+msgid "Custom exporter"
+msgstr ""
+
+#: ../../source/install.rst:81
+msgid "You could write a :ref:`custom exporter <external_exporters>` that takes your system's limitations into account."
+msgstr ""
+

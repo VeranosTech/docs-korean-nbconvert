@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api/nbconvertapp.rst:2
+msgid "NbConvertApp"
+msgstr ""
+
+#: ../../source/api/nbconvertapp.rst:8
+msgid ":doc:`/config_options`"
+msgstr ""
+
+#: ../../source/api/nbconvertapp.rst:9
+msgid "Configurable options for the nbconvert application"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp:1
+msgid "Application used to convert from notebook file type (``*.ipynb``)"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_notebooks:1
+msgid "Construct the list of notebooks."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_notebooks:3
+msgid "If notebooks are passed on the command-line, they override (rather than add) notebooks specified in config files. Glob each notebook to replace notebook patterns with filenames."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_notebooks:1
+msgid "Convert the notebooks in the self.notebook traitlet"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:1
+msgid "Convert a single notebook."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:3
+msgid "Performs the following steps:"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:5
+msgid "Initialize notebook resources"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:6
+msgid "Export the notebook to a particular format"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:7
+msgid "Write the exported notebook to file"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:8
+msgid "(Maybe) postprocess the written file"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.convert_single_notebook:12
+msgid "If input_buffer is not None, conversion is done and the buffer is used as source into a file basenamed by the notebook_filename argument."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:1
+msgid "Step 1: Initialize resources"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:3
+msgid "This initializes the resources dictionary for a single notebook."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:5
+msgid "resources dictionary for a single notebook that MUST include the following keys:     - config_dir: the location of the Jupyter config directory     - unique_key: the notebook name     - output_files_dir: a directory where output files (not       including the notebook itself) should be saved"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:10
+msgid "resources dictionary for a single notebook that MUST include the following keys:"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:8
+msgid "config_dir: the location of the Jupyter config directory"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:9
+msgid "unique_key: the notebook name"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:10
+msgid "output_files_dir: a directory where output files (not including the notebook itself) should be saved"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.init_single_notebook_resources:0
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:1
+msgid "Step 2: Export the notebook"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:3
+msgid "Exports the notebook to a particular format according to the specified exporter. This function returns the output and (possibly modified) resources from the exporter."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:7
+msgid "name of notebook file."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:11
+msgid "readable file-like object returning unicode. if not None, notebook_filename is ignored"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:14
+msgid "* *output* * *dict* -- resources (possibly modified)"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:14
+msgid "*output*"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.export_single_notebook:15
+msgid "*dict* -- resources (possibly modified)"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:1
+msgid "Step 3: Write the notebook to file"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:3
+msgid "This writes output from the exporter to file using the specified writer. It returns the results from the writer."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:7
+msgid "resources for a single notebook including name, config directory and directory to save output"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.write_single_notebook:11
+msgid "results from the specified writer output of exporter"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.postprocess_single_notebook:1
+msgid "Step 4: Post-process the written file"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/nbconvertapp.py:docstring of nbconvert.nbconvertapp.NbConvertApp.postprocess_single_notebook:3
+msgid "Only used if a postprocessor has been specified. After the converted notebook is written to a file in Step 3, this post-processes the notebook."
+msgstr ""
+

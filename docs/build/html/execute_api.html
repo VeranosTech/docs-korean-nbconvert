@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Executing notebooks &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Configuration options" href="config_options.html" />
+    <link rel="prev" title="LaTeX citations" href="latex_citations.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Executing notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#executing-notebooks-from-the-command-line">Executing notebooks from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executing-notebooks-using-the-python-api-interface">Executing notebooks using the Python API interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-arguments-traitlets">Execution arguments (traitlets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-errors-and-exceptions">Handling errors and exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#execution-until-first-error">Execution until first error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-errors">Handling errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute-and-save-all-errors">Execute and save all errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Executing notebooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/execute_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nbconvert.preprocessors">
+<span id="executing-notebooks"></span><h1>Executing notebooks<a class="headerlink" href="#module-nbconvert.preprocessors" title="제목 주소">¶</a></h1>
+<p>Jupyter notebooks are often saved with output cells that have been cleared.
+nbconvert provides a convenient way to execute the input cells of an
+.ipynb notebook file and save the results, both input and output cells,
+as a .ipynb file.</p>
+<p>In this section we show how to execute a <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook
+document saving the result in notebook format. If you need to export
+notebooks to other formats, such as reStructured Text or Markdown (optionally
+executing them) see section <a class="reference internal" href="nbconvert_library.html"><span class="doc">Using nbconvert as a library</span></a>.</p>
+<p>Executing notebooks can be very helpful, for example, to run all notebooks
+in Python library in one step, or as a way to automate the data analysis in
+projects involving more than one notebook.</p>
+<div class="section" id="executing-notebooks-from-the-command-line">
+<h2>Executing notebooks from the command line<a class="headerlink" href="#executing-notebooks-from-the-command-line" title="제목 주소">¶</a></h2>
+<p>The same functionality of executing notebooks is exposed through a
+<a class="reference internal" href="usage.html"><span class="doc">command line interface</span></a> or a Python API interface.
+As an example, a notebook can be executed from the command line with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">execute</span> <span class="n">mynotebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="executing-notebooks-using-the-python-api-interface">
+<h2>Executing notebooks using the Python API interface<a class="headerlink" href="#executing-notebooks-using-the-python-api-interface" title="제목 주소">¶</a></h2>
+<p>This section will illustrate the Python API interface.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="제목 주소">¶</a></h3>
+<p>Let's start with a complete quick example, leaving detailed explanations
+to the following sections.</p>
+<p><strong>Import</strong>: First we import nbconvert and the <a class="reference internal" href="api/preprocessors.html#nbconvert.preprocessors.ExecutePreprocessor" title="nbconvert.preprocessors.ExecutePreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutePreprocessor</span></code></a>
+class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbformat</span>
+<span class="kn">from</span> <span class="nn">nbconvert.preprocessors</span> <span class="k">import</span> <span class="n">ExecutePreprocessor</span>
+</pre></div>
+</div>
+<p><strong>Load</strong>: Assuming that <code class="docutils literal notranslate"><span class="pre">notebook_filename</span></code> contains the path of a notebook,
+we can load it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">notebook_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="n">nbformat</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">as_version</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Configure</strong>: Next, we configure the notebook execution mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ep</span> <span class="o">=</span> <span class="n">ExecutePreprocessor</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">kernel_name</span><span class="o">=</span><span class="s1">&#39;python3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We specified two (optional) arguments <code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code>, which
+define respectively the cell execution timeout and the execution kernel.</p>
+<blockquote>
+<div>The option to specify <strong>kernel_name</strong> is new in nbconvert 4.2.
+When not specified or when using nbconvert &lt;4.2,
+the default Python kernel is chosen.</div></blockquote>
+<p><strong>Execute/Run (preprocess)</strong>: To actually run the notebook we call the method
+<code class="docutils literal notranslate"><span class="pre">preprocess</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ep</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;notebooks/&#39;</span><span class="p">}})</span>
+</pre></div>
+</div>
+<p>Hopefully, we will not get any errors during the notebook execution
+(see the last section for error handling). Note that <code class="docutils literal notranslate"><span class="pre">path</span></code> specifies
+in which folder to execute the notebook.</p>
+<p><strong>Save</strong>: Finally, save the resulting notebook with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;executed_notebook.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">nbformat</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That's all. Your executed notebook will be saved in the current folder
+in the file <code class="docutils literal notranslate"><span class="pre">executed_notebook.ipynb</span></code>.</p>
+</div>
+</div>
+<div class="section" id="execution-arguments-traitlets">
+<h2>Execution arguments (traitlets)<a class="headerlink" href="#execution-arguments-traitlets" title="제목 주소">¶</a></h2>
+<p>The arguments passed to <a class="reference internal" href="api/preprocessors.html#nbconvert.preprocessors.ExecutePreprocessor" title="nbconvert.preprocessors.ExecutePreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutePreprocessor</span></code></a> are configuration options
+called <a class="reference external" href="https://traitlets.readthedocs.io/en/stable">traitlets</a>.
+There are many cool things about traitlets. For example,
+they enforce the input type, and they can be accessed/modified as
+class attributes. Moreover, each traitlet is automatically exposed
+as command-line options. For example, we can pass the timeout from the
+command-line like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">ExecutePreprocessor</span><span class="o">.</span><span class="n">timeout</span><span class="o">=</span><span class="mi">600</span> <span class="o">--</span><span class="n">to</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">execute</span> <span class="n">mynotebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>Let's now discuss in more detail the two traitlets we used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">timeout</span></code> traitlet defines the maximum time (in seconds) each notebook
+cell is allowed to run, if the execution takes longer an exception will be
+raised. The default is 30 s, so in cases of long-running cells you may want to
+specify an higher value. The <code class="docutils literal notranslate"><span class="pre">timeout</span></code> option can also be set to <code class="docutils literal notranslate"><span class="pre">None</span></code>
+or <code class="docutils literal notranslate"><span class="pre">-1</span></code> to remove any restriction on execution time.</p>
+<p>The second traitlet, <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code>, allows specifying the name of the kernel
+to be used for the execution. By default, the kernel name is obtained from the
+notebook metadata. The traitlet <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code> allows specifying a
+user-defined kernel, overriding the value in the notebook metadata. A common
+use case is that of a Python 2/3 library which includes documentation/testing
+notebooks. These notebooks will specify either a python2 or python3 kernel in
+their metadata (depending on the kernel used the last time the notebook was
+saved). In reality, these notebooks will work on both Python 2 and Python 3,
+and, for testing, it is important to be able to execute them programmatically
+on both versions. Here the traitlet <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code> helps simplify and
+maintain consistency: we can just run a notebook twice, specifying first
+&quot;python2&quot; and then &quot;python3&quot; as the kernel name.</p>
+</div>
+<div class="section" id="handling-errors-and-exceptions">
+<h2>Handling errors and exceptions<a class="headerlink" href="#handling-errors-and-exceptions" title="제목 주소">¶</a></h2>
+<p>In the previous sections we saw how to save an executed notebook, assuming
+there are no execution errors. But, what if there are errors?</p>
+<div class="section" id="execution-until-first-error">
+<h3>Execution until first error<a class="headerlink" href="#execution-until-first-error" title="제목 주소">¶</a></h3>
+<p>An error during the notebook execution, by default, will stop the execution
+and raise a <code class="docutils literal notranslate"><span class="pre">CellExecutionError</span></code>. Conveniently, the source cell causing
+the error and the original error name and message are also printed.
+After an error, we can still save the notebook as before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;executed_notebook.ipynb&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">nbformat</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The saved notebook contains the output up until the failing cell,
+and includes a full stack-trace and error (which can help debugging).</p>
+</div>
+<div class="section" id="handling-errors">
+<h3>Handling errors<a class="headerlink" href="#handling-errors" title="제목 주소">¶</a></h3>
+<p>A useful pattern to execute notebooks while handling errors is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbconvert.preprocessors</span> <span class="k">import</span> <span class="n">CellExecutionError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">run_path</span><span class="p">}})</span>
+<span class="k">except</span> <span class="n">CellExecutionError</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Error executing the notebook &quot;</span><span class="si">%s</span><span class="s1">&quot;.</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">notebook_filename</span>
+    <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;See notebook &quot;</span><span class="si">%s</span><span class="s1">&quot; for the traceback.&#39;</span> <span class="o">%</span> <span class="n">notebook_filename_out</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">raise</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">notebook_filename_out</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nbformat</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will save the executed notebook regardless of execution errors.
+In case of errors, however, an additional message is printed and the
+<code class="docutils literal notranslate"><span class="pre">CellExecutionError</span></code> is raised. The message directs the user to
+the saved notebook for further inspection.</p>
+</div>
+<div class="section" id="execute-and-save-all-errors">
+<h3>Execute and save all errors<a class="headerlink" href="#execute-and-save-all-errors" title="제목 주소">¶</a></h3>
+<p>As a last scenario, it is sometimes useful to execute notebooks which raise
+exceptions, for example to show an error condition. In this case, instead of
+stopping the execution on the first error, we can keep executing the notebook
+using the traitlet <code class="docutils literal notranslate"><span class="pre">allow_errors</span></code> (default is False). With
+<code class="docutils literal notranslate"><span class="pre">allow_errors=True</span></code>, the notebook is executed until the end, regardless of
+any error encountered during the execution. The output notebook, will contain
+the stack-traces and error messages for <strong>all</strong> the cells raising exceptions.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config_options.html" class="btn btn-neutral float-right" title="Configuration options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="latex_citations.html" class="btn btn-neutral" title="LaTeX citations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

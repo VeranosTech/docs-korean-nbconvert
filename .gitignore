@@ -27,3 +27,5 @@ docs/source/config_options.rst
 .project
 .pydevproject
 .settings
+!build/
+!env/

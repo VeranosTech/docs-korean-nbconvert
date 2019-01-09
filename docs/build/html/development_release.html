@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Making an nbconvert release &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Changes in nbconvert" href="changelog.html" />
+    <link rel="prev" title="Postprocessors" href="api/postprocessors.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assign-all-merged-prs-to-milestones">Assign all merged PRs to milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gather-all-prs-related-to-milestone">Gather all PRs related to milestone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manually-categorize-tickets">Manually categorize tickets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collect-major-changes">Collect major changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-docs-source-changelog-rst">Update docs/source/changelog.rst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-installed-tools">Check installed tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clean-the-repository">Clean the repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-release">Create the release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-the-new-version">Release the new version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-to-development-state">Return to development state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#email-googlegroup-with-update-letter">Email googlegroup with update letter</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/development_release.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="making-an-nbconvert-release">
+<span id="nbconvert-release"></span><h1>Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release<a class="headerlink" href="#making-an-nbconvert-release" title="제목 주소">¶</a></h1>
+<p>This document guides a contributor through creating a release of <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>.</p>
+<div class="section" id="assign-all-merged-prs-to-milestones">
+<h2>Assign all merged PRs to milestones<a class="headerlink" href="#assign-all-merged-prs-to-milestones" title="제목 주소">¶</a></h2>
+<p>Go to GitHub and assign all PRs that have been merged to milestones.  This will
+be helpful when you update the changelog. If you go to this <a class="reference external" href="https://github.com/jupyter/nbconvert/pulls?utf8=%E2%9C%93&amp;q=is%3Amerged%20is%3Apr%20no%3Amilestone%20">GitHub page</a> you will find all the PRs that currently have no milestones.</p>
+</div>
+<div class="section" id="gather-all-prs-related-to-milestone">
+<h2>Gather all PRs related to milestone<a class="headerlink" href="#gather-all-prs-related-to-milestone" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/mpacer/ghpro/tree/alternate_styling">ghpro</a> can be used to extract the pull requests by call the following from nbconvert directory (will ask for an API token the first time):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>github-stats --milestone<span class="o">=</span><span class="nv">$VERSION</span> --since-tag <span class="nv">$LAST_VERSION</span> --links
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="manually-categorize-tickets">
+<h2>Manually categorize tickets<a class="headerlink" href="#manually-categorize-tickets" title="제목 주소">¶</a></h2>
+<p>Group the tickets by these general categories (or others if they are relevant). This usually a manual processes to evaluate the changes in each PR.</p>
+<ol class="arabic simple">
+<li>New Features</li>
+<li>Deprecations</li>
+<li>Fixing Problems</li>
+<li>Testing, Docs, and Builds</li>
+</ol>
+</div>
+<div class="section" id="collect-major-changes">
+<h2>Collect major changes<a class="headerlink" href="#collect-major-changes" title="제목 주소">¶</a></h2>
+<p>From the tickets write up any major features / changes that deserve a paragraph to describe how they work.</p>
+</div>
+<div class="section" id="update-docs-source-changelog-rst">
+<h2>Update docs/source/changelog.rst<a class="headerlink" href="#update-docs-source-changelog-rst" title="제목 주소">¶</a></h2>
+<p>Copy these changes with the new version to the top of changelog.rst. Prior release changelogs can be used to pick formatting of the message.</p>
+</div>
+<div class="section" id="check-installed-tools">
+<h2>Check installed tools<a class="headerlink" href="#check-installed-tools" title="제목 주소">¶</a></h2>
+<p>Review <code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code>, particularly the testing and release sections.</p>
+</div>
+<div class="section" id="clean-the-repository">
+<h2>Clean the repository<a class="headerlink" href="#clean-the-repository" title="제목 주소">¶</a></h2>
+<p>You can remove all non-tracked files with:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clean -xfdi
+</pre></div>
+</div>
+</div></blockquote>
+<p>This would ask you for confirmation before removing all untracked files.</p>
+<p>Make sure the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> folder is clean and avoid stale builds from
+previous attempts.</p>
+</div>
+<div class="section" id="create-the-release">
+<h2>Create the release<a class="headerlink" href="#create-the-release" title="제목 주소">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Update the <a class="reference internal" href="changelog.html"><span class="doc">changelog</span></a> to account for all the PRs assigned to this milestone.</p>
+</li>
+<li><p class="first">Update version number in <code class="docutils literal notranslate"><span class="pre">notebook/_version.py</span></code>.</p>
+</li>
+<li><p class="first">Commit and tag the release with the current version number:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -am <span class="s2">&quot;release </span><span class="nv">$VERSION</span><span class="s2">&quot;</span>
+git tag <span class="nv">$VERSION</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You are now ready to build the <code class="docutils literal notranslate"><span class="pre">sdist</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py sdist
+python setup.py bdist_wheel
+</pre></div>
+</div>
+</li>
+<li><p class="first">You can now test the <code class="docutils literal notranslate"><span class="pre">wheel</span></code> and the <code class="docutils literal notranslate"><span class="pre">sdist</span></code> locally before uploading
+to PyPI. Make sure to use <a class="reference external" href="https://github.com/pypa/twine">twine</a> to
+upload the archives over SSL.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>twine upload dist/*
+</pre></div>
+</div>
+</li>
+<li><p class="first">The conda-forge bot will automatically add a PR on your behalf to the <a class="reference external" href="https://github.com/conda-forge/nbconvert-feedstock">nbconvert-feedstock repo</a>. You may want to review this PR to ensure conda-forge will be updated cleanly.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="release-the-new-version">
+<h2>Release the new version<a class="headerlink" href="#release-the-new-version" title="제목 주소">¶</a></h2>
+<p>Push directly on master, including --tags separately</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push upstream
+git push upstream --tags
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="return-to-development-state">
+<h2>Return to development state<a class="headerlink" href="#return-to-development-state" title="제목 주소">¶</a></h2>
+<dl class="docutils">
+<dt>If all went well, change the <code class="docutils literal notranslate"><span class="pre">notebook/_version.py</span></code> back adding the</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">.dev</span></code> suffix.</dd>
+</dl>
+</div>
+<div class="section" id="email-googlegroup-with-update-letter">
+<h2>Email googlegroup with update letter<a class="headerlink" href="#email-googlegroup-with-update-letter" title="제목 주소">¶</a></h2>
+<p>Make sure to email <a class="reference external" href="mailto:jupyter&#37;&#52;&#48;googlegroups&#46;com">jupyter<span>&#64;</span>googlegroups<span>&#46;</span>com</a> with the subject line of &quot;[ANN] NBConvert $VERSION -- ...&quot; and include at least the significant changes, contributors, and individual PR notes (if not many significant changes).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changes in nbconvert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api/postprocessors.html" class="btn btn-neutral" title="Postprocessors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

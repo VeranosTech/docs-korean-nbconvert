@@ -1,0 +1,962 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using nbconvert as a library &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="LaTeX citations" href="latex_citations.html" />
+    <link rel="prev" title="Using as a command line tool" href="usage.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using nbconvert as a library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Quick-overview">Quick overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Extracting-Figures-using-the-RST-Exporter">Extracting Figures using the RST Exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Extracting-Figures-using-the-HTML-Exporter">Extracting Figures using the HTML Exporter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Some-theory">Some theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-different-preprocessors">Using different preprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Custom-Preprocessors">Custom Preprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Programmatically-creating-templates">Programmatically creating templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Real-World-Uses">Real World Uses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using nbconvert as a library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nbconvert_library.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Using-nbconvert-as-a-library">
+<h1>Using nbconvert as a library<a class="headerlink" href="#Using-nbconvert-as-a-library" title="제목 주소">¶</a></h1>
+<p>In this notebook, you will be introduced to the programmatic API of nbconvert and how it can be used in various contexts.</p>
+<p>A great <a class="reference external" href="http://jakevdp.github.io/blog/2013/04/15/code-golf-in-python-sudoku/">blog post</a> by [&#64;jakevdp](<a class="reference external" href="https://github.com/jakevdp">https://github.com/jakevdp</a>) will be used to demonstrate. This notebook will not focus on using the command line tool. The attentive reader will point-out that no data is read from or written to disk during the conversion process. This is because nbconvert has been designed to work in memory so that it works well in a database or web-based environment too.</p>
+<div class="section" id="Quick-overview">
+<h2>Quick overview<a class="headerlink" href="#Quick-overview" title="제목 주소">¶</a></h2>
+<p>Credit: Jonathan Frederic (&#64;jdfreder on github)</p>
+<p>The main principle of nbconvert is to instantiate an <code class="docutils literal notranslate"><span class="pre">Exporter</span></code> that controls the pipeline through which notebooks are converted.</p>
+<p>First, download &#64;jakevdp’s notebook (if you do not have <code class="docutils literal notranslate"><span class="pre">requests</span></code>, install it by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">requests</span></code>, or if you don’t have pip installed, you can find it on PYPI):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://jakevdp.github.com/downloads/notebooks/XKCD_plots.ipynb&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; ...&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;{\n &quot;metadata&quot;: {\n  &quot;name&quot;: &quot;XKCD_plots&quot;\n },\n &quot;nbformat&quot;: 3,\n ...&#39;
+</pre></div>
+</div>
+</div>
+<p>The response is a JSON string which represents a Jupyter notebook.</p>
+<p>Next, we will read the response using nbformat. Doing this will guarantee that the notebook structure is valid. Note that the in-memory format and on disk format are slightly different. In particual, on disk, multiline strings might be split into a list of strings.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">nbformat</span>
+<span class="n">jake_notebook</span> <span class="o">=</span> <span class="n">nbformat</span><span class="o">.</span><span class="n">reads</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">as_version</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">jake_notebook</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>{&#39;cell_type&#39;: &#39;markdown&#39;,
+ &#39;metadata&#39;: {},
+ &#39;source&#39;: &#39;# XKCD plots in Matplotlib&#39;}
+</pre></div>
+</div>
+</div>
+<p>The nbformat API returns a special type of dictionary. For this example, you don’t need to worry about the details of the structure (if you are interested, please see the <a class="reference external" href="https://nbformat.readthedocs.io/en/latest/">nbformat documentation</a>).</p>
+<p>The nbconvert API exposes some basic exporters for common formats and defaults. You will start by using one of them. First, you will import one of these exporters (specifically, the HTML exporter), then instantiate it using most of the defaults, and then you will use it to process the notebook we downloaded earlier.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">traitlets.config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+<span class="c1"># 1. Import the exporter</span>
+<span class="kn">from</span> <span class="nn">nbconvert</span> <span class="kn">import</span> <span class="n">HTMLExporter</span>
+
+<span class="c1"># 2. Instantiate the exporter. We use the `basic` template for now; we&#39;ll get into more details</span>
+<span class="c1"># later about how to customize the exporter further.</span>
+<span class="n">html_exporter</span> <span class="o">=</span> <span class="n">HTMLExporter</span><span class="p">()</span>
+<span class="n">html_exporter</span><span class="o">.</span><span class="n">template_file</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span>
+
+<span class="c1"># 3. Process the notebook we loaded earlier</span>
+<span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span> <span class="o">=</span> <span class="n">html_exporter</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The exporter returns a tuple containing the source of the converted notebook, as well as a resources dict. In this case, the source is just raw HTML:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">body</span><span class="p">[:</span><span class="mi">400</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+&lt;div class=&#34;cell border-box-sizing text_cell rendered&#34;&gt;
+&lt;div class=&#34;prompt input_prompt&#34;&gt;
+&lt;/div&gt;
+&lt;div class=&#34;inner_cell&#34;&gt;
+&lt;div class=&#34;text_cell_render border-box-sizing rendered_html&#34;&gt;
+&lt;h1 id=&#34;XKCD-plots-in-Matplotlib&#34;&gt;XKCD plots in Matplotlib&lt;a class=&#34;anchor-link&#34; href=&#34;#XKCD-plots-in-Matplotlib&#34;&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;cell border-box-sizing text_cell rendered&#34;&gt;
+&lt;div cl...
+</pre></div></div>
+</div>
+<p>If you understand HTML, you’ll notice that some common tags are omitted, like the <code class="docutils literal notranslate"><span class="pre">body</span></code> tag. Those tags are included in the default <code class="docutils literal notranslate"><span class="pre">HtmlExporter</span></code>, which is what would have been constructed if we had not modified the <code class="docutils literal notranslate"><span class="pre">template_file</span></code>.</p>
+<p>The resource dict contains (among many things) the extracted <code class="docutils literal notranslate"><span class="pre">.png</span></code>, <code class="docutils literal notranslate"><span class="pre">.jpg</span></code>, etc. from the notebook when applicable. The basic HTML exporter leaves the figures as embedded base64, but you can configure it to extract the figures. So for now, the resource dict should be mostly empty, except for a key containing CSS and a few others whose content will be obvious:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Resources:&quot;</span><span class="p">,</span> <span class="n">resources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Metadata:&quot;</span><span class="p">,</span> <span class="n">resources</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Inlining:&quot;</span><span class="p">,</span> <span class="n">resources</span><span class="p">[</span><span class="s1">&#39;inlining&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Extension:&quot;</span><span class="p">,</span> <span class="n">resources</span><span class="p">[</span><span class="s1">&#39;output_extension&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Resources: dict_keys([&#39;metadata&#39;, &#39;output_extension&#39;, &#39;raw_mimetypes&#39;, &#39;inlining&#39;])
+Metadata: dict_keys([&#39;name&#39;])
+Inlining: dict_keys([&#39;css&#39;])
+Extension: .html
+</pre></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Exporter</span></code>s are stateless, so you won’t be able to extract any useful information beyond their configuration. You can re-use an exporter instance to convert another notebook. In addition to the <code class="docutils literal notranslate"><span class="pre">from_notebook_node</span></code> used above, each exporter exposes <code class="docutils literal notranslate"><span class="pre">from_file</span></code> and <code class="docutils literal notranslate"><span class="pre">from_filename</span></code> methods.</p>
+</div>
+<div class="section" id="Extracting-Figures-using-the-RST-Exporter">
+<h2>Extracting Figures using the RST Exporter<a class="headerlink" href="#Extracting-Figures-using-the-RST-Exporter" title="제목 주소">¶</a></h2>
+<p>When exporting, you may want to extract the base64 encoded figures as files. While the HTML exporter does not do this by default, the <code class="docutils literal notranslate"><span class="pre">RstExporter</span></code> does:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Import the RST exproter</span>
+<span class="kn">from</span> <span class="nn">nbconvert</span> <span class="kn">import</span> <span class="n">RSTExporter</span>
+<span class="c1"># Instantiate it</span>
+<span class="n">rst_exporter</span> <span class="o">=</span> <span class="n">RSTExporter</span><span class="p">()</span>
+<span class="c1"># Convert the notebook to RST format</span>
+<span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span> <span class="o">=</span> <span class="n">rst_exporter</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">body</span><span class="p">[:</span><span class="mi">970</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;[.....]&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="mi">800</span><span class="p">:</span><span class="mi">1200</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+XKCD plots in Matplotlib
+========================
+
+This notebook originally appeared as a blog post at `Pythonic
+Perambulations &lt;http://jakevdp.github.com/blog/2012/10/07/xkcd-style-plots-in-matplotlib/&gt;`__
+by Jake Vanderplas.
+
+.. raw:: html
+
+   &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+*Update: the matplotlib pull request has been merged! See* `*This
+post* &lt;http://jakevdp.github.io/blog/2013/07/10/XKCD-plots-in-matplotlib/&gt;`__
+*for a description of the XKCD functionality now built-in to
+matplotlib!*
+
+One of the problems I&#39;ve had with typical matplotlib figures is that
+everything in them is so precise, so perfect. For an example of what I
+mean, take a look at this figure:
+
+.. code:: python
+
+    from IPython.display import Image
+    Image(&#39;http://jakevdp.github.com/figures/xkcd_version.png&#39;)
+
+
+
+
+.. image:: output_3_0.png
+
+
+
+Sometimes when showing schematic plots, this is the type of figure I
+want to display. But drawing it by hand is a pain: I&#39;d rather just use
+matp...
+[.....]
+image:: output_3_0.png
+
+
+
+Sometimes when showing schematic plots, this is the type of figure I
+want to display. But drawing it by hand is a pain: I&#39;d rather just use
+matplotlib. The problem is, matplotlib is a bit too precise. Attempting
+to duplicate this figure in matplotlib leads to something like this:
+
+.. code:: python
+
+    Image(&#39;http://jakevdp.github.com/figures/mpl_version.png&#39;)
+
+
+
+
+.. imag...
+</pre></div></div>
+</div>
+<p>Notice that base64 images are not embedded, but instead there are filename-like strings, such as <code class="docutils literal notranslate"><span class="pre">output_3_0.png</span></code>. The strings actually are (configurable) keys that map to the binary data in the resources dict.</p>
+<p>Note, if you write an RST Plugin, you are responsible for writing all the files to the disk (or uploading, etc…) in the right location. Of course, the naming scheme is configurable.</p>
+<p>As an exercise, this notebook will show you how to get one of those images. First, take a look at the <code class="docutils literal notranslate"><span class="pre">'outputs'</span></code> of the returned resources dictionary. This is a dictionary that contains a key for each extracted resource, with values corresponding to the actual base64 encoding:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">resources</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&#39;output_13_1.png&#39;,
+ &#39;output_16_0.png&#39;,
+ &#39;output_18_1.png&#39;,
+ &#39;output_3_0.png&#39;,
+ &#39;output_5_0.png&#39;]
+</pre></div>
+</div>
+</div>
+<p>In this case, there are 5 extracted binary figures, all <code class="docutils literal notranslate"><span class="pre">png</span></code>s. We can use the Image display object to actually display one of the images:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">resources</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">][</span><span class="s1">&#39;output_3_0.png&#39;</span><span class="p">],</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="_images/nbconvert_library_20_0.png" src="_images/nbconvert_library_20_0.png" />
+</div>
+</div>
+<p>Note that this image is being rendered without ever reading or writing to the disk.</p>
+</div>
+<div class="section" id="Extracting-Figures-using-the-HTML-Exporter">
+<h2>Extracting Figures using the HTML Exporter<a class="headerlink" href="#Extracting-Figures-using-the-HTML-Exporter" title="제목 주소">¶</a></h2>
+<p>As mentioned above, by default, the HTML exporter does not extract images – it just leaves them as inline base64 encodings. However, this is not always what you might want. For example, here is a use case from &#64;jakevdp:</p>
+<blockquote>
+<div>I write an <a class="reference external" href="http://jakevdp.github.io/">awesome blog</a> using Jupyter notebooks converted to HTML, and I want the images to be cached. Having one html file with all of the images base64 encoded inside it is nice when sharing with a coworker, but for a website, not so much. I need an HTML exporter, and I want it to extract the figures!</div></blockquote>
+<div class="section" id="Some-theory">
+<h3>Some theory<a class="headerlink" href="#Some-theory" title="제목 주소">¶</a></h3>
+<p>Before we get into actually extracting the figures, it will be helpful to give a high-level overview of the process of converting a notebook to a another format:</p>
+<ol class="arabic simple">
+<li>Retrieve the notebook and it’s accompanying resources (you are responsible for this).</li>
+<li>Feed the notebook into the <code class="docutils literal notranslate"><span class="pre">Exporter</span></code>, which:<ol class="arabic">
+<li>Sequentially feeds the notebook into an array of <code class="docutils literal notranslate"><span class="pre">Preprocessor</span></code>s. Preprocessors only act on the <strong>structure</strong> of the notebook, and have unrestricted access to it.</li>
+<li>Feeds the notebook into the Jinja templating engine, which converts it to a particular format depending on which template is selected.</li>
+</ol>
+</li>
+<li>The exporter returns the converted notebook and other relevant resources as a tuple.</li>
+<li>You write the data to the disk using the built-in <code class="docutils literal notranslate"><span class="pre">FilesWriter</span></code> (which writes the notebook and any extracted files to disk), or elsewhere using a custom <code class="docutils literal notranslate"><span class="pre">Writer</span></code>.</li>
+</ol>
+</div>
+<div class="section" id="Using-different-preprocessors">
+<h3>Using different preprocessors<a class="headerlink" href="#Using-different-preprocessors" title="제목 주소">¶</a></h3>
+<p>To extract the figures when using the HTML exporter, we will want to change which <code class="docutils literal notranslate"><span class="pre">Preprocessor</span></code>s we are using. There are several preprocessors that come with nbconvert, including one called the <code class="docutils literal notranslate"><span class="pre">ExtractOutputPreprocessor</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ExtractOutputPreprocessor</span></code> is responsible for crawling the notebook, finding all of the figures, and putting them into the resources directory, as well as choosing the key (i.e. <code class="docutils literal notranslate"><span class="pre">filename_xx_y.extension</span></code>) that can replace the figure inside the template. To enable the <code class="docutils literal notranslate"><span class="pre">ExtractOutputPreprocessor</span></code>, we must add it to the exporter’s list of preprocessors:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># create a configuration object that changes the preprocessors</span>
+<span class="kn">from</span> <span class="nn">traitlets.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">HTMLExporter</span><span class="o">.</span><span class="n">preprocessors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nbconvert.preprocessors.ExtractOutputPreprocessor&#39;</span><span class="p">]</span>
+
+<span class="c1"># create the new exporter using the custom config</span>
+<span class="n">html_exporter_with_figs</span> <span class="o">=</span> <span class="n">HTMLExporter</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+<span class="n">html_exporter_with_figs</span><span class="o">.</span><span class="n">preprocessors</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&#39;nbconvert.preprocessors.ExtractOutputPreprocessor&#39;]
+</pre></div>
+</div>
+</div>
+<p>We can compare the result of converting the notebook using the original HTML exporter and our new customized one:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span>          <span class="o">=</span> <span class="n">html_exporter</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)</span>
+<span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">resources_with_fig</span><span class="p">)</span> <span class="o">=</span> <span class="n">html_exporter_with_figs</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;resources without figures:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">resources with extracted figures (notice that there&#39;s one more field called &#39;outputs&#39;):&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">resources_with_fig</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">the actual figures are:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">resources_with_fig</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+resources without figures:
+[&#39;inlining&#39;, &#39;metadata&#39;, &#39;output_extension&#39;, &#39;raw_mimetypes&#39;]
+
+resources with extracted figures (notice that there&#39;s one more field called &#39;outputs&#39;):
+[&#39;inlining&#39;, &#39;metadata&#39;, &#39;output_extension&#39;, &#39;outputs&#39;, &#39;raw_mimetypes&#39;]
+
+the actual figures are:
+[&#39;output_13_1.png&#39;, &#39;output_16_0.png&#39;, &#39;output_18_1.png&#39;, &#39;output_3_0.png&#39;, &#39;output_5_0.png&#39;]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Custom-Preprocessors">
+<h2>Custom Preprocessors<a class="headerlink" href="#Custom-Preprocessors" title="제목 주소">¶</a></h2>
+<p>There are an endless number of transformations that you may want to apply to a notebook. In particularly complicated cases, you may want to actually create your own <code class="docutils literal notranslate"><span class="pre">Preprocessor</span></code>. Above, when we customized the list of preprocessors accepted by the <code class="docutils literal notranslate"><span class="pre">HTMLExporter</span></code>, we passed in a string – this can be any valid module name. So, if you create your own preprocessor, you can include it in that same list and it will be used by the exporter.</p>
+<p>To create your own preprocessor, you will need to subclass from <code class="docutils literal notranslate"><span class="pre">nbconvert.preprocessors.Preprocessor</span></code> and overwrite either the <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> and/or <code class="docutils literal notranslate"><span class="pre">preprocess_cell</span></code> methods.</p>
+</div>
+<div class="section" id="Example">
+<h2>Example<a class="headerlink" href="#Example" title="제목 주소">¶</a></h2>
+<p>The following demonstration adds the ability to exclude a cell by index.</p>
+<p>Note: injecting cells is similar, and won’t be covered here. If you want to inject static content at the beginning/end of a notebook, use a custom template.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">traitlets</span> <span class="kn">import</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">nbconvert.preprocessors</span> <span class="kn">import</span> <span class="n">Preprocessor</span>
+
+<span class="k">class</span> <span class="nc">PelicanSubCell</span><span class="p">(</span><span class="n">Preprocessor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A Pelican specific preprocessor to remove some of the cells of a notebook&quot;&quot;&quot;</span>
+
+    <span class="c1"># I could also read the cells from nb.metadata.pelican if someone wrote a JS extension,</span>
+    <span class="c1"># but for now I&#39;ll stay with configurable value.</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">help</span><span class="o">=</span><span class="s2">&quot;first cell of notebook to be converted&quot;</span><span class="p">)</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;last cell of notebook to be converted&quot;</span><span class="p">)</span>
+    <span class="n">start</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+    <span class="n">end</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb</span><span class="p">,</span> <span class="n">resources</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;I&#39;ll keep only cells from </span><span class="si">%d</span><span class="s2"> to </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+        <span class="n">nb</span><span class="o">.</span><span class="n">cells</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">nb</span><span class="p">,</span> <span class="n">resources</span>
+</pre></div>
+</div>
+</div>
+<p>Here a Pelican exporter is created that takes <code class="docutils literal notranslate"><span class="pre">PelicanSubCell</span></code> preprocessors and a <code class="docutils literal notranslate"><span class="pre">config</span></code> object as parameters. This may seem redundant, but with the configuration system you can register an inactive preprocessor on all of the exporters and activate it from config files or the command line.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a new config object that configures both the new preprocessor, as well as the exporter</span>
+<span class="n">c</span> <span class="o">=</span>  <span class="n">Config</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">PelicanSubCell</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">c</span><span class="o">.</span><span class="n">PelicanSubCell</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">c</span><span class="o">.</span><span class="n">RSTExporter</span><span class="o">.</span><span class="n">preprocessors</span> <span class="o">=</span> <span class="p">[</span><span class="n">PelicanSubCell</span><span class="p">]</span>
+
+<span class="c1"># Create our new, customized exporter that uses our custom preprocessor</span>
+<span class="n">pelican</span> <span class="o">=</span> <span class="n">RSTExporter</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># Process the notebook</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pelican</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Sometimes when showing schematic plots, this is the type of figure I
+want to display. But drawing it by hand is a pain: I&#39;d rather just use
+matplotlib. The problem is, matplotlib is a bit too precise. Attempting
+to duplicate this figure in matplotlib leads to something like this:
+
+.. code:: python
+
+    Image(&#39;http://jakevdp.github.com/figures/mpl_version.png&#39;)
+
+
+
+
+.. image:: output_5_0.png
+
+
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Programmatically-creating-templates">
+<h2>Programmatically creating templates<a class="headerlink" href="#Programmatically-creating-templates" title="제목 주소">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">DictLoader</span>
+
+<span class="n">dl</span> <span class="o">=</span> <span class="n">DictLoader</span><span class="p">({</span><span class="s1">&#39;full.tpl&#39;</span><span class="p">:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{%- extends &#39;basic.tpl&#39; -%}</span>
+
+<span class="sd">{% block footer %}</span>
+<span class="sd">FOOOOOOOOTEEEEER</span>
+<span class="sd">{% endblock footer %}</span>
+<span class="sd">&quot;&quot;&quot;</span><span class="p">})</span>
+
+
+<span class="n">exportHTML</span> <span class="o">=</span> <span class="n">HTMLExporter</span><span class="p">(</span><span class="n">extra_loaders</span><span class="o">=</span><span class="p">[</span><span class="n">dl</span><span class="p">])</span>
+<span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span> <span class="o">=</span> <span class="n">exportHTML</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">jake_notebook</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;/div&gt;
+&lt;/div&gt;
+FOOOOOOOOTEEEEER
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Real-World-Uses">
+<h2>Real World Uses<a class="headerlink" href="#Real-World-Uses" title="제목 주소">¶</a></h2>
+<p>&#64;jakevdp uses Pelican and Jupyter Notebook to blog. Pelican <a class="reference external" href="https://github.com/getpelican/pelican-plugins/pull/21">will use</a> nbconvert programmatically to generate blog post. Have a look a <a class="reference external" href="http://jakevdp.github.io/">Pythonic Preambulations</a> for Jake’s blog post.</p>
+<p>&#64;damianavila wrote the Nikola Plugin to <a class="reference external" href="http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-to-gh-pages.html">write blog post as Notebooks</a> and is developping a js-extension to publish notebooks via one click from the web app.</p>
+<center><blockquote class="twitter-tweet"><p><p>As &#64;Mbussonn requested… easieeeeer! Deploy your Nikola site with just a click in the IPython notebook! <a class="reference external" href="http://t.co/860sJunZvj">http://t.co/860sJunZvj</a> cc &#64;ralsina</p>
+</p><p>— Damián Avila (&#64;damian_avila) August 21, 2013</p>
+</blockquote></center></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="latex_citations.html" class="btn btn-neutral float-right" title="LaTeX citations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="Using as a command line tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

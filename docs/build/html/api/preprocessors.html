@@ -1,0 +1,514 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preprocessors &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Filters" href="filters.html" />
+    <link rel="prev" title="Exporters" href="exporters.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python API for working with nbconvert</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nbconvertapp.html">NbConvertApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exporters.html">Exporters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocessors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-preprocessors">Specialized preprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">Writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessors.html">Postprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Python API for working with nbconvert</a> &raquo;</li>
+        
+      <li>Preprocessors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/preprocessors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nbconvert.preprocessors">
+<span id="preprocessors"></span><h1>Preprocessors<a class="headerlink" href="#module-nbconvert.preprocessors" title="제목 주소">¶</a></h1>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="../config_options.html"><span class="doc">Configuration options</span></a></dt>
+<dd>Configurable options for the nbconvert application</dd>
+</dl>
+</div>
+<dl class="class">
+<dt id="nbconvert.preprocessors.Preprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">Preprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.Preprocessor" title="정의 주소">¶</a></dt>
+<dd><p>A configurable preprocessor</p>
+<p>Inherit from this class if you wish to have configurability for your
+preprocessor.</p>
+<p>Any configurable traitlets this class exposed will be configurable in
+profiles using c.SubClassName.attribute = value</p>
+<p>you can overwrite <a class="reference internal" href="#nbconvert.preprocessors.Preprocessor.preprocess_cell" title="nbconvert.preprocessors.Preprocessor.preprocess_cell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess_cell()</span></code></a> to apply a transformation
+independently on each cell or <a class="reference internal" href="#nbconvert.preprocessors.Preprocessor.preprocess" title="nbconvert.preprocessors.Preprocessor.preprocess"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess()</span></code></a> if you prefer your own
+logic. See corresponding docstring for informations.</p>
+<dl class="docutils">
+<dt>Disabled by default and can be enabled via the config by</dt>
+<dd>'c.YourPreprocessorName.enabled = True'</dd>
+</dl>
+<dl class="method">
+<dt id="nbconvert.preprocessors.Preprocessor.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.Preprocessor.__init__" title="정의 주소">¶</a></dt>
+<dd><p>Public constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<em>Config</em>) -- Configuration file structure</li>
+<li><strong>**kw</strong> -- Additional keyword arguments passed to parent</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.preprocessors.Preprocessor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>nb</em>, <em>resources</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.Preprocessor.preprocess" title="정의 주소">¶</a></dt>
+<dd><p>Preprocessing to apply on each notebook.</p>
+<p>Must return modified nb, resources.</p>
+<p>If you wish to apply your preprocessing to each cell, you might want
+to override preprocess_cell method instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nb</strong> (<em>NotebookNode</em>) -- Notebook being converted</li>
+<li><strong>resources</strong> (<em>dictionary</em>) -- Additional resources used in the conversion process.  Allows
+preprocessors to pass variables into the Jinja engine.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.preprocessors.Preprocessor.preprocess_cell">
+<code class="descname">preprocess_cell</code><span class="sig-paren">(</span><em>cell</em>, <em>resources</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.Preprocessor.preprocess_cell" title="정의 주소">¶</a></dt>
+<dd><p>Override if you want to apply some preprocessing to each cell.
+Must return modified cell and resource dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cell</strong> (<em>NotebookNode cell</em>) -- Notebook cell being processed</li>
+<li><strong>resources</strong> (<em>dictionary</em>) -- Additional resources used in the conversion process.  Allows
+preprocessors to pass variables into the Jinja engine.</li>
+<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) -- Index of the cell being processed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="specialized-preprocessors">
+<h2>Specialized preprocessors<a class="headerlink" href="#specialized-preprocessors" title="제목 주소">¶</a></h2>
+<dl class="class">
+<dt id="nbconvert.preprocessors.ConvertFiguresPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">ConvertFiguresPreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ConvertFiguresPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Converts all of the outputs in a notebook from one format to another.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.SVG2PDFPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">SVG2PDFPreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.SVG2PDFPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Converts all of the outputs in a notebook from SVG to PDF.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.ExtractOutputPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">ExtractOutputPreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ExtractOutputPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Extracts all of the outputs from the notebook file.  The extracted
+outputs are returned in the 'resources' dictionary.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.LatexPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">LatexPreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.LatexPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Preprocessor for latex destined documents.</p>
+<p>Mainly populates the <cite>latex</cite> key in the resources dict,
+adding definitions for pygments highlight styles.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.CSSHTMLHeaderPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">CSSHTMLHeaderPreprocessor</code><span class="sig-paren">(</span><em>*pargs</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.CSSHTMLHeaderPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Preprocessor used to pre-process notebook for HTML output.  Adds IPython notebook
+front-end CSS and Pygments CSS to HTML output.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.HighlightMagicsPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">HighlightMagicsPreprocessor</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.HighlightMagicsPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Detects and tags code cells that use a different languages than Python.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.ClearOutputPreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">ClearOutputPreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ClearOutputPreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Removes the output from all code cells in a notebook.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.RegexRemovePreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">RegexRemovePreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.RegexRemovePreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Removes cells from a notebook that match one or more regular expression.</p>
+<p>For each cell, the preprocessor checks whether its contents match
+the regular expressions in the <cite>patterns</cite> traitlet which is a list
+of unicode strings. If the contents match any of the patterns, the cell
+is removed from the notebook.</p>
+<p>By default, <cite>patterns = [r'Z']</cite> which matches the empty string such that
+strictly empty cells are removed. To modify the list of matched patterns,
+modify the patterns traitlet. For example, execute the following command
+to convert a notebook to html and remove cells containing only whitespace:</p>
+<p>&gt; jupyter nbconvert --RegexRemovePreprocessor.enabled=True       --RegexRemovePreprocessor.patterns=&quot;['s*Z']&quot; mynotebook.ipynb</p>
+<p>The first command line argument enables the preprocessor and the second
+sets the list of patterns to 's*Z' which matches an arbitrary number
+of whitespace characters followed by the end of the string.</p>
+<p>See <a class="reference external" href="https://regex101.com/">https://regex101.com/</a> for an interactive guide to regular expressions
+(make sure to select the python flavor). See
+<a class="reference external" href="https://docs.python.org/library/re.html">https://docs.python.org/library/re.html</a> for the official regular expression
+documentation in python.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.preprocessors.ExecutePreprocessor">
+<em class="property">class </em><code class="descclassname">nbconvert.preprocessors.</code><code class="descname">ExecutePreprocessor</code><span class="sig-paren">(</span><em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ExecutePreprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Executes all the cells in a notebook</p>
+<dl class="method">
+<dt id="nbconvert.preprocessors.ExecutePreprocessor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>nb</em>, <em>resources</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ExecutePreprocessor.preprocess" title="정의 주소">¶</a></dt>
+<dd><p>Preprocess notebook executing each code cell.</p>
+<p>The input argument <cite>nb</cite> is modified in-place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first simple">
+<li><strong>nb</strong> (<em>NotebookNode</em>) -- Notebook being executed.</li>
+<li><strong>resources</strong> (<em>dictionary</em>) -- Additional resources used in the conversion process. For example,
+passing <code class="docutils literal notranslate"><span class="pre">{'metadata':</span> <span class="pre">{'path':</span> <span class="pre">run_path}}</span></code> sets the
+execution path to <code class="docutils literal notranslate"><span class="pre">run_path</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">반환:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>nb</strong> (<em>NotebookNode</em>) -- The executed notebook.</li>
+<li><strong>resources</strong> (<em>dictionary</em>) -- Additional resources used in the conversion process.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.preprocessors.ExecutePreprocessor.preprocess_cell">
+<code class="descname">preprocess_cell</code><span class="sig-paren">(</span><em>cell</em>, <em>resources</em>, <em>cell_index</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.ExecutePreprocessor.preprocess_cell" title="정의 주소">¶</a></dt>
+<dd><p>Executes a single code cell. See base.py for details.</p>
+<p>To execute all cells see <a class="reference internal" href="#nbconvert.preprocessors.ExecutePreprocessor.preprocess" title="nbconvert.preprocessors.ExecutePreprocessor.preprocess"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nbconvert.preprocessors.coalesce_streams">
+<code class="descclassname">nbconvert.preprocessors.</code><code class="descname">coalesce_streams</code><span class="sig-paren">(</span><em>cell</em>, <em>resources</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.preprocessors.coalesce_streams" title="정의 주소">¶</a></dt>
+<dd><p>Merge consecutive sequences of stream output into single stream
+to prevent extra newlines inserted at flush calls</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cell</strong> (<em>NotebookNode cell</em>) -- Notebook cell being processed</li>
+<li><strong>resources</strong> (<em>dictionary</em>) -- Additional resources used in the conversion process.  Allows
+transformers to pass variables into the Jinja engine.</li>
+<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) -- Index of the cell being processed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="filters.html" class="btn btn-neutral float-right" title="Filters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="exporters.html" class="btn btn-neutral" title="Exporters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

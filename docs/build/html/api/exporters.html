@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exporters &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Preprocessors" href="preprocessors.html" />
+    <link rel="prev" title="NbConvertApp" href="nbconvertapp.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python API for working with nbconvert</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nbconvertapp.html">NbConvertApp</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exporters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exporter-base-classes">Exporter base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-exporter-classes">Specialized exporter classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessors.html">Preprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">Writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessors.html">Postprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Python API for working with nbconvert</a> &raquo;</li>
+        
+      <li>Exporters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/exporters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nbconvert.exporters">
+<span id="exporters"></span><h1>Exporters<a class="headerlink" href="#module-nbconvert.exporters" title="제목 주소">¶</a></h1>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="../config_options.html"><span class="doc">Configuration options</span></a></dt>
+<dd>Configurable options for the nbconvert application</dd>
+</dl>
+</div>
+<dl class="function">
+<dt id="nbconvert.exporters.export">
+<code class="descclassname">nbconvert.exporters.</code><code class="descname">export</code><span class="sig-paren">(</span><em>exporter</em>, <em>nb</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.export" title="정의 주소">¶</a></dt>
+<dd><p>Export a notebook object using specific exporter class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first simple">
+<li><strong>exporter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Exporter</span></code> class or instance) -- Class or instance of the exporter that should be used.  If the
+method initializes its own instance of the class, it is ASSUMED that
+the class type provided exposes a constructor (<code class="docutils literal notranslate"><span class="pre">__init__</span></code>) with the same
+signature as the base Exporter class.</li>
+<li><strong>nb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">NotebookNode</span></code>) -- The notebook to export.</li>
+<li><strong>config</strong> (<em>config</em><em> (</em><em>optional</em><em>, </em><em>keyword arg</em><em>)</em>) -- User configuration instance.</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em> (</em><em>optional</em><em>, </em><em>keyword arg</em><em>)</em>) -- Resources used in the conversion process.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">반환:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>output <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The resulting converted notebook.</p>
+</dd>
+<dt>resources <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span></dt>
+<dd><p class="first last">Dictionary of resources used prior to and during the conversion
+process.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">반환 형식:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)">tuple</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nbconvert.exporters.get_exporter">
+<code class="descclassname">nbconvert.exporters.</code><code class="descname">get_exporter</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.get_exporter" title="정의 주소">¶</a></dt>
+<dd><p>Given an exporter name or import path, return a class ready to be instantiated</p>
+<p>Raises ValueError if exporter is not found</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nbconvert.exporters.get_export_names">
+<code class="descclassname">nbconvert.exporters.</code><code class="descname">get_export_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.get_export_names" title="정의 주소">¶</a></dt>
+<dd><p>Return a list of the currently supported export targets</p>
+<p>Exporters can be found in external packages by registering
+them as an nbconvert.exporter entrypoint.</p>
+</dd></dl>
+
+<div class="section" id="exporter-base-classes">
+<h2>Exporter base classes<a class="headerlink" href="#exporter-base-classes" title="제목 주소">¶</a></h2>
+<dl class="class">
+<dt id="nbconvert.exporters.Exporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">Exporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter" title="정의 주소">¶</a></dt>
+<dd><p>Class containing methods that sequentially run a list of preprocessors on a
+NotebookNode object and then return the modified NotebookNode object and
+accompanying resources dict.</p>
+<dl class="method">
+<dt id="nbconvert.exporters.Exporter.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter.__init__" title="정의 주소">¶</a></dt>
+<dd><p>Public constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code>) -- User configuration instance.</li>
+<li><strong>**kw</strong> -- Additional keyword arguments passed to parent __init__</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.Exporter.from_notebook_node">
+<code class="descname">from_notebook_node</code><span class="sig-paren">(</span><em>nb</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter.from_notebook_node" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook node instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">NotebookNode</span></code>) -- Notebook node (dict-like with attr-access)</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+<li><strong>**kw</strong> -- Ignored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.Exporter.from_filename">
+<code class="descname">from_filename</code><span class="sig-paren">(</span><em>filename</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter.from_filename" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- Full filename of the notebook file to open and convert.</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+<li><strong>**kw</strong> -- Ignored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.Exporter.from_file">
+<code class="descname">from_file</code><span class="sig-paren">(</span><em>file_stream</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter.from_file" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>file_stream</strong> (<em>file-like object</em>) -- Notebook file-like object to convert.</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+<li><strong>**kw</strong> -- Ignored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.Exporter.register_preprocessor">
+<code class="descname">register_preprocessor</code><span class="sig-paren">(</span><em>preprocessor</em>, <em>enabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.Exporter.register_preprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Register a preprocessor.
+Preprocessors are classes that act upon the notebook before it is
+passed into the Jinja templating engine.  preprocessors are also
+capable of passing additional information to the Jinja
+templating engine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>preprocessor</strong> (<a class="reference internal" href="preprocessors.html#nbconvert.preprocessors.Preprocessor" title="nbconvert.preprocessors.Preprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Preprocessor</span></code></a>) -- A dotted module name, a type, or an instance</li>
+<li><strong>enabled</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) -- Mark the preprocessor as enabled</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.TemplateExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">TemplateExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports notebooks into other file formats.  Uses Jinja 2 templating engine
+to output new formats.  Inherit from this class if you are creating a new
+template type along with new filters/preprocessors.  If the filters/
+preprocessors provided by default suffice, there is no need to inherit from
+this class.  Instead, override the template_file and file_extension
+traits via a config file.</p>
+<p>Filters available by default for templates:</p>
+<ul class="simple">
+<li>add_anchor</li>
+<li>add_prompts</li>
+<li>ansi2html</li>
+<li>ansi2latex</li>
+<li>ascii_only</li>
+<li>citation2latex</li>
+<li>comment_lines</li>
+<li>convert_pandoc</li>
+<li>escape_latex</li>
+<li>filter_data_type</li>
+<li>get_lines</li>
+<li>get_metadata</li>
+<li>highlight2html</li>
+<li>highlight2latex</li>
+<li>html2text</li>
+<li>indent</li>
+<li>ipython2python</li>
+<li>json_dumps</li>
+<li>markdown2asciidoc</li>
+<li>markdown2html</li>
+<li>markdown2latex</li>
+<li>markdown2rst</li>
+<li>path2url</li>
+<li>posix_path</li>
+<li>prevent_list_blocks</li>
+<li>strip_ansi</li>
+<li>strip_dollars</li>
+<li>strip_files_prefix</li>
+<li>wrap_text</li>
+</ul>
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.__init__" title="정의 주소">¶</a></dt>
+<dd><p>Public constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<em>config</em>) -- User configuration instance.</li>
+<li><strong>extra_loaders</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>[</em><em>of Jinja Loaders</em><em>]</em>) -- ordered list of Jinja loader to find templates. Will be tried in order
+before the default FileSystem ones.</li>
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em> (</em><em>optional</em><em>, </em><em>kw arg</em><em>)</em>) -- Template to use when exporting.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.from_notebook_node">
+<code class="descname">from_notebook_node</code><span class="sig-paren">(</span><em>nb</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.from_notebook_node" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook node instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">NotebookNode</span></code>) -- Notebook node</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.from_filename">
+<code class="descname">from_filename</code><span class="sig-paren">(</span><em>filename</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.from_filename" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- Full filename of the notebook file to open and convert.</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+<li><strong>**kw</strong> -- Ignored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.from_file">
+<code class="descname">from_file</code><span class="sig-paren">(</span><em>file_stream</em>, <em>resources=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.from_file" title="정의 주소">¶</a></dt>
+<dd><p>Convert a notebook from a notebook file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>file_stream</strong> (<em>file-like object</em>) -- Notebook file-like object to convert.</li>
+<li><strong>resources</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Additional resources that can be accessed read/write by
+preprocessors and filters.</li>
+<li><strong>**kw</strong> -- Ignored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.register_preprocessor">
+<code class="descname">register_preprocessor</code><span class="sig-paren">(</span><em>preprocessor</em>, <em>enabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.register_preprocessor" title="정의 주소">¶</a></dt>
+<dd><p>Register a preprocessor.
+Preprocessors are classes that act upon the notebook before it is
+passed into the Jinja templating engine.  preprocessors are also
+capable of passing additional information to the Jinja
+templating engine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>preprocessor</strong> (<a class="reference internal" href="preprocessors.html#nbconvert.preprocessors.Preprocessor" title="nbconvert.preprocessors.Preprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Preprocessor</span></code></a>) -- A dotted module name, a type, or an instance</li>
+<li><strong>enabled</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) -- Mark the preprocessor as enabled</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nbconvert.exporters.TemplateExporter.register_filter">
+<code class="descname">register_filter</code><span class="sig-paren">(</span><em>name</em>, <em>jinja_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.TemplateExporter.register_filter" title="정의 주소">¶</a></dt>
+<dd><p>Register a filter.
+A filter is a function that accepts and acts on one string.
+The filters are accessible within the Jinja templating engine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">매개 변수:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- name to give the filter in the Jinja engine</li>
+<li><strong>filter</strong> (<em>filter</em>) -- </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="specialized-exporter-classes">
+<h2>Specialized exporter classes<a class="headerlink" href="#specialized-exporter-classes" title="제목 주소">¶</a></h2>
+<p>The <a class="reference internal" href="#nbconvert.exporters.NotebookExporter" title="nbconvert.exporters.NotebookExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">NotebookExporter</span></code></a> inherits directly from
+<a class="reference internal" href="#nbconvert.exporters.Exporter" title="nbconvert.exporters.Exporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exporter</span></code></a>, while the other exporters listed here
+inherit either directly or indirectly from
+<a class="reference internal" href="#nbconvert.exporters.TemplateExporter" title="nbconvert.exporters.TemplateExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateExporter</span></code></a>.</p>
+<dl class="class">
+<dt id="nbconvert.exporters.NotebookExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">NotebookExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.NotebookExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports to an IPython notebook.</p>
+<p>This is useful when you want to use nbconvert's preprocessors to operate on
+a notebook (e.g. to execute it) and then write it back to a notebook file.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.HTMLExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">HTMLExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.HTMLExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports a basic HTML document.  This exporter assists with the export of
+HTML.  Inherit from it if you are writing your own HTML template and need
+custom preprocessors/filters.  If you don't need custom preprocessors/
+filters, just change the 'template_file' config option.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.SlidesExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">SlidesExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.SlidesExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports HTML slides with reveal.js</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.LatexExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">LatexExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.LatexExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports to a Latex template.  Inherit from this class if your template is
+LaTeX based and you need custom tranformers/filters.  Inherit from it if
+you are writing your own HTML template and need custom tranformers/filters.
+If you don't need custom tranformers/filters, just change the
+'template_file' config option.  Place your template in the special &quot;/latex&quot;
+subfolder of the &quot;../templates&quot; folder.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.MarkdownExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">MarkdownExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.MarkdownExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports to a markdown document (.md)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.PDFExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">PDFExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.PDFExporter" title="정의 주소">¶</a></dt>
+<dd><p>Writer designed to write to PDF files.</p>
+<p>This inherits from <a class="reference internal" href="#nbconvert.exporters.LatexExporter" title="nbconvert.exporters.LatexExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatexExporter</span></code></a>. It creates a LaTeX file in
+a temporary directory using the template machinery, and then runs LaTeX
+to create a pdf.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.PythonExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">PythonExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.PythonExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports a Python code file.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nbconvert.exporters.RSTExporter">
+<em class="property">class </em><code class="descclassname">nbconvert.exporters.</code><code class="descname">RSTExporter</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#nbconvert.exporters.RSTExporter" title="정의 주소">¶</a></dt>
+<dd><p>Exports reStructuredText documents.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preprocessors.html" class="btn btn-neutral float-right" title="Preprocessors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nbconvertapp.html" class="btn btn-neutral" title="NbConvertApp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

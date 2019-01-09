@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/execute_api.rst:2
+msgid "Executing notebooks"
+msgstr ""
+
+#: ../../source/execute_api.rst:6
+msgid "Jupyter notebooks are often saved with output cells that have been cleared. nbconvert provides a convenient way to execute the input cells of an .ipynb notebook file and save the results, both input and output cells, as a .ipynb file."
+msgstr ""
+
+#: ../../source/execute_api.rst:11
+msgid "In this section we show how to execute a ``.ipynb`` notebook document saving the result in notebook format. If you need to export notebooks to other formats, such as reStructured Text or Markdown (optionally executing them) see section :doc:`nbconvert_library`."
+msgstr ""
+
+#: ../../source/execute_api.rst:16
+msgid "Executing notebooks can be very helpful, for example, to run all notebooks in Python library in one step, or as a way to automate the data analysis in projects involving more than one notebook."
+msgstr ""
+
+#: ../../source/execute_api.rst:21
+msgid "Executing notebooks from the command line"
+msgstr ""
+
+#: ../../source/execute_api.rst:22
+msgid "The same functionality of executing notebooks is exposed through a :doc:`command line interface <usage>` or a Python API interface. As an example, a notebook can be executed from the command line with::"
+msgstr ""
+
+#: ../../source/execute_api.rst:29
+msgid "Executing notebooks using the Python API interface"
+msgstr ""
+
+#: ../../source/execute_api.rst:30
+msgid "This section will illustrate the Python API interface."
+msgstr ""
+
+#: ../../source/execute_api.rst:33
+msgid "Example"
+msgstr ""
+
+#: ../../source/execute_api.rst:35
+msgid "Let's start with a complete quick example, leaving detailed explanations to the following sections."
+msgstr ""
+
+#: ../../source/execute_api.rst:38
+msgid "**Import**: First we import nbconvert and the :class:`ExecutePreprocessor` class::"
+msgstr ""
+
+#: ../../source/execute_api.rst:44
+msgid "**Load**: Assuming that ``notebook_filename`` contains the path of a notebook, we can load it with::"
+msgstr ""
+
+#: ../../source/execute_api.rst:50
+msgid "**Configure**: Next, we configure the notebook execution mode::"
+msgstr ""
+
+#: ../../source/execute_api.rst:54
+msgid "We specified two (optional) arguments ``timeout`` and ``kernel_name``, which define respectively the cell execution timeout and the execution kernel."
+msgstr ""
+
+#: ../../source/execute_api.rst:57
+msgid "The option to specify **kernel_name** is new in nbconvert 4.2. When not specified or when using nbconvert <4.2, the default Python kernel is chosen."
+msgstr ""
+
+#: ../../source/execute_api.rst:61
+msgid "**Execute/Run (preprocess)**: To actually run the notebook we call the method ``preprocess``::"
+msgstr ""
+
+#: ../../source/execute_api.rst:66
+msgid "Hopefully, we will not get any errors during the notebook execution (see the last section for error handling). Note that ``path`` specifies in which folder to execute the notebook."
+msgstr ""
+
+#: ../../source/execute_api.rst:70
+msgid "**Save**: Finally, save the resulting notebook with::"
+msgstr ""
+
+#: ../../source/execute_api.rst:75
+msgid "That's all. Your executed notebook will be saved in the current folder in the file ``executed_notebook.ipynb``."
+msgstr ""
+
+#: ../../source/execute_api.rst:79
+msgid "Execution arguments (traitlets)"
+msgstr ""
+
+#: ../../source/execute_api.rst:81
+msgid "The arguments passed to :class:`ExecutePreprocessor` are configuration options called `traitlets <https://traitlets.readthedocs.io/en/stable>`_. There are many cool things about traitlets. For example, they enforce the input type, and they can be accessed/modified as class attributes. Moreover, each traitlet is automatically exposed as command-line options. For example, we can pass the timeout from the command-line like this::"
+msgstr ""
+
+#: ../../source/execute_api.rst:91
+msgid "Let's now discuss in more detail the two traitlets we used."
+msgstr ""
+
+#: ../../source/execute_api.rst:93
+msgid "The ``timeout`` traitlet defines the maximum time (in seconds) each notebook cell is allowed to run, if the execution takes longer an exception will be raised. The default is 30 s, so in cases of long-running cells you may want to specify an higher value. The ``timeout`` option can also be set to ``None`` or ``-1`` to remove any restriction on execution time."
+msgstr ""
+
+#: ../../source/execute_api.rst:99
+msgid "The second traitlet, ``kernel_name``, allows specifying the name of the kernel to be used for the execution. By default, the kernel name is obtained from the notebook metadata. The traitlet ``kernel_name`` allows specifying a user-defined kernel, overriding the value in the notebook metadata. A common use case is that of a Python 2/3 library which includes documentation/testing notebooks. These notebooks will specify either a python2 or python3 kernel in their metadata (depending on the kernel used the last time the notebook was saved). In reality, these notebooks will work on both Python 2 and Python 3, and, for testing, it is important to be able to execute them programmatically on both versions. Here the traitlet ``kernel_name`` helps simplify and maintain consistency: we can just run a notebook twice, specifying first \"python2\" and then \"python3\" as the kernel name."
+msgstr ""
+
+#: ../../source/execute_api.rst:113
+msgid "Handling errors and exceptions"
+msgstr ""
+
+#: ../../source/execute_api.rst:115
+msgid "In the previous sections we saw how to save an executed notebook, assuming there are no execution errors. But, what if there are errors?"
+msgstr ""
+
+#: ../../source/execute_api.rst:119
+msgid "Execution until first error"
+msgstr ""
+
+#: ../../source/execute_api.rst:120
+msgid "An error during the notebook execution, by default, will stop the execution and raise a ``CellExecutionError``. Conveniently, the source cell causing the error and the original error name and message are also printed. After an error, we can still save the notebook as before::"
+msgstr ""
+
+#: ../../source/execute_api.rst:128
+msgid "The saved notebook contains the output up until the failing cell, and includes a full stack-trace and error (which can help debugging)."
+msgstr ""
+
+#: ../../source/execute_api.rst:132
+msgid "Handling errors"
+msgstr ""
+
+#: ../../source/execute_api.rst:133
+msgid "A useful pattern to execute notebooks while handling errors is the following::"
+msgstr ""
+
+#: ../../source/execute_api.rst:149
+msgid "This will save the executed notebook regardless of execution errors. In case of errors, however, an additional message is printed and the ``CellExecutionError`` is raised. The message directs the user to the saved notebook for further inspection."
+msgstr ""
+
+#: ../../source/execute_api.rst:155
+msgid "Execute and save all errors"
+msgstr ""
+
+#: ../../source/execute_api.rst:156
+msgid "As a last scenario, it is sometimes useful to execute notebooks which raise exceptions, for example to show an error condition. In this case, instead of stopping the execution on the first error, we can keep executing the notebook using the traitlet ``allow_errors`` (default is False). With ``allow_errors=True``, the notebook is executed until the end, regardless of any error encountered during the execution. The output notebook, will contain the stack-traces and error messages for **all** the cells raising exceptions."
+msgstr ""
+

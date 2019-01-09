@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nbconvert: Convert Notebooks to other formats &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>nbconvert: Convert Notebooks to other formats</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="nbconvert-convert-notebooks-to-other-formats">
+<h1>nbconvert: Convert Notebooks to other formats<a class="headerlink" href="#nbconvert-convert-notebooks-to-other-formats" title="제목 주소">¶</a></h1>
+<p>Using <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> enables:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>presentation</strong> of information in familiar formats, such as PDF.</li>
+<li><strong>publishing</strong> of research using LaTeX and opens the door for embedding
+notebooks in papers.</li>
+<li><strong>collaboration</strong> with others who may not use the notebook in their
+work.</li>
+<li><strong>sharing</strong> contents with many people via the web using HTML.</li>
+</ul>
+</div></blockquote>
+<p>Overall, notebook conversion and the <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> tool give scientists and
+researchers the flexibility to deliver information in a timely way across
+different formats.</p>
+<p>Primarily, the <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> tool allows you to convert a Jupyter <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>
+notebook document file into another static format including HTML, LaTeX, PDF,
+Markdown, reStructuredText, and more. <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> can also add productivity
+to your workflow when used to execute notebooks programmatically.</p>
+<p>If used as a Python library (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">nbconvert</span></code>), <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> adds
+notebook conversion within a project. For example, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> is used to
+implement the &quot;Download as&quot; feature within the Jupyter Notebook web
+application. When used as a command line tool (invoked as
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbconvert</span> <span class="pre">...</span></code>), users can conveniently convert just one or a
+batch of notebook files to another format.</p>
+<p><strong>Contents:</strong></p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installing-nbconvert">Installing nbconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installing-pandoc">Installing Pandoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installing-tex">Installing TeX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#default-output-format-html">Default output format - HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#supported-output-formats">Supported output formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#converting-multiple-notebooks">Converting multiple notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Quick-overview">Quick overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Extracting-Figures-using-the-RST-Exporter">Extracting Figures using the RST Exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Extracting-Figures-using-the-HTML-Exporter">Extracting Figures using the HTML Exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Custom-Preprocessors">Custom Preprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Programmatically-creating-templates">Programmatically creating templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nbconvert_library.html#Real-World-Uses">Real World Uses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="execute_api.html#executing-notebooks-from-the-command-line">Executing notebooks from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execute_api.html#executing-notebooks-using-the-python-api-interface">Executing notebooks using the Python API interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execute_api.html#execution-arguments-traitlets">Execution arguments (traitlets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execute_api.html#handling-errors-and-exceptions">Handling errors and exceptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="customizing.html#Converting-a-notebook-to-an-(I)Python-script-and-printing-to-stdout">Converting a notebook to an (I)Python script and printing to stdout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing.html#Custom-Templates">Custom Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing.html#Template-structure">Template structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing.html#Templates-using-cell-tags">Templates using cell tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing.html#Templates-using-custom-cell-metadata">Templates using custom cell metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="external_exporters.html#extending-the-built-in-format-exporters">Extending the built-in format exporters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_exporters.html#registering-a-custom-exporter-as-an-entry-point">Registering a custom exporter as an entry point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_exporters.html#using-a-custom-exporter-without-entrypoints">Using a custom exporter without entrypoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#a-detailed-pipeline-exploration">A detailed pipeline exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/nbconvertapp.html">NbConvertApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/exporters.html">Exporters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/preprocessors.html">Preprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/writers.html">Writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/postprocessors.html">Postprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#assign-all-merged-prs-to-milestones">Assign all merged PRs to milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#gather-all-prs-related-to-milestone">Gather all PRs related to milestone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#manually-categorize-tickets">Manually categorize tickets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#collect-major-changes">Collect major changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#update-docs-source-changelog-rst">Update docs/source/changelog.rst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#check-installed-tools">Check installed tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#clean-the-repository">Clean the repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#create-the-release">Create the release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#release-the-new-version">Release the new version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#return-to-development-state">Return to development state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_release.html#email-googlegroup-with-update-letter">Email googlegroup with update letter</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id3">5.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id4">5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id6">5.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id9">5.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id10">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id11">5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id12">4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id13">4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id15">4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id17">4.0</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">색인</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">모듈 목록</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">검색 페이지</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

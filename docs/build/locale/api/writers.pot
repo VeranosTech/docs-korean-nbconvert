@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2019, Jupyter Development Team
+# This file is distributed under the same license as the nbconvert package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nbconvert 5.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-09 12:23+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api/writers.rst:2
+msgid "Writers"
+msgstr ""
+
+#: ../../source/api/writers.rst:8
+msgid ":doc:`/config_options`"
+msgstr ""
+
+#: ../../source/api/writers.rst:9
+msgid "Configurable options for the nbconvert application"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase:1
+msgid "Consumes output from nbconvert export...() methods and writes to a useful location."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase.__init__:1
+msgid "Constructor"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase.write:1
+msgid "Consume and write Jinja output."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase.write:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase.write:3
+msgid "Conversion results.  This string contains the file contents of the converted file."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/base.py:docstring of nbconvert.writers.WriterBase.write:6
+msgid "Resources created and filled by the nbconvert conversion process. Includes output from preprocessors, such as the extract figure preprocessor."
+msgstr ""
+
+#: ../../source/api/writers.rst:18
+msgid "Specialized writers"
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/debug.py:docstring of nbconvert.writers.DebugWriter:1
+msgid "Consumes output from nbconvert export...() methods and writes usefull debugging information to the stdout.  The information includes a list of resources that were extracted from the notebook(s) during export."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/files.py:docstring of nbconvert.writers.FilesWriter:1
+msgid "Consumes nbconvert output and produces files."
+msgstr ""
+
+#: ../../../../../anaconda3/lib/python3.6/site-packages/nbconvert/writers/stdout.py:docstring of nbconvert.writers.StdoutWriter:1
+msgid "Consumes output from nbconvert export...() methods and writes to the stdout stream."
+msgstr ""
+

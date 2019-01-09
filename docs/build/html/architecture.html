@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Architecture of nbconvert &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Python API for working with nbconvert" href="api/index.html" />
+    <link rel="prev" title="Customizing exporters" href="external_exporters.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture of nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-detailed-pipeline-exploration">A detailed pipeline exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exporters">Exporters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessors">Preprocessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#templates-and-filters">Templates and Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writers">Writers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#postprocessors">Postprocessors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Architecture of nbconvert</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="architecture-of-nbconvert">
+<span id="architecture"></span><h1>Architecture of nbconvert<a class="headerlink" href="#architecture-of-nbconvert" title="제목 주소">¶</a></h1>
+<p>This is a high-level outline of the basic workflow, structures and objects in nbconvert.
+Specifically, this exposition has a two-fold goal:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>to alert you to the affordances available for customisation or direct contributions</li>
+<li>to provide a map of where and when different events occur, which should aid in tracking down bugs.</li>
+</ol>
+</div></blockquote>
+<div class="section" id="a-detailed-pipeline-exploration">
+<h2>A detailed pipeline exploration<a class="headerlink" href="#a-detailed-pipeline-exploration" title="제목 주소">¶</a></h2>
+<p>Nbconvert takes in a notebook, which is a JSON object, and operates on that object.</p>
+<p>This can include operations that take a notebook and return a notebook.
+For example, that operation could be to execute the notebook as though it were a continuous script; if it were executed <code class="docutils literal notranslate"><span class="pre">--in-place</span></code> then it would overwrite the current notebook.
+Or it could be that we wish to systematically alter the notebook, for example by clearing all output cells.
+Format agnostic operations on cell content that do not violate the nbformat spec can be interpreted as a notebook to notebook conversion step; such operations can be performed as part of the preprocessing step.</p>
+<p>But often we want to have the notebook's structured content in a different format.
+Importantly, in many cases the structure of the notebook should be reflected in the structure of the output, adapted to the output's format.
+For that purpose, the original JSON structure of the document is crucial scaffolding needed to support this kind of structured output.
+In order to maintain structured, it can be useful to apply our conversion programmatically on the structure itself.
+To do so, when converting to formats other than the notebook, we use the <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> templating engine.</p>
+<p>The basic unit of structure in a notebook is the cell.
+Accordingly, since our templating engine is capable of expressing structure, the basic unit in our templates will often be specified at the cell level.
+Each cell has a certain type; the three most important cell types for our purposes are code, markdown, and raw NbConvert.
+Code cells can be split further into their input and their output.
+Operations can also occur separately on input and output and their respective subcomponents.
+Markdown cells and raw NbConvert cells do not have analogous substructure.</p>
+<p>The template's structure then can be seen as a mechanism for selecting content on which to operate.
+Because the template operates on individual cells, this has some upsides and drawbacks.
+One upside is that this allows the template to have access to the individual cell's metadata, which enables intelligently transforming the appropriate content.
+The transformations occur as a series of replacement rules and filters.
+For many purposes these filters take the form of external calls to <a class="reference external" href="http://pandoc.org/">pandoc</a>, which is a utility for converting between many different document formats.
+One downside is that this makes operations that require global coördination (e.g., cross referencing across cells) somewhat challenging to implement as filters inside templates.</p>
+<p>Note that all that we've described is happening in memory.
+This is crucial in order to ensure that this functionality is available when writing files is more challenging.
+Nonetheless, the reason for using nbconvert almost always involves producing some kind of output file.
+We take the in-memory object and write a file appropriate for the output type.</p>
+<p>The entirety of heretofore described process can be described as part of an <code class="docutils literal notranslate"><span class="pre">Exporter</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Exporter</span></code>s often involves <code class="docutils literal notranslate"><span class="pre">Preprocessor</span></code>s, <code class="docutils literal notranslate"><span class="pre">filters</span></code>, <code class="docutils literal notranslate"><span class="pre">templates</span></code> and <code class="docutils literal notranslate"><span class="pre">Writer</span></code>s.
+These classes and functions are described in greater detail below.</p>
+<p>Finally, one can apply a <code class="docutils literal notranslate"><span class="pre">Postprocessor</span></code> after the writing has occurred.
+For example, it is common when converting to slides to start a webserver and open a browser window with the newly created document (<code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">slides</span> <span class="pre">--post</span> <span class="pre">serve</span></code>).</p>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="제목 주소">¶</a></h2>
+<div class="section" id="exporters">
+<span id="id1"></span><h3>Exporters<a class="headerlink" href="#exporters" title="제목 주소">¶</a></h3>
+<p>The primary class in nbconvert is the <a class="reference internal" href="api/exporters.html#nbconvert.exporters.Exporter" title="nbconvert.exporters.Exporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exporter</span></code></a>.
+Exporters encapsulate the operation of turning a notebook into another format.
+There is one Exporter for each format supported in nbconvert.
+The first thing an Exporter does is load a notebook, usually from a file via <code class="xref py py-mod docutils literal notranslate"><span class="pre">nbformat</span></code>.
+Most of what a typical Exporter does is select and configure preprocessors, filters, and templates.
+If you want to convert notebooks to additional formats, a new Exporter is probably what you are looking for.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<p class="last"><a class="reference internal" href="external_exporters.html#external-exporters"><span class="std std-ref">Writing a custom Exporter</span></a></p>
+</div>
+<p>Once the notebook is loaded, it is preprocessed...</p>
+</div>
+<div class="section" id="preprocessors">
+<span id="id2"></span><h3>Preprocessors<a class="headerlink" href="#preprocessors" title="제목 주소">¶</a></h3>
+<p>A <a class="reference internal" href="api/preprocessors.html#nbconvert.preprocessors.Preprocessor" title="nbconvert.preprocessors.Preprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Preprocessor</span></code></a> is an object that transforms the content of the notebook to be exported.
+The result of a preprocessor being applied to a notebook is always a notebook.
+These operations include re-executing the cells, stripping output,
+removing bundled outputs to separate files, etc.
+If you want to add operations that modify a notebook before exporting,
+a preprocessor is the place to start.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<p class="last"><a class="reference external" href="nbconvert_library.html#Custom-Preprocessors">Custom Preprocessors</a></p>
+</div>
+<p>Once a notebook is preprocessed, it's time to convert the notebook into the destination format.</p>
+</div>
+<div class="section" id="templates-and-filters">
+<span id="id3"></span><h3>Templates and Filters<a class="headerlink" href="#templates-and-filters" title="제목 주소">¶</a></h3>
+<p>Most Exporters in nbconvert are a subclass of <a class="reference internal" href="api/exporters.html#nbconvert.exporters.TemplateExporter" title="nbconvert.exporters.TemplateExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateExporter</span></code></a>,
+which means they use a <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> template to render a notebook into the destination format.
+If you want to change how an exported notebook looks in an existing format,
+a custom template is the place to start.</p>
+<p>A jinja template is composed of blocks that look like this
+(taken from nbconvert's default html template):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% block stream_stdout -%}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;output_subarea output_stream output_stdout output_text&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;</span>
+{{- output.text | ansi2html -}}
+<span class="p">&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{%- endblock stream_stdout %}
+</pre></div>
+</div>
+<p>This block determines how text output on <code class="docutils literal notranslate"><span class="pre">stdout</span></code> is displayed in HTML.
+The <code class="docutils literal notranslate"><span class="pre">{{-</span> <span class="pre">output.text</span> <span class="pre">|</span> <span class="pre">ansi2html</span> <span class="pre">-}}</span></code> bit means
+&quot;Take the output text and pass it through ansi2html, then include the result here.&quot;
+In this example, <code class="docutils literal notranslate"><span class="pre">ansi2html</span></code> is a <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#filters">filter</a>.
+Filters are a jinja concept; they are Python callables which take something (typically text) as an input, and produce a text output.
+If you want to perform new or more complex transformations of particular outputs,
+a filter may be what you need.
+Typically, filters are pure functions.
+However, if you have a filter that itself requires some configuration,
+it can be an instance of a callable, configurable class.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">더 보기</p>
+<ul class="last simple">
+<li><a class="reference internal" href="customizing.html"><span class="doc">Customizing nbconvert</span></a></li>
+<li><a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#filters" title="(in Jinja2 v2.11)"><span>Filters</span></a></li>
+</ul>
+</div>
+<p>Once it has passed through the template, an Exporter is done with the notebook,
+and returns the file data.
+At this point, we have the file data as text or bytes and we can decide where it should end up.
+When you are using nbconvert as a library, as opposed to the command-line application,
+this is typically where you would stop, take your exported data, and go on your way.</p>
+</div>
+<div class="section" id="writers">
+<span id="id4"></span><h3>Writers<a class="headerlink" href="#writers" title="제목 주소">¶</a></h3>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">Writer</span></code> takes care of writing the resulting file(s) where they should end up.
+There are two basic Writers in nbconvert:</p>
+<ol class="arabic simple">
+<li>stdout - writes the result to stdout (for pipe-style workflows)</li>
+<li>Files (default) - writes the result to the filesystem</li>
+</ol>
+<p>Once the output is written, nbconvert has done its job.</p>
+</div>
+<div class="section" id="postprocessors">
+<span id="id5"></span><h3>Postprocessors<a class="headerlink" href="#postprocessors" title="제목 주소">¶</a></h3>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">Postprocessor</span></code> is something that runs after everything is exported and written to the filesystem.
+The only postprocessor in nbconvert at this point is the <a class="reference internal" href="api/postprocessors.html#nbconvert.postprocessors.ServePostProcessor" title="nbconvert.postprocessors.ServePostProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServePostProcessor</span></code></a>,
+which is used for serving <a class="reference external" href="http://lab.hakim.se/reveal-js">reveal.js</a> HTML slideshows.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/index.html" class="btn btn-neutral float-right" title="Python API for working with nbconvert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="external_exporters.html" class="btn btn-neutral" title="Customizing exporters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

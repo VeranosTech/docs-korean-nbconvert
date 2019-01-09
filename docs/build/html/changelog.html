@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Changes in nbconvert &mdash; nbconvert 5.4.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="prev" title="Making an nbconvert release" href="development_release.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using as a command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changes in nbconvert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#significant-changes">Significant Changes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deprecations">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changes-in-how-we-handle-metadata">Changes in how we handle metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurable-kernel-managers-when-executing-notebooks">Configurable kernel managers when executing notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#surfacing-exporters-in-front-ends">Surfacing exporters in front-ends</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-templates">Raw Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-command-line-flags">New command line flags</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#comprehensive-notes">Comprehensive notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#new-features">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixing-problems">Fixing Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-docs-and-builds">Testing, Docs, and Builds</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">5.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#major-features">Major features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tag-based-element-filtering">Tag Based Element Filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Comprehensive notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">5.2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Major features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#global-content-filtering">Global Content Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-notebooks-from-a-function">Execute notebooks from a function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-cells-based-on-regex-pattern">Remove cells based on regex pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-exporter-entrypoints-for-nonpython-scripts">Script exporter entrypoints for nonpython scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Comprehensive notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">5.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">4.0</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Changes in nbconvert</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="changes-in-nbconvert">
+<span id="changelog"></span><h1>Changes in nbconvert<a class="headerlink" href="#changes-in-nbconvert" title="제목 주소">¶</a></h1>
+<div class="section" id="id1">
+<h2>5.4<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.4">5.4 on Github</a></p>
+<div class="section" id="significant-changes">
+<h3>Significant Changes<a class="headerlink" href="#significant-changes" title="제목 주소">¶</a></h3>
+<div class="section" id="deprecations">
+<h4>Deprecations<a class="headerlink" href="#deprecations" title="제목 주소">¶</a></h4>
+<p>Python 3.3 support was dropped. The version of python is no longer common and new versions have many fixes and interface improvements that warrant the change in support.</p>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/843/">PR #843</a> for implementation details.</p>
+</div>
+<div class="section" id="changes-in-how-we-handle-metadata">
+<h4>Changes in how we handle metadata<a class="headerlink" href="#changes-in-how-we-handle-metadata" title="제목 주소">¶</a></h4>
+<p>There were a few new metadata fields which are now respected in nbconvert.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nb.metadata.authors</span></code> metadata attribute will be respected in latex exports. Multiple authors will be added with <code class="docutils literal notranslate"><span class="pre">,</span></code> separation against their names.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nb.metadata.title</span></code> will be respected ahead of <code class="docutils literal notranslate"><span class="pre">nb.metadata.name</span></code> for title assignment. This better matches with the notebook format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nb.metadata.filename</span></code> will override the default <code class="docutils literal notranslate"><span class="pre">output_filename_template</span></code> when extracting notebook resources in the <code class="docutils literal notranslate"><span class="pre">ExtractOutputPreprocessor</span></code>. The attribute is helpful for when you want to consistently fix to a particular output filename, especially when you need to set image filenames for your exports.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">raises-exception</span></code> cell tag (<code class="docutils literal notranslate"><span class="pre">nb.cells[].metadata.tags[raises-exception]</span></code>) allows for cell exceptions to not halt execution. The tag is respected in the same way by <a class="reference external" href="https://github.com/computationalmodelling/nbval">nbval</a> and other notebook interfaces. <code class="docutils literal notranslate"><span class="pre">nb.metadata.allow_errors</span></code> will apply this rule for all cells. This feature is toggleable with the <code class="docutils literal notranslate"><span class="pre">force_raise_errors</span></code> configuration option.
+Errors from executing the notebook can be allowed with a <code class="docutils literal notranslate"><span class="pre">raises-exception</span></code> tag on a single cell, or the <code class="docutils literal notranslate"><span class="pre">allow_errors</span></code> configurable option for all cells. An allowed error will be recorded in notebook output, and execution will continue.
+If an error occurs when it is not explicitly allowed, a <code class="docutils literal notranslate"><span class="pre">CellExecutionError</span></code> will be raised.
+If <code class="docutils literal notranslate"><span class="pre">force_raise_errors</span></code> is True, <code class="docutils literal notranslate"><span class="pre">CellExecutionError</span></code> will be raised for any error that occurs while executing the notebook. This overrides both the <code class="docutils literal notranslate"><span class="pre">allow_errors</span></code> option and the <code class="docutils literal notranslate"><span class="pre">raises-exception</span></code> cell tags.</p>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/867/">PR #867</a>, <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/703/">PR #703</a>, <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/685/">PR #685</a>, <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/672/">PR #672</a>, and <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/684/">PR #684</a> for implementation changes.</p>
+</div>
+<div class="section" id="configurable-kernel-managers-when-executing-notebooks">
+<h4>Configurable kernel managers when executing notebooks<a class="headerlink" href="#configurable-kernel-managers-when-executing-notebooks" title="제목 주소">¶</a></h4>
+<p>The kernel manager can now be optionally passed into the <code class="docutils literal notranslate"><span class="pre">ExecutePreprocessor.preprocess</span></code> and the <code class="docutils literal notranslate"><span class="pre">executenb</span></code> functions as the keyword argument <code class="docutils literal notranslate"><span class="pre">km</span></code>. This means that the kernel can be configured as desired before beginning preprocessing.</p>
+<p>This is useful for executing in a context where the kernel has external dependencies that need to be set to non-default values. An example of this might be a Spark kernel where you wish to configure the Spark cluster location ahead of time without building a new kernel.</p>
+<p>Overall the ExecutePreprocessor has been reworked to make it easier to use. Future releases will continue this trend to make this section of the code more inheritable and reusable by others. We encourage you read the source code for this version if you're interested in the detailed improvements.</p>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/852/">PR #852</a> for implementation changes.</p>
+</div>
+<div class="section" id="surfacing-exporters-in-front-ends">
+<h4>Surfacing exporters in front-ends<a class="headerlink" href="#surfacing-exporters-in-front-ends" title="제목 주소">¶</a></h4>
+<p>Exporters are now exposed for front-ends to consume, including classic notebook. As an example, this means that latex exporter will be made available for latex 'text/latex' media type from the Download As interface.</p>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/759/">PR #759</a> and <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/864/">PR #864</a> for implementation changes.</p>
+</div>
+<div class="section" id="raw-templates">
+<h4>Raw Templates<a class="headerlink" href="#raw-templates" title="제목 주소">¶</a></h4>
+<p>Template exporters can now be assigned raw templates as string attributes by setting the <code class="docutils literal notranslate"><span class="pre">raw_template</span></code> variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AttrExporter</span><span class="p">(</span><span class="n">TemplateExporter</span><span class="p">):</span>
+    <span class="c1"># If the class has a special template and you want it defined within the class</span>
+    <span class="n">raw_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span><span class="si">%- e</span><span class="s2">xtends &#39;rst.tpl&#39; -%}</span>
+<span class="s2">{%- block in_prompt -%}</span>
+<span class="s2">raw template</span>
+<span class="s2">{</span><span class="si">%- e</span><span class="s2">ndblock in_prompt -%}</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+<span class="n">exporter_attr</span> <span class="o">=</span> <span class="n">AttrExporter</span><span class="p">()</span>
+<span class="n">output_attr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">exporter_attr</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s2">&quot;raw template&quot;</span> <span class="ow">in</span> <span class="n">output_attr</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/675/">PR #675</a> for implementation changes.</p>
+</div>
+<div class="section" id="new-command-line-flags">
+<h4>New command line flags<a class="headerlink" href="#new-command-line-flags" title="제목 주소">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">--no-input</span></code> will hide input cells on export. This is great for notebooks which generate &quot;reports&quot; where you want the code that was executed to not appear by default in the extracts.</p>
+<p>An alias for <code class="docutils literal notranslate"><span class="pre">notebook</span></code> was added to exporter commands. Now <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">ipynb</span></code> will behave as <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">notebook</span></code> does.</p>
+<p>See <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/825/">PR #825</a> and <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/873/">PR #873</a> for implementation changes.</p>
+</div>
+</div>
+<div class="section" id="comprehensive-notes">
+<h3>Comprehensive notes<a class="headerlink" href="#comprehensive-notes" title="제목 주소">¶</a></h3>
+<div class="section" id="new-features">
+<h4>New Features<a class="headerlink" href="#new-features" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>No input flag (<code class="docutils literal notranslate"><span class="pre">--no-input</span></code>) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/825/">PR #825</a></li>
+<li>Add alias <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">ipynb</span></code> for notebook exporter <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/873/">PR #873</a></li>
+<li>Add <code class="docutils literal notranslate"><span class="pre">export_from_notebook</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/864/">PR #864</a></li>
+<li>If set, use <code class="docutils literal notranslate"><span class="pre">nb.metadata.authors</span></code> for LaTeX author line <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/867/">PR #867</a></li>
+<li>Populate language_info metadata when executing <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/860/">PR #860</a></li>
+<li>Support for <code class="docutils literal notranslate"><span class="pre">\mathscr</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/830/">PR #830</a></li>
+<li>Allow the execute preprocessor to make use of an existing kernel <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/852/">PR #852</a></li>
+<li>Refactor ExecutePreprocessor <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/816/">PR #816</a></li>
+<li>Update widgets CDN for ipywidgets 7 w/fallback <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/792/">PR #792</a></li>
+<li>Add support for adding custom exporters to the &quot;Download as&quot; menu. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/759/">PR #759</a></li>
+<li>Enable ANSI underline and inverse <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/696/">PR #696</a></li>
+<li>Update notebook css to 5.4.0 <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/748/">PR #748</a></li>
+<li>Change default for slides to direct to the reveal cdn rather than locally <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/732/">PR #732</a></li>
+<li>Use &quot;title&quot; instead of &quot;name&quot; for metadata to match the notebook format <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/703/">PR #703</a></li>
+<li>Img filename metadata <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/685/">PR #685</a></li>
+<li>Added MathJax compatibility definitions <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/687/">PR #687</a></li>
+<li>Per cell exception <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/684/">PR #684</a></li>
+<li>Simple API for in-memory templates <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/674/">PR #674</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/675/">PR #675</a></li>
+<li>Set BIBINPUTS and BSTINPUTS environment variables when making PDF <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/676/">PR #676</a></li>
+<li>If <code class="docutils literal notranslate"><span class="pre">nb.metadata.title</span></code> is set, default to that for notebook <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/672/">PR #672</a></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4>Deprecations<a class="headerlink" href="#id2" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Drop support for python 3.3 <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/843/">PR #843</a></li>
+</ul>
+</div>
+<div class="section" id="fixing-problems">
+<h4>Fixing Problems<a class="headerlink" href="#fixing-problems" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Fix api break <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/872/">PR #872</a></li>
+<li>Don't remove empty cells by default <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/784/">PR #784</a></li>
+<li>Handle attached images in html converter <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/780/">PR #780</a></li>
+<li>No need to check for the channels already running <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/862/">PR #862</a></li>
+<li>Update <code class="docutils literal notranslate"><span class="pre">font-awesome</span></code> version for slides <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/793/">PR #793</a></li>
+<li>Properly treat JSON data <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/847/">PR #847</a></li>
+<li>Skip executing empty code cells <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/739/">PR #739</a></li>
+<li>Ppdate log.warn (deprecated) to log.warning <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/804/">PR #804</a></li>
+<li>Cleanup notebook.tex during PDF generation <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/768/">PR #768</a></li>
+<li>Windows unicode error fixed, nosetest added to setup.py <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/757/">PR #757</a></li>
+<li>Better content hiding; template &amp; testing improvements <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/734/">PR #734</a></li>
+<li>Fix Jinja syntax in custom template example. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/738/">PR #738</a></li>
+<li>Fix for an issue with empty math block <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/729/">PR #729</a></li>
+<li>Add parser for Multiline math for LaTeX blocks <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/716/">PR #716</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/717/">PR #717</a></li>
+<li>Use defusedxml to parse potentially untrusted XML <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/708/">PR #708</a></li>
+<li>Fixes for traitlets 4.1 deprecation warnings <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/695/">PR #695</a></li>
+</ul>
+</div>
+<div class="section" id="testing-docs-and-builds">
+<h4>Testing, Docs, and Builds<a class="headerlink" href="#testing-docs-and-builds" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>A couple of typos <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/870/">PR #870</a></li>
+<li>Add python_requires metadata. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/871/">PR #871</a></li>
+<li>Document <code class="docutils literal notranslate"><span class="pre">--inplace</span></code> command line flag. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/839/">PR #839</a></li>
+<li>Fix minor typo in <code class="docutils literal notranslate"><span class="pre">usage.rst</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/863/">PR #863</a></li>
+<li>Add note about local <code class="docutils literal notranslate"><span class="pre">reveal_url_prefix</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/844/">PR #844</a></li>
+<li>Move <code class="docutils literal notranslate"><span class="pre">onlyif_cmds_exist</span></code> decorator to test-specific utils <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/854/">PR #854</a></li>
+<li>Include LICENSE file in wheels <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/827/">PR #827</a></li>
+<li>Added Ubuntu Linux Instructions <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/724/">PR #724</a></li>
+<li>Check for too recent of pandoc version <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/814/">PR #814</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/872/">PR #872</a></li>
+<li>Removing more nose remnants via dependencies. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/758/">PR #758</a></li>
+<li>Remove offline statement and add some clarifications in slides docs <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/743/">PR #743</a></li>
+<li>Linkify PR number <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/710/">PR #710</a></li>
+<li>Added shebang for python <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/694/">PR #694</a></li>
+<li>Upgrade mistune dependency <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/705/">PR #705</a></li>
+<li>add feature to improve docs by having links to prs <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/662/">PR #662</a></li>
+<li>Update notebook CSS from version 4.3.0 to 5.1.0 <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/682/">PR #682</a></li>
+<li>Explicitly exclude or include all files in Manifest. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/670/">PR #670</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>5.3.1<a class="headerlink" href="#id3" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.3.1">5.3.1 on Github</a></p>
+<ul class="simple">
+<li>MANIFEST.in updated to include <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">scripts/</span></code> when creating sdist. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/666/">PR #666</a></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>5.3<a class="headerlink" href="#id4" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.3">5.3 on Github</a></p>
+<div class="section" id="major-features">
+<h3>Major features<a class="headerlink" href="#major-features" title="제목 주소">¶</a></h3>
+<div class="section" id="tag-based-element-filtering">
+<h4>Tag Based Element Filtering<a class="headerlink" href="#tag-based-element-filtering" title="제목 주소">¶</a></h4>
+<p>For removing individual elements from notebooks, we need a way to signal to
+nbconvert that the elements should be removed. With this release, we introduce
+the use of tags for that purpose.</p>
+<p>Tags are user-defined strings attached to cells or outputs. They are stored in
+cell or output metadata. For more on tags see the <a class="reference external" href="http://nbformat.readthedocs.io/en/latest/format_description.html#cell-metadata">nbformat docs on cell
+metadata</a>.</p>
+<p><strong>Usage</strong>:</p>
+<ol class="arabic simple">
+<li>Apply tags to the elements that you want to remove.</li>
+</ol>
+<p>For removing an entire cell, the cell input, or all cell outputs apply the tag
+to the cell.</p>
+<p>For removing individual outputs, put the tag in the output metadata
+using a call like <code class="docutils literal notranslate"><span class="pre">display(your_output_element,</span> <span class="pre">metadata={tags=[&lt;your_tags_here&gt;]})</span></code>.</p>
+<p><em>NB</em>: Use different tags depending on whether you want to remove the entire cell, the input, all outputs, or individual outputs.</p>
+<ol class="arabic simple" start="2">
+<li>Add the tags for removing the different kinds of elements to the following
+traitlets. Which kind of element you want to remove determines which
+traitlet you add the tags to.</li>
+</ol>
+<p>The following traitlets remove elements of different kinds:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">remove_cell_tags</span></code>: removes cells</li>
+<li><code class="docutils literal notranslate"><span class="pre">remove_input_tags</span></code>: removes inputs</li>
+<li><code class="docutils literal notranslate"><span class="pre">remove_all_outputs_tag</span></code>: removes all outputs</li>
+<li><code class="docutils literal notranslate"><span class="pre">remove_single_output_tag</span></code>: removes individual outputs</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Comprehensive notes<a class="headerlink" href="#id5" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li>new: configurable <code class="docutils literal notranslate"><span class="pre">browser</span></code> in ServePostProcessor <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/618/">PR #618</a></li>
+<li>new: <code class="docutils literal notranslate"><span class="pre">--clear-output</span></code> command line flag to clear output in-place <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/619/">PR #619</a></li>
+<li>new: remove elements based on tags with <code class="docutils literal notranslate"><span class="pre">TagRemovePreprocessor</span></code>. <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/640/">PR #640</a>, <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/643/">PR #643</a></li>
+<li>new: CellExecutionError can now be imported from <code class="docutils literal notranslate"><span class="pre">nbconvert.preprocessors</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/656/">PR #656</a></li>
+<li>new: slides now can enable scrolling and custom transitions <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/600/">PR #600</a></li>
+<li>docs: Release instructions for nbviewer-deploy</li>
+<li>docs: improved instructions for handling errors using the <code class="docutils literal notranslate"><span class="pre">ExecutePreprocessor</span></code> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/656/">PR #656</a></li>
+<li>tests: better height/width metadata testing for images in rst &amp; html <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/601/">PR #601</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/602/">PR #602</a></li>
+<li>tests: normalise base64 output data to avoid false positives <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/650/">PR #650</a></li>
+<li>tests: normalise ipython traceback messages to handle old and new style <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/631/">PR #631</a></li>
+<li>bug: mathjax obeys <code class="docutils literal notranslate"><span class="pre">\\(\\)</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">\\[\\]</span></code> (both nbconvert &amp; pandoc) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/609/">PR #609</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/617/">PR #617</a></li>
+<li>bug: specify default templates using extensions <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/639/">PR #639</a></li>
+<li>bug: fix pandoc version number <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/638/">PR #638</a></li>
+<li>bug: require recent mistune version <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/630/">PR #630</a></li>
+<li>bug: catch errors from IPython <code class="docutils literal notranslate"><span class="pre">execute_reply</span></code> and <code class="docutils literal notranslate"><span class="pre">error</span></code> messages <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/642/">PR #642</a></li>
+<li>nose completely removed &amp; dependency dropped <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/595/">PR #595</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/660/">PR #660</a></li>
+<li>mathjax processing in mistune now only uses inline grammar <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/611/">PR #611</a></li>
+<li>removeRegex now enabled by default on all TemplateExporters, does not remove cells with outputs <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/616/">PR #616</a></li>
+<li>validate notebook after applying each preprocessor (allowing additional attributes) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/645/">PR #645</a></li>
+<li>changed COPYING.md to LICENSE for more standard licensing that GitHub knows how to read <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/654/">PR #654</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>5.2.1<a class="headerlink" href="#id6" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.2">5.2 on GitHub</a></p>
+<div class="section" id="id7">
+<h3>Major features<a class="headerlink" href="#id7" title="제목 주소">¶</a></h3>
+<p>In this release (along with the usual bugfixes and documentation improvements,
+which are legion) we have a few new major features that have been requested for
+a long time:</p>
+<div class="section" id="global-content-filtering">
+<h4>Global Content Filtering<a class="headerlink" href="#global-content-filtering" title="제목 주소">¶</a></h4>
+<p>You now have the ability to remove input or output from code cells, markdown
+cells and the input and output prompts. The easiest way to access all of these
+is by using traitlets like TemplateExporter.exclude_input = True (or, for
+example HTMLExporter.exclude_markdown = True if you wanted to make it specific
+to HTML output). On the command line if you just want to not have input or
+output prompts just use --no-prompt.</p>
+</div>
+<div class="section" id="execute-notebooks-from-a-function">
+<h4>Execute notebooks from a function<a class="headerlink" href="#execute-notebooks-from-a-function" title="제목 주소">¶</a></h4>
+<p>You can now use the executenb function to execute notebooks as though you ran
+the execute preprocessor on the notebooks. It returns the standard notebook and
+resources options.</p>
+</div>
+<div class="section" id="remove-cells-based-on-regex-pattern">
+<h4>Remove cells based on regex pattern<a class="headerlink" href="#remove-cells-based-on-regex-pattern" title="제목 주소">¶</a></h4>
+<p>This removes cells based on their matching a regex pattern (by default, empty
+cells). This is the RegexRemovePreprocessor.</p>
+</div>
+<div class="section" id="script-exporter-entrypoints-for-nonpython-scripts">
+<h4>Script exporter entrypoints for nonpython scripts<a class="headerlink" href="#script-exporter-entrypoints-for-nonpython-scripts" title="제목 주소">¶</a></h4>
+<p>Now there is an entrypoint for having an exporter specific to the type of script
+that is being exported. While designed for use with the IRkernel in particular
+(with a script exporter focused on exporting R scripts) other non-python kernels
+that wish to have a language specific exporter can now surface that directly.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>Comprehensive notes<a class="headerlink" href="#id8" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li>new: configurable ExecutePreprocessor.startup_timeout configurable <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/583/">PR #583</a></li>
+<li>new: RemoveCell preprocessor based on cell content (defaults to empty cell) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/575/">PR #575</a></li>
+<li>new: function for executing notebooks: <cite>executenb</cite> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/573/">PR #573</a></li>
+<li>new: global filtering to remove inputs, outputs, markdown cells (&amp;c.), this works on all templates <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/554/">PR #554</a></li>
+<li>new: script exporter entrypoint <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/531/">PR #531</a></li>
+<li>new: configurable anchor link text (previously ¶) <cite>HTMLExporter.anchor_link_text</cite> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/522/">PR #522</a></li>
+<li>new: configurable values for slides exporter <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/542/">PR #542</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/558/">PR #558</a></li>
+<li>improved releases (how-to documentation, version-number generation and checking) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/593/">PR #593</a></li>
+<li>doc improvements  <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/593/">PR #593</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/580/">PR #580</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/565/">PR #565</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/554/">PR #554</a></li>
+<li>language information from cell magics (for highlighting) is now included in more formats <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/586/">PR #586</a></li>
+<li>mathjax upgrades and cdn fixes <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/584/">PR #584</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/567/">PR #567</a></li>
+<li>better CI <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/571/">PR #571</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/540/">PR #540</a></li>
+<li>better traceback behaviour when execution errs <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/521/">PR #521</a></li>
+<li>deprecated nose test features removed <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/519/">PR #519</a></li>
+<li>bug fixed: we now respect width and height metadata on jpeg and png mimetype outputs <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/588/">PR #588</a></li>
+<li>bug fixed: now we respect the <cite>resolve_references</cite> filter in <cite>report.tplx</cite> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/577/">PR #577</a></li>
+<li>bug fixed: output metadata now is removed by ClearOutputPreprocessor <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/569/">PR #569</a></li>
+<li>bug fixed: display id respected in execute preproessor <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/563/">PR #563</a></li>
+<li>bug fixed: dynamic defaults for optional jupyter_client import <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/559/">PR #559</a></li>
+<li>bug fixed: don't self-close non-void HTML tags <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/548/">PR #548</a></li>
+<li>buf fixed: upgrade jupyter_client dependency to 4.2 <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/539/">PR #539</a></li>
+<li>bug fixed: LaTeX output through md→LaTeX conversion shouldn't be touched <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/535/">PR #535</a></li>
+<li>bug fixed: now we escape <cite>&lt;</cite> inside math formulas when converting to html <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/514/">PR #514</a></li>
+</ul>
+</div>
+<div class="section" id="credits">
+<h3>Credits<a class="headerlink" href="#credits" title="제목 주소">¶</a></h3>
+<p>This release has been larger than previous releases. In it 33 authors
+contributed a total of 546 commits.</p>
+<p>Many thanks to the following individuals who contributed to this release (in
+alphabetical order):</p>
+<ul class="simple">
+<li>Adam Chainz</li>
+<li>Andreas Mueller</li>
+<li>Bartosz T</li>
+<li>Benjamin Ragan-Kelley</li>
+<li>Carol Willing</li>
+<li>Damián Avila</li>
+<li>Elliot Marsden</li>
+<li>Gao, Xiang</li>
+<li>Jaeho Shin</li>
+<li>Jan Schulz</li>
+<li>Jeremy Kun</li>
+<li>Jessica B. Hamrick</li>
+<li>John B Nelson</li>
+<li>juhasch</li>
+<li>Livia Barazzetti</li>
+<li>M Pacer</li>
+<li>Matej Urbas</li>
+<li>Matthias Bussonnier</li>
+<li>Matthias Geier</li>
+<li>Maximilian Albert</li>
+<li>Michael Scott Cuthbert</li>
+<li>Nicholas Bollweg</li>
+<li>Paul Gowder</li>
+<li>Paulo Villegas</li>
+<li>Peter Parente</li>
+<li>Philipp A</li>
+<li>Scott Sanderson</li>
+<li>Srinivas Reddy Thatiparthy</li>
+<li>Sylvain Corlay</li>
+<li>Thomas Kluyver</li>
+<li>Till Hoffmann</li>
+<li>Xiang Gao</li>
+<li>YuviPanda</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>5.1.1<a class="headerlink" href="#id9" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.1.1">5.1.1 on GitHub</a></p>
+<ul class="simple">
+<li>fix version numbering because of incomplete previous version number</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>5.1<a class="headerlink" href="#id10" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.1">5.1 on GitHub</a></p>
+<ul class="simple">
+<li>improved CSS (specifically tables, in line with notebook) <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/498/">PR #498</a></li>
+<li>improve in-memory templates handling <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/491/">PR #491</a></li>
+<li>test improvements <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/516/">PR #516</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/509/">PR #509</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/505/">PR #505</a></li>
+<li>new configuration option: IOPub timeout <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/513/">PR #513</a></li>
+<li>doc improvements <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/489/">PR #489</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/500/">PR #500</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/493/">PR #493</a> <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/506/">PR #506</a></li>
+<li>newly customizable: output prompt <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/500/">PR #500</a></li>
+<li>more python2/3 compatibile unicode handling <a class="reference external" href="https://github.com/jupyter/nbconvert/pull/502/">PR #502</a></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>5.0<a class="headerlink" href="#id11" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/5.0">5.0 on GitHub</a></p>
+<ul class="simple">
+<li>Use <strong class="command">xelatex</strong> by default for latex export, improving unicode and font support.</li>
+<li>Use entrypoints internally to access Exporters, allowing for packages to declare custom exporters more easily.</li>
+<li>New ASCIIDoc Exporter.</li>
+<li>New preprocessor for sanitised html output.</li>
+<li>New general <code class="docutils literal notranslate"><span class="pre">convert_pandoc</span></code> filter to reduce the need to hard-code lists of filters in templates.</li>
+<li>Use pytest, nose dependency to be removed.</li>
+<li>Refactored Exporter code to avoid ambiguity and cyclic dependencies.</li>
+<li>Update to traitlets 4.2 API.</li>
+<li>Fixes for Unicode errors when showing execution errors on Python 2.</li>
+<li>Default math font matches default Palatino body text font.</li>
+<li>General documentation improvements. For example, testing, installation, custom exporters.</li>
+<li>Improved link handling for LaTeX output</li>
+<li>Refactored the automatic id generation.</li>
+<li>New kernel_manager_class configuration option for allowing systems to be set up to resolve kernels in different ways.</li>
+<li>Kernel errors now will be logged for debugging purposes when executing notebooks.</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2>4.3<a class="headerlink" href="#id12" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/4.3">4.3 on GitHub</a></p>
+<ul class="simple">
+<li>added live widget rendering for html output, nbviewer by extension</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>4.2<a class="headerlink" href="#id13" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/4.2">4.2 on GitHub</a></p>
+<ul class="simple">
+<li><a class="reference internal" href="external_exporters.html#external-exporters"><span class="std std-ref">Custom Exporters</span></a> can be provided by external packages,
+and registered with nbconvert via setuptools entrypoints.</li>
+<li>allow nbconvert reading from stdin with <code class="docutils literal notranslate"><span class="pre">--stdin</span></code> option (write into
+<code class="docutils literal notranslate"><span class="pre">notebook</span></code> basename)</li>
+<li>Various ANSI-escape fixes and improvements</li>
+<li>Various LaTeX/PDF export fixes</li>
+<li>Various fixes and improvements for executing notebooks with <code class="docutils literal notranslate"><span class="pre">--execute</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h2>4.1<a class="headerlink" href="#id15" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/4.1">4.1 on GitHub</a></p>
+<ul class="simple">
+<li>setuptools fixes for entrypoints on Windows</li>
+<li>various fixes for exporters, including slides, latex, and PDF</li>
+<li>fixes for exceptions met during execution</li>
+<li>include markdown outputs in markdown/html exports</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h2>4.0<a class="headerlink" href="#id17" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter/nbconvert/milestones/4.0">4.0 on GitHub</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="development_release.html" class="btn btn-neutral" title="Making an nbconvert release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2019, Jupyter Development Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4.0.dev0',
+            LANGUAGE:'ko',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
