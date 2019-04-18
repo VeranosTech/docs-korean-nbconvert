@@ -27,3 +27,6 @@ docs/source/config_options.rst
 .project
 .pydevproject
 .settings
+
+
+*.mo
